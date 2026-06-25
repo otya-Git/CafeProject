@@ -1,5 +1,5 @@
 package bean;
-
+//aaaa
 import java.time.LocalDateTime;
 
 public class Sales implements java.io.Serializable {
