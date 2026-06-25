@@ -46,7 +46,6 @@ public class Sales implements java.io.Serializable {
         return total_amount;
     }
     
-    // 💡 ここを修正しました（amont -> amount）
     public void setTotal_amount(int total_amount) {
         this.total_amount = total_amount;
     }
