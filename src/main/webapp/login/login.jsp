@@ -3,7 +3,7 @@
 
 <link rel="stylesheet"
 href="${pageContext.request.contextPath}/css/login.css">
-
+<%@ include file="../header.jsp" %>
 <h1>カフェDX始めました</h1>
 
 <div class="login-box">
@@ -31,13 +31,13 @@ if(message != null){
 
             <input
                 type="text"
-                name="login"
-                placeholder="ログインID"
+                name="user_id"
+                placeholder="従業員ID"
             ><br>
 
             <input
                 type="password"
-                name="password"
+                name="password_hash"
                 id="pass"
                 placeholder="パスワード"
             >
@@ -59,7 +59,10 @@ if(message != null){
 
     </form>
     <h4>はじめての方はこちら</h4>
-    <a class="btn-link" href="/webapp/login/insert.jsp">新規登録</a>
+<a class="btn-link"
+   href="${pageContext.request.contextPath}/login/insert.jsp">
+    新規登録
+</a>
 </div>
 
 <script>
