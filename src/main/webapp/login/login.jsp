@@ -31,8 +31,8 @@ if(message != null){
 
             <input
                 type="text"
-                name="user_id"
-                placeholder="従業員ID"
+                name="login_id"
+                placeholder="ログインID"
             ><br>
 
             <input
