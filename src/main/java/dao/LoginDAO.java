@@ -12,7 +12,7 @@ public class LoginDAO extends DAO {
     	
     	Connection con = getConnection();
 
-    
+    //
         String sql =
             "SELECT * FROM users "
           + "WHERE login_id=? AND password_hash=?";

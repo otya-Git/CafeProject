@@ -9,7 +9,7 @@ import bean.Users;
 public class UserInsertDAO extends DAO {
 
     public int insert(Users user) throws Exception {
-    	
+    	//
     	Connection con = getConnection();
     	
         String sql =

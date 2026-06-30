@@ -27,7 +27,7 @@ public class DAO {
             ds = (DataSource) ic.lookup("java:/comp/env/jdbc/book");
         }
 
-        // データソースからDB接続を取得して返す
+        // データソースからDB接続を取得して返す//
         return ds.getConnection();
     }
 }
