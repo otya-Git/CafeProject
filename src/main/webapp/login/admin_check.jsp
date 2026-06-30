@@ -6,5 +6,5 @@
 <p>パスワード：<input type="password" name="password"></p>
 
 </form>
-
+//
 <%@include file="../loginfooter.jsp" %>
