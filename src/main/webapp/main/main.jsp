@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="../css/main.css">
 
 <div class="">
-<h2>☕ メニュー</h2><br>
+<h2>☕ メニューあ</h2><br>
 
 <div class="main">
 
