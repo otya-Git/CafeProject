@@ -1,78 +1,141 @@
 @charset "UTF-8";
 
+/*sunsun*/
+
 body {
-    background-color: #CFEFFF;
+    background-color: #f8f4ea;
+    color: #4a3c31;
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
     margin: 0;
-    font-family: "Yu Gothic", "Meiryo", sans-serif;
+    padding: 0;
 }
 
 h1 {
-    background-color: #FFFDE7;
     text-align: center;
-    width: 950px;
-    margin: 30px auto 0;
-    padding: 15px 0;
-    border-radius: 10px;
+    margin-top: 40px;
+    color: #5c4033;            /* 濃いめのブラウン */
+    font-size: 24px;
+    letter-spacing: 0.05em;
 }
 
-
-h2 {
-    background-color: #e0e0e0;
+/* ==========================================
+   ログインボックス（中央のカード枠）
+   ========================================== */
+.login-box {
+    background-color: #ffffff;
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    border-radius: 12px;       /* 角を少し丸く */
+    box-shadow: 0 4px 15px rgba(92, 64, 51, 0.08); /* 柔らかい影 */
     text-align: center;
-    width: 450px;
-    margin: 10px auto;
-    padding: 10px 0;
-    border-radius: 5px;
 }
 
-input[type="text"],
-input[type="password"] {
-    width: 300px;
+.login-box h2 {
+    font-size: 20px;
+    margin-bottom: 25px;
+    color: #6f4e37;            /* コーヒー色 */
+    position: relative;
+    display: inline-block;
+}
+
+/* タイトルの下にさりげないアクセント線 */
+.login-box h2::after {
+    content: '';
     display: block;
-    margin: 15px auto;
-    height: 35px;
-    border-radius: 5px;
-    border: 1px solid #999;
-    padding-left: 10px;
+    width: 40px;
+    height: 2px;
+    background-color: #d2b48c; /* カフェオレ色 */
+    margin: 8px auto 0;
 }
 
+/* ==========================================
+   入力フォーム・チェックボックス
+   ========================================== */
+.login {
+    margin-bottom: 15px;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #dcd6cd;
+    border-radius: 6px;
+    box-sizing: border-box; /* paddingを含めたサイズ計算 */
+    font-size: 15px;
+    background-color: #faf8f5;
+    transition: all 0.3s ease;
+}
+
+/* 入力枠にフォーカスしたときの色変化 */
+.login input:focus {
+    outline: none;
+    border-color: #8b5a2b;     /* 濃いブラウン */
+    background-color: #ffffff;
+    box-shadow: 0 0 5px rgba(139, 90, 43, 0.2);
+}
+
+/* パスワード表示のラベル */
 label {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.logbut {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.logbut button {
-    height: 50px;
-    width: 300px;
-    background-color: #C7E9FF;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    color: #7a695a;
     cursor: pointer;
+    margin-bottom: 20px;
+}
+
+label input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+/* ==========================================
+   ボタン・リンク
+   ========================================== */
+/* ログインボタン */
+.logbut button {
+    width: 100%;
+    padding: 12px;
+    background-color: #8b5a2b; /* 深みのあるローストブラウン */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .logbut button:hover {
-    background-color: #9ed8ff;
+    background-color: #6f4e37; /* ホバー時に少し暗く */
 }
 
-.login-box {
-    border: 2px solid #949fa8;
-    background-color: #fff;
-    padding: 30px;
-    width: 450px;
-    margin: 20px auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+/* 新規登録エリア */
+h4 {
+    margin-top: 35px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #7a695a;
+    font-weight: normal;
+    border-top: 1px dashed #e6dfd5; /* 区切り破線 */
+    padding-top: 20px;
 }
 
-p {
-    text-align: center;
-    background-color: #e0e0e0;
-    padding: 10px;
+/* 新規登録ボタン（リンク） */
+.btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #8b5a2b;
+    color: #8b5a2b;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.btn-link:hover {
+    background-color: #8b5a2b;
+    color: #ffffff;
 }
