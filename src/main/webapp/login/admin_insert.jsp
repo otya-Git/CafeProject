@@ -9,7 +9,7 @@
 <p>名前：<input type="text" name="user_name"></p>
 <p class="error">${error2}</p>
 <p class="error">${error}</p>
-<input type="hidden" name="role" value="USER">
+<
 <p><input type="submit" value="登録"  class=""></p>
 </form>
 
