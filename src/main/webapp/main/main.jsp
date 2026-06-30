@@ -2,6 +2,8 @@
 
 <%@include file="../header.jsp" %>
 
+<link rel="stylesheet" href="../css/main.css">
+
 <div class="">
 <h2>☕ メニュー</h2><br>
 
