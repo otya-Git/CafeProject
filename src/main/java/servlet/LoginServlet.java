@@ -49,11 +49,11 @@ public class LoginServlet extends HttpServlet {
                 // ★ここが重要：権限で遷移を分ける
                 if ("ADMIN".equals(user.getRole())) {
 
-                    response.sendRedirect("admin/menu.jsp");
+                    response.sendRedirect("main/menu.jsp");
 
                 } else {
 
-                    response.sendRedirect("menu.jsp");
+                    response.sendRedirect("main/menu.jsp");
                 }
 
             } else {
