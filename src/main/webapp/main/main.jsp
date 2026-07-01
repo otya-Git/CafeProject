@@ -14,7 +14,7 @@
 </div>
 
 <div class="box">
-<a href="/">商品管理</a>
+<a href="productAdd.jsp">商品管理</a>
 </div>
 
 <div class="box">

@@ -6,48 +6,39 @@ public class Product implements Serializable {
 
     private int product_id;
     private String product_name;
-    private int stock_quantity;
     private int cost_price;
     private int price;
     private String description;
-    private int category_id;
+    private String category_name;
 
     public Product() {
     }
 
-    public int getproduct_id() {
+    public int getProductId() {
         return product_id;
     }
 
-    public void setproduct_id(int product_id) {
+    public void setProductId(int product_id) {
         this.product_id = product_id;
     }
 
-    public String getproduct_name() {
+    public String getProductName() {
         return product_name;
     }
 
-    public void setProduct_Name(String product_name) {
+    public void setProductName(String product_name) {
         this.product_name = product_name;
     }
 
-    public int getstock_quantity() {
-        return stock_quantity;
-    }
-
-    public void setstock_quantity(int stock_quantity) {
-        this.stock_quantity = stock_quantity;
-    }
-
-    public int getcost_price() {
+    public int getCostPrice() {
         return cost_price;
     }
 
-    public void setcost_price(int cost_price) {
+    public void setCostPrice(int cost_price) {
         this.cost_price = cost_price;
     }
 
-    public int getprice() {
+    public int getPrice() {
         return price;
     }
 
@@ -55,7 +46,7 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    public String getdescription() {
+    public String getDescription() {
         return description;
     }
 
@@ -63,11 +54,11 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public int getcategory_id() {
-        return category_id;
+    public String getCategoryName() {
+        return category_name;
     }
 
-    public void setCategoryId(int category_id) {
-        this.category_id = category_id;
+    public void setCategoryName(String category_name) {
+        this.category_name = category_name;
     }
 }
