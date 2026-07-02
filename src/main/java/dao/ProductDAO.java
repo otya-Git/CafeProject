@@ -4,17 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.List;
 
 import bean.Product;
 
-public class ProductDAO {
+public class ProductDAO extends DAO {
 
     // 商品登録
     public int insert(Product product) throws Exception {
 
-        Connection con = new DAO().getConnection();
+        Connection con = getConnection();
 
         String sql = "INSERT INTO product "
                 + "(product_name, cost_price, price, description, category_name) "
@@ -41,7 +40,7 @@ public class ProductDAO {
 
         List<Product> list = new ArrayList<>();
 
-        Connection con = new DAO().getConnection();
+        Connection con = getConnection();
 
         String sql = "SELECT * FROM product ORDER BY product_id";
 
@@ -69,45 +68,4 @@ public class ProductDAO {
 
         return list;
     }
-=======
-
-import bean.Product;
-
-public class ProductDAO extends DAO {
-
-    // 商品一覧取得
-    public ArrayList<Product> selectAll() throws Exception {
-
-        ArrayList<Product> list = new ArrayList<>();
-
-        Connection con = getConnection();
-
-        String sql = "SELECT * FROM product ORDER BY product_id";
-
-        PreparedStatement st = con.prepareStatement(sql);
-
-        ResultSet rs = st.executeQuery();
-
-        while (rs.next()) {
-
-            Product p = new Product();
-
-            p.setProductId(rs.getInt("product_id"));
-            p.setProductName(rs.getString("product_name"));
-            p.setCostPrice(rs.getInt("cost_price"));
-            p.setPrice(rs.getInt("price"));
-            p.setDescription(rs.getString("description"));
-            p.setCategoryName(rs.getString("category_name"));
-
-            list.add(p);
-        }
-
-        rs.close();
-        st.close();
-        con.close();
-
-        return list;
-    }
-
->>>>>>> branch 'master' of https://github.com/otya-Git/CafeProject.git
 }
