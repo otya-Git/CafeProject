@@ -1,0 +1,237 @@
+@charset "UTF-8";
+@charset "UTF-8";
+
+body{
+    margin: 0;
+    font-family: "Yu Gothic", sans-serif;
+    background-color: #f8f4ea;
+    color: #5b4636;
+}
+
+/* タイトル */
+h2{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 38px;
+    color: #6d4c41;
+}
+
+/* 全体 */
+.main{
+    width: 900px;
+    margin: 40px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* メニュー */
+.box{
+    width: 220px;
+    height: 150px;
+    background: #fffdf7;
+    border-radius: 20px;
+    border: 2px solid #e7d7c1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+/* ホバー */
+.box:hover{
+    transform: translateY(-8px);
+    background: #f4e7d3;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* リンク */
+.box a{
+    text-decoration: none;
+    color: #6d4c41;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* テーブル全体のスタイル（不自然な幅固定をすべて廃止） */
+.user-table {
+  width: auto;              /* 横幅は中身の文字に自動で合わせる */
+  margin: 30px auto;        /* 中央寄せ */
+  border-collapse: collapse; /* 枠線を綺麗に重ねる */
+  background-color: #ffffff;
+  border-radius: 12px;      /* 角丸を少しおしゃれに強める */
+  box-shadow: 0 4px 20px rgba(111, 78, 55, 0.08); /* 柔らかい影 */
+  overflow: hidden;
+}
+
+/* 見出し（th）とデータ（td）の余白を共通化 */
+.user-table th,
+.user-table td {
+  padding: 14px 35px;       /* 左右のすき間（35px）を均等にして、文字の周りに綺麗な余白を作る */
+  text-align: center;       /* すべて中央寄せにして、縦のラインをピシッと揃える */
+  white-space: nowrap;      /* データベースの文字が途中で変に改行されるのを防ぐ */
+}
+
+/* 見出し行（茶色のバー） */
+.user-table th {
+  background-color: #6f4e37; /* カフェブラウン */
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;   /* 文字の間隔を少しあけて上品に */
+}
+
+/* データ行 */
+.user-table td {
+  border-bottom: 1px solid #f2ede9;
+  color: #3e2723;
+  font-size: 0.9rem;
+}
+
+/* 縞模様（背景を交互に変えて見やすく） */
+.user-table tr:nth-child(even) td {
+  background-color: #fbf9f6; 
+}
+
+/* マウスホバー時の効果 */
+.user-table tr:hover td {
+  background-color: #f4ebd9;
+  transition: background-color 0.2s ease;
+}
+
+/* ===== 商品登録画面 ===== */
+
+.form-box{
+    width: 550px;
+    margin: 40px auto;
+    background: #fffdf7;
+    padding: 35px;
+    border-radius: 20px;
+    border: 2px solid #e7d7c1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+.form-group label{
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #6d4c41;
+    font-size: 18px;
+}
+
+.form-group input,
+.form-group textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d8c3a5;
+    border-radius: 10px;
+    background: #fffaf3;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+    outline: none;
+    border: 2px solid #c89b6d;
+    background: #fff;
+}
+
+.button-area{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-register,
+.btn-back{
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.btn-register{
+    background: #8d6e63;
+    color: white;
+}
+
+.btn-register:hover{
+    background: #6d4c41;
+}
+
+.btn-back{
+    background: #d7ccc8;
+    color: #5b4636;
+}
+
+.btn-back:hover{
+    background: #bcaaa4;
+}
+
+/* 商品一覧 */
+
+.list-area{
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: #fffdf7;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.1);
+}
+
+.product-table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:15px;
+}
+
+.product-table th{
+    background:#8d6e63;
+    color:white;
+    padding:15px;
+    font-size:18px;
+}
+
+.product-table td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #e7d7c1;
+}
+
+.product-table tr:nth-child(even){
+    background:#fbf7f1;
+}
+
+.product-table tr:hover{
+    background:#f4e7d3;
+}
+
+.add-btn{
+    display:inline-block;
+    margin-bottom:20px;
+    background:#8d6e63;
+    color:white;
+    padding:12px 25px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.add-btn:hover{
+    background:#6d4c41;
+}
