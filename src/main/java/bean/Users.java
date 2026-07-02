@@ -6,17 +6,17 @@ import java.time.LocalDateTime;
 public class Users implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private String user_id;
+	private long user_id;
 	private String user_name;
 	private String password_hash;
 	private String login_id;
 	private String role;
 	private LocalDateTime created_at;
-	private LocalDateTime update_at;
+	private LocalDateTime updated_at;
 	
 	public Users() {}
 
-	public String getUser_id() {
+	public long getUser_id() {
 		return user_id;
 	}
 
@@ -41,10 +41,10 @@ public class Users implements Serializable {
 	}
 
 	public LocalDateTime getUpdate_at() {
-		return update_at;
+		return updated_at;
 	}
 
-	public void setUser_id(String user_id) {
+	public void setUser_id(long user_id) {
 		this.user_id = user_id;
 	}
 
@@ -69,7 +69,7 @@ public class Users implements Serializable {
 	}
 
 	public void setUpdate_at(LocalDateTime update_at) {
-		this.update_at = update_at;
+		this.updated_at = update_at;
 	}
 	
 }
