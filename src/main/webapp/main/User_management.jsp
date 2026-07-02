@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="../header.jsp" %>
 
-<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/users.css">
 
 <h2>ユーザー</h2>
 
