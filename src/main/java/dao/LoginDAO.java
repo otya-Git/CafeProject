@@ -33,7 +33,7 @@ public class LoginDAO extends DAO {
             user = new Users();
 
             user.setUser_id(
-                rs.getString("user_id")
+                rs.getLong("user_id")
             );
 
             user.setUser_name(
@@ -64,7 +64,7 @@ public class LoginDAO extends DAO {
             // 更新日
             if (rs.getTimestamp("update_at") != null) {
                 user.setUpdate_at(
-                    rs.getTimestamp("update_at")
+                    rs.getTimestamp("updated_at")
                     .toLocalDateTime()
                 );
             }
