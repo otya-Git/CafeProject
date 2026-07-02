@@ -4,50 +4,51 @@ import java.io.Serializable;
 
 public class Product implements Serializable {
 
-    private int product_id;
-    private String product_name;
-    private int stock_quantity;
-    private int cost_price;
+    private int productId;
+    private String productName;
+    private int costPrice;
     private int price;
     private String description;
-    private int category_id;
+    private String categoryName;
 
+
+    // コンストラクタ
     public Product() {
     }
 
-    public int getproduct_id() {
-        return product_id;
+
+    // 商品ID
+    public int getProductId() {
+        return productId;
     }
 
-    public void setproduct_id(int product_id) {
-        this.product_id = product_id;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
-    public String getproduct_name() {
-        return product_name;
+
+    // 商品名
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProduct_Name(String product_name) {
-        this.product_name = product_name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public int getstock_quantity() {
-        return stock_quantity;
+
+    // 原価
+    public int getCostPrice() {
+        return costPrice;
     }
 
-    public void setstock_quantity(int stock_quantity) {
-        this.stock_quantity = stock_quantity;
+    public void setCostPrice(int costPrice) {
+        this.costPrice = costPrice;
     }
 
-    public int getcost_price() {
-        return cost_price;
-    }
 
-    public void setcost_price(int cost_price) {
-        this.cost_price = cost_price;
-    }
-
-    public int getprice() {
+    // 販売価格
+    public int getPrice() {
         return price;
     }
 
@@ -55,7 +56,9 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    public String getdescription() {
+
+    // 商品説明
+    public String getDescription() {
         return description;
     }
 
@@ -63,11 +66,14 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public int getcategory_id() {
-        return category_id;
+
+    // カテゴリ名
+    public String getCategoryName() {
+        return categoryName;
     }
 
-    public void setCategoryId(int category_id) {
-        this.category_id = category_id;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
+
 }

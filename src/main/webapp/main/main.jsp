@@ -18,7 +18,7 @@
 </div>
 
 <div class="box">
-<a href="/">注文管理</a>
+<a href="${pageContext.request.contextPath}/main/Order.jsp">注文管理</a>
 </div>
 
 <div class="box">
@@ -26,7 +26,7 @@
 </div>
 
 <div class="box">
-<a href="/">売り上げ一覧</a>
+<a href="/Sales.jsp">売り上げ一覧</a>
 </div>
 
 <div class="box">
