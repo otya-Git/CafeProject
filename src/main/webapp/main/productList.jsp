@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/productlist.css">
 <%@include file="../header.jsp"%>
 
 <h2>☕ 商品一覧</h2>
