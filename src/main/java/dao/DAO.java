@@ -10,7 +10,7 @@ public class DAO {
 
     private static final String USER = "postgres";
 
-    private static final String PASSWORD = "5432";
+    private static final String PASSWORD = "post";
 
     public Connection getConnection() throws Exception {
 
