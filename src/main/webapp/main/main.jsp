@@ -17,6 +17,7 @@ Users user = (Users) session.getAttribute("user");
         if (user != null) {
         %>
             ようこそ、<b><%= user.getUser_name() %></b> さん
+            ｜ <a href="${pageContext.request.contextPath}/logout">ログアウト</a>
         <%
         } else {
         %>
