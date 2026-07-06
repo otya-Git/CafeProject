@@ -52,11 +52,11 @@ public class LoginServlet extends HttpServlet {
                 // 権限で遷移分岐
                 if ("ADMIN".equals(user.getRole())) {
                     response.sendRedirect(
-                        request.getContextPath() + "/main/mein.jsp"
+                        request.getContextPath() + "/main/main.jsp"
                     );
                 } else {
                     response.sendRedirect(
-                        request.getContextPath() + "/main/mein.jsp"
+                        request.getContextPath() + "/main/main.jsp"
                     );
                 }
 
