@@ -235,5 +235,16 @@ h2{
 .add-btn:hover{
     background:#6d4c41;
 }
+/* 在庫状態 */
+
+.stock-low{
+    color:#d32f2f;
+    font-weight:bold;
+}
+
+.stock-ok{
+    color:#2e7d32;
+    font-weight:bold;
+}
 
 

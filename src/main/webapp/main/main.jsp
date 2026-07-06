@@ -32,7 +32,7 @@ Users user = (Users) session.getAttribute("user");
     <div class="main">
 
         <div class="box">
-            <a href="/">在庫管理</a>
+            <a href="/InventoryListServlet">在庫管理</a>
         </div>
 
         <div class="box">

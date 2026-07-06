@@ -12,6 +12,8 @@ public class Inventory {
 	private double reorderPoint;
 	private Date expiryDate;
 	private Timestamp updatedAt;
+	private String productName;
+	private String supplierName;
 	
 	public Inventory() {
 	}
@@ -24,19 +26,19 @@ public class Inventory {
 		this.inventoryId = inventoryId;
 	}
 	
-	public long getproductId() {
-		return productId;
+	public long getProductId() {
+	    return productId;
 	}
-	
-	public void setproductId(long productId) {
-		this.productId = productId;
+
+	public void setProductId(long productId) {
+	    this.productId = productId;
 	}
 	
 	public long getSupplierId() {
 		return supplierId;
 	}
 	
-	public void getSupplierId(long supplierId) {
+	public void setSupplierId(long supplierId) {
 		this.supplierId = supplierId;
 	}
 	
@@ -78,6 +80,22 @@ public class Inventory {
 	
 	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+	
+	public String getProductName() {
+	    return productName;
+	}
+
+	public void setProductName(String productName) {
+	    this.productName = productName;
+	}
+
+	public String getSupplierName() {
+	    return supplierName;
+	}
+
+	public void setSupplierName(String supplierName) {
+	    this.supplierName = supplierName;
 	}
 
 
