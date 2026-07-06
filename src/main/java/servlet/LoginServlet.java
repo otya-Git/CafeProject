@@ -23,46 +23,50 @@ public class LoginServlet extends HttpServlet {
         try {
             request.setCharacterEncoding("UTF-8");
 
-            String login_id =
-                request.getParameter("login");
+            // 入力値取得（JSPと完全一致させる）
+            String login_id = request.getParameter("login_id");
+            String password = request.getParameter("password_hash");
 
-            String password =
-                request.getParameter("password");
+            // null・空チェック（重要）
+            if (login_id == null || password == null ||
+                login_id.isEmpty() || password.isEmpty()) {
+
+                response.sendRedirect(
+                    request.getContextPath() + "/login/login.jsp"
+                );
+                return;
+            }
 
             // パスワードをハッシュ化
-            String hashPassword =
-                PasswordUtil.hash(password);
+            String hashPassword = PasswordUtil.hash(password);
 
+            // DB検索
             LoginDAO dao = new LoginDAO();
-
-            // Usersで受け取る
-            Users user =
-                dao.search(login_id, hashPassword);
+            Users user = dao.search(login_id, hashPassword);
 
             if (user != null) {
 
-                HttpSession session =
-                    request.getSession();
-
+                HttpSession session = request.getSession();
                 session.setAttribute("user", user);
 
-                // ★ここが重要：権限で遷移を分ける
+                // 権限で遷移分岐
                 if ("ADMIN".equals(user.getRole())) {
-
-                    response.sendRedirect("main/menu.jsp");
-
+                    response.sendRedirect(
+                        request.getContextPath() + "/main/mein.jsp"
+                    );
                 } else {
-
-                    response.sendRedirect("main/menu.jsp");
+                    response.sendRedirect(
+                        request.getContextPath() + "/main/mein.jsp"
+                    );
                 }
 
             } else {
-
-                response.sendRedirect("login-error.jsp");
+                response.sendRedirect(
+                    request.getContextPath() + "/login/login-error.jsp"
+                );
             }
 
         } catch (Exception e) {
-
             throw new ServletException(e);
         }
     }
