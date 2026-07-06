@@ -1,10 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="bean.Product"%>
+<%@ page import="bean.Order_Item"%>
 
 <%
 List<Product> list =
     (List<Product>)request.getAttribute("list");
+
+List<Order_Item> cart =
+    (List<Order_Item>)request.getAttribute("cart");
 %>
 
 <!DOCTYPE html>
@@ -112,20 +116,6 @@ if(list != null && !list.isEmpty()){
 
 </td>
 
-<td>
-
-<a href="${pageContext.request.contextPath}/product/edit?id=<%= p.getProductId() %>">
-編集
-</a>
-
-<br><br>
-
-<a href="${pageContext.request.contextPath}/ProductDeleteServlet?id=<%= p.getProductId() %>"
-   onclick="return confirm('削除しますか？');">
-    削除
-</a>
-
-</td>
 
 </tr>
 
@@ -162,7 +152,33 @@ if(list != null && !list.isEmpty()){
     <th>金額</th>
 </tr>
 
-<!-- 後でカート内容を表示 -->
+<%
+if(cart != null && !cart.isEmpty()){
+
+    for(Order_Item item : cart){
+%>
+
+<tr>
+    <td><%= item.getProduct_name() %></td>
+    <td><%= item.getQuantity() %></td>
+    <td><%= item.getPrice() * item.getQuantity() %>円</td>
+</tr>
+
+<%
+    }
+
+}else{
+%>
+
+<tr>
+    <td colspan="3">
+        商品がありません
+    </td>
+</tr>
+
+<%
+}
+%>
 
 </table>
 
