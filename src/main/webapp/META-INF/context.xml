@@ -6,6 +6,6 @@
         driverClassName="org.postgresql.Driver"
         url="jdbc:postgresql://localhost:5432/cafe"
         username="postgres"
-        password="post"
+        password="5432"
     />
 </Context>
