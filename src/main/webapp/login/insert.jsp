@@ -1,4 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" %>
+
+<link rel="stylesheet"
+href="${pageContext.request.contextPath}/css/insert.css">
 <%@include file="../loginheader.jsp" %>
 
 <form class ="login-form" action="../UserInsert" method="post">

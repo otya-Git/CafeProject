@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+/* 新規登録フォーム全体のレイアウト */
+.login-form {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 40px 30px;
+    background: #fffdf7;       /* メニューのボックスと同じ優しい白 */
+    border: 2px solid #e7d7c1; /* メニューとお揃いの枠線 */
+    border-radius: 20px;       /* 統一感のある角丸 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* タイトル「新規登録」 */
+.login-form h4 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #6d4c41;            /* メニュー文字と同じ深いブラウン */
+    text-align: center;
+}
+
+/* 各入力項目の行 */
+.login-form p {
+    margin: 0 0 16px 0;
+    font-size: 18px;
+    color: #6d4c41;
+    display: flex;
+    flex-direction: column;    /* ラベルと入力を縦に並べる */
+    gap: 8px;                  /* ラベルと入力欄のすき間 */
+}
+
+/* 入力欄（テキスト・パスワード共通） */
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #e7d7c1;
+    border-radius: 8px;
+    background: #ffffff;
+    box-sizing: border-box;
+    outline: none;
+    transition: 0.2s;
+}
+
+/* 入力欄にフォーカスが当たったとき */
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: #6d4c41;
+    background: #f4e7d3;       /* メニューのホバー時と同じベージュ */
+}
+
+/* エラーメッセージ */
+.login-form .error {
+    margin: -8px 0 16px 0;     /* 入力欄との間隔を詰める */
+    font-size: 13px;
+    color: #d32f2f;            /* 警告用の赤色 */
+    font-weight: bold;
+}
+
+/* 登録ボタンの行（余白調整） */
+.login-form p:last-child {
+    margin-top: 24px;
+    margin-bottom: 0;
+}
+
+/* 登録ボタン本体 */
+.login-form input[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background: #6d4c41;       /* メインのブラウンを背景に */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(109, 76, 65, 0.2);
+}
+
+/* 登録ボタンのホバー効果 */
+.login-form input[type="submit"]:hover {
+    background: #5d3f35;       /* 少し濃いブラウンに */
+    transform: translateY(-2px); /* 少し上に浮き上がらせる */
+    box-shadow: 0 6px 15px rgba(109, 76, 65, 0.3);
+}
