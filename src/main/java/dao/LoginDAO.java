@@ -62,7 +62,7 @@ public class LoginDAO extends DAO {
             }
 
             // 更新日
-            if (rs.getTimestamp("update_at") != null) {
+            if (rs.getTimestamp("updated_at") != null) {
                 user.setUpdate_at(
                     rs.getTimestamp("updated_at")
                     .toLocalDateTime()

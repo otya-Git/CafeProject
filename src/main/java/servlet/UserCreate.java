@@ -25,8 +25,6 @@ public class UserCreate extends HttpServlet {
 
 
             // 入力値取得
-            String user_id =
-                    request.getParameter("user_id");
             
             String login_id =
                 request.getParameter("login_id");
@@ -48,7 +46,6 @@ public class UserCreate extends HttpServlet {
             // Users作成
             Users user = new Users();
             
-            user.setUser_id(user_id);
             user.setLogin_id(login_id);
             user.setPassword_hash(hashPassword);
             user.setUser_name(user_name);
@@ -65,11 +62,11 @@ public class UserCreate extends HttpServlet {
 
 
             if (result > 0) {
-
-                response.sendRedirect(
-                    "/login/login.jsp"
-                );
-
+           
+            	response.sendRedirect(
+            		    request.getContextPath() + "/login/login.jsp"
+            		);
+            	
             } else {
 
                 request.setAttribute(
@@ -80,6 +77,9 @@ public class UserCreate extends HttpServlet {
                 request.getRequestDispatcher(
                     "/login/login.jsp"
                 ).forward(request, response);
+
+
+
             }
 
 

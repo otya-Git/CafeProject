@@ -68,4 +68,21 @@ public class ProductDAO extends DAO {
 
         return list;
     }
+
+    // 商品削除
+    public void delete(int productId) throws Exception {
+
+        Connection con = getConnection();
+
+        String sql = "DELETE FROM product WHERE product_id = ?";
+
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setInt(1, productId);
+
+        ps.executeUpdate();
+
+        ps.close();
+        con.close();
+    }
 }

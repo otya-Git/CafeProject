@@ -66,12 +66,12 @@ public class PasswordChangeServlet extends HttpServlet {
                 con.prepareStatement(
                     "UPDATE users "
                   + "SET password_hash=?, update_at=NOW() "
-                  + "WHERE user_id=?"
+                  + "WHERE login_id=?"
                 );
 
 
             st.setString(1, hashPassword);
-            st.setString(2, user.getUser_id());
+            st.setString(2, user.getLogin_id());
 
 
             st.executeUpdate();

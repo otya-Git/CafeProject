@@ -1,9 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
-import bean.Product;
 import dao.ProductDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,8 +9,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/OrderServlet")
-public class OrderServlet extends HttpServlet {
+@WebServlet("/ProductDeleteServlet")
+public class ProductDeleteServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request,
@@ -21,17 +19,13 @@ public class OrderServlet extends HttpServlet {
 
         try {
 
-            ProductDAO dao = new ProductDAO();
+        	int productId = Integer.parseInt(request.getParameter("id"));
 
-            // 商品一覧を取得
-            List<Product> list = dao.selectAll();
+        	ProductDAO dao = new ProductDAO();
+        	dao.delete(productId);
 
-            // JSPへ渡す
-            request.setAttribute("list", list);
-
-            // Order.jspへ遷移
-            request.getRequestDispatcher("/main/Order.jsp")
-                   .forward(request, response);
+            response.sendRedirect(
+                request.getContextPath() + "/OrderServlet");
 
         } catch (Exception e) {
             throw new ServletException(e);

@@ -23,6 +23,7 @@
             <th>原価</th>
             <th>販売価格</th>
             <th>説明</th>
+            <th>操作</th>
         </tr>
 
         <c:forEach var="p" items="${list}">
@@ -37,6 +38,18 @@
                 <td>${p.description}</td>
 
             </tr>
+            <td>
+	        <a href="ProductEditServlet?id=${p.productId}" class="edit-btn">
+	            編集
+	        </a>
+	
+	        <a href="ProductDeleteServlet?id=${p.productId}"
+			   class="delete-btn"
+			   onclick="return confirm('この商品を削除しますか？');">
+				削除
+			</a>
+    </td>
+            
 
         </c:forEach>
 

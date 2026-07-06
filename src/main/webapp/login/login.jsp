@@ -63,6 +63,10 @@ if(message != null){
    href="${pageContext.request.contextPath}/login/insert.jsp">
     新規登録
 </a>
+    <a href="${pageContext.request.contextPath}/login/admin_check.jsp">
+        管理者ページへ
+    </a>
+
 </div>
 
 <script>

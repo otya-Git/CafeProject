@@ -12,5 +12,4 @@
 <input type="hidden" name="role" value="USER">
 <p><input type="submit" value="登録"  class=""></p>
 </form>
-//
 <%@include file="../loginfooter.jsp" %>
