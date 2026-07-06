@@ -1,39 +1,56 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 
-<%@include file="../header.jsp" %>
+<%@include file="../header.jsp"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>商品登録</title>
-</head>
-<body>
+<h2>☕ 商品登録</h2>
 
-<h2>商品登録</h2>
+<div class="form-box">
 
-<form action="${pageContext.request.contextPath}/ProductInsertServlet" method="post">
+<form action="${pageContext.request.contextPath}/ProductInsertServlet"
+      method="post">
 
-<p>商品名</p>
-<input type="text" name="product_name">
+    <div class="form-group">
+        <label>商品名</label>
+        <input type="text" name="product_name">
+    </div>
 
-<p>カテゴリ</p>
-<input type="text" name="category_name">
+    <div class="form-group">
+        <label>カテゴリ</label>
+        <input type="text" name="category_name">
+    </div>
 
-<p>原価</p>
-<input type="number" name="cost_price">
+    <div class="form-group">
+        <label>原価</label>
+        <input type="number" name="cost_price">
+    </div>
 
-<p>販売価格</p>
-<input type="number" name="price">
+    <div class="form-group">
+        <label>販売価格</label>
+        <input type="number" name="price">
+    </div>
 
-<p>商品説明</p>
-<textarea name="description"></textarea>
+    <div class="form-group">
+        <label>商品説明</label>
+        <textarea name="description"></textarea>
+    </div>
 
-<br><br>
+    <div class="button-area">
 
-<input type="submit" value="登録">
+        <input type="submit"
+               value="登録"
+               class="btn-register">
+
+        <a href="${pageContext.request.contextPath}/ProductListServlet"
+           class="btn-back">
+
+            一覧へ戻る
+
+        </a>
+
+    </div>
 
 </form>
 
-</body>
-</html>
+</div>
+
+<%@include file="../footer.jsp"%>

@@ -1,64 +1,46 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
-<%@include file="../header.jsp" %>
+<%@include file="../header.jsp"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>商品一覧</title>
+<h2>☕ 商品一覧</h2>
 
-<style>
-table{
-    border-collapse: collapse;
-    width:80%;
-    margin:auto;
-}
+<div class="list-area">
 
-th,td{
-    border:1px solid #999;
-    padding:10px;
-    text-align:center;
-}
+    <div class="button-area">
+        <a href="${pageContext.request.contextPath}/main/productAdd.jsp"
+            class="add-btn">
+            ＋ 商品を登録
+        </a>
+    </div>
 
-th{
-    background:#f3e5c8;
-}
-</style>
+    <table class="product-table">
 
-</head>
-<body>
+        <tr>
+            <th>ID</th>
+            <th>商品名</th>
+            <th>カテゴリ</th>
+            <th>原価</th>
+            <th>販売価格</th>
+            <th>説明</th>
+        </tr>
 
-<h2 align="center">商品一覧</h2>
+        <c:forEach var="p" items="${list}">
 
-<table>
+            <tr>
 
-<tr>
-    <th>ID</th>
-    <th>商品名</th>
-    <th>カテゴリ</th>
-    <th>原価</th>
-    <th>販売価格</th>
-    <th>説明</th>
-</tr>
+                <td>${p.productId}</td>
+                <td>${p.productName}</td>
+                <td>${p.categoryName}</td>
+                <td>¥${p.costPrice}</td>
+                <td>¥${p.price}</td>
+                <td>${p.description}</td>
 
-<c:forEach var="p" items="${list}">
+            </tr>
 
-<tr>
+        </c:forEach>
 
-<td>${p.productId}</td>
-<td>${p.productName}</td>
-<td>${p.categoryName}</td>
-<td>${p.costPrice}</td>
-<td>${p.price}</td>
-<td>${p.description}</td>
+    </table>
 
-</tr>
+</div>
 
-</c:forEach>
-
-</table>
-
-</body>
-</html>
