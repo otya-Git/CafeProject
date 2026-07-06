@@ -10,32 +10,31 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/ProductInsertServlet")
-public class ProductInsertServlet extends HttpServlet {
+@WebServlet("/ProductUpdateServlet")
+public class ProductUpdateServlet extends HttpServlet {
 
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.setCharacterEncoding("UTF-8");
-
         try {
 
-            String productName = request.getParameter("product_name");
-            String categoryName = request.getParameter("category_name");
-            int costPrice = Integer.parseInt(request.getParameter("cost_price"));
+            int id = Integer.parseInt(request.getParameter("id"));
+            String name = request.getParameter("name");
+            int cost = Integer.parseInt(request.getParameter("cost"));
             int price = Integer.parseInt(request.getParameter("price"));
-            String description = request.getParameter("description");
+            String desc = request.getParameter("description");
+            String category = request.getParameter("category");
 
-            Product product = new Product();
-            product.setProductName(productName);
-            product.setCategoryName(categoryName);
-            product.setCostPrice(costPrice);
-            product.setPrice(price);
-            product.setDescription(description);
+            Product p = new Product();
+            p.setProductId(id);
+            p.setProductName(name);
+            p.setCostPrice(cost);
+            p.setPrice(price);
+            p.setDescription(desc);
+            p.setCategoryName(category);
 
             ProductDAO dao = new ProductDAO();
-            dao.insert(product);
+            dao.update(p);
 
             response.sendRedirect(
                 request.getContextPath() + "/ProductListServlet");

@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
+import bean.Product;
 import dao.ProductDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,24 +10,24 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/ProductDeleteServlet")
-public class ProductDeleteServlet extends HttpServlet {
+@WebServlet("/ProductEditServlet")
+public class ProductEditServlet extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest request,
-            HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         try {
 
-            int productId = Integer.parseInt(request.getParameter("id"));
+            int id = Integer.parseInt(request.getParameter("id"));
 
             ProductDAO dao = new ProductDAO();
-            dao.delete(productId);
 
-            // ★ここに書く（削除成功後の遷移）
-            response.sendRedirect(
-            		request.getContextPath() + "/ProductListServlet");
+            Product product = dao.selectById(id);
+
+            request.setAttribute("product", product);
+
+            request.getRequestDispatcher("/main/productEdit.jsp")
+                   .forward(request, response);
 
         } catch (Exception e) {
             throw new ServletException(e);

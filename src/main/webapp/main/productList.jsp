@@ -26,32 +26,28 @@
             <th>操作</th>
         </tr>
 
-        <c:forEach var="p" items="${list}">
+<c:forEach var="p" items="${list}">
+<tr>
+    <td>${p.productId}</td>
+    <td>${p.productName}</td>
+    <td>${p.categoryName}</td>
+    <td>¥${p.costPrice}</td>
+    <td>¥${p.price}</td>
+    <td>${p.description}</td>
+    <td>
+        <a href="${pageContext.request.contextPath}/ProductEditServlet?id=${p.productId}"
+           class="edit-btn">
+            編集
+        </a>
 
-            <tr>
-
-                <td>${p.productId}</td>
-                <td>${p.productName}</td>
-                <td>${p.categoryName}</td>
-                <td>¥${p.costPrice}</td>
-                <td>¥${p.price}</td>
-                <td>${p.description}</td>
-
-            </tr>
-            <td>
-	        <a href="ProductEditServlet?id=${p.productId}" class="edit-btn">
-	            編集
-	        </a>
-	
-	        <a href="ProductDeleteServlet?id=${p.productId}"
-			   class="delete-btn"
-			   onclick="return confirm('この商品を削除しますか？');">
-				削除
-			</a>
+        <a href="${pageContext.request.contextPath}/ProductDeleteServlet?id=${p.productId}"
+           class="delete-btn"
+           onclick="return confirm('この商品を削除しますか？');">
+            削除
+        </a>
     </td>
-            
-
-        </c:forEach>
+</tr>
+</c:forEach>
 
     </table>
 
