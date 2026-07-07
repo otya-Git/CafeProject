@@ -100,15 +100,6 @@
             </tr>
 
         </c:forEach>
-
-        <a href="${pageContext.request.contextPath}/ProductDeleteServlet?id=${p.productId}"
-           class="delete-btn"
-           onclick="return confirm('この商品を削除しますか？');">
-            削除
-        </a>
-    </td>
-</tr>
-</c:forEach>
     </table>
 	<a href="${pageContext.request.contextPath}/main/main.jsp">戻る</a>
 </div>
