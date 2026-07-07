@@ -20,15 +20,18 @@
     text-align: center;
 }
 
-/* 各入力項目の行 */
+/* 各入力項目の行（フォントを強制的に太く・見やすく変更） */
 .login-form p {
     margin: 0 0 16px 0;
-    font-size: 18px;
+    font-size: 18px;           /* 文字の大きさ */
+    font-weight: 600;         /* ★数値を最大にして限界まで太くします */
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif; /* ★太さがはっきり出るフォントを指定 */
     color: #6d4c41;
     display: flex;
     flex-direction: column;    /* ラベルと入力を縦に並べる */
     gap: 8px;                  /* ラベルと入力欄のすき間 */
 }
+
 
 /* 入力欄（テキスト・パスワード共通） */
 .login-form input[type="text"],
