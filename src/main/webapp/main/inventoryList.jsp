@@ -8,10 +8,10 @@
 <div class="list-area">
 
     <div class="button-area">
-        <a href="${pageContext.request.contextPath}/main/inventoryAdd.jsp"
-           class="add-btn">
-            ＋ 在庫を登録
-        </a>
+        <a href="${pageContext.request.contextPath}/InventoryAddServlet"
+		   class="add-btn">
+		    ＋ 在庫を登録
+		</a>
     </div>
 
     <table class="product-table">

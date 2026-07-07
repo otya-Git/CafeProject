@@ -18,14 +18,14 @@ public class InventoryDAO extends DAO {
         Connection con = getConnection();
 
         String sql =
-        	    "SELECT i.inventory_id, i.product_id, i.supplier_id, " +
-        	    "i.stock_quantity, i.unit, i.reorder_point, " +
-        	    "i.expiry_date, i.updated_at, " +
-        	    "p.product_name, s.supplier_name " +
-        	    "FROM inventory i " +
-        	    "JOIN product p ON i.product_id = p.product_id " +
-        	    "JOIN supplier s ON i.supplier_id = s.supplier_id " +
-        	    "ORDER BY i.inventory_id";
+                "SELECT i.inventory_id, i.product_id, i.supplier_id, " +
+                "i.stock_quantity, i.unit, i.reorder_point, " +
+                "i.expiry_date, i.updated_at, " +
+                "p.product_name, s.supplier_name " +
+                "FROM inventory i " +
+                "JOIN product p ON i.product_id = p.product_id " +
+                "JOIN supplier s ON i.supplier_id = s.supplier_id " +
+                "ORDER BY i.inventory_id";
 
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -45,9 +45,7 @@ public class InventoryDAO extends DAO {
             inventory.setUpdatedAt(rs.getTimestamp("updated_at"));
             inventory.setProductName(rs.getString("product_name"));
             inventory.setSupplierName(rs.getString("supplier_name"));
-            
 
-            
             list.add(inventory);
         }
 
@@ -56,6 +54,33 @@ public class InventoryDAO extends DAO {
         con.close();
 
         return list;
+    }
+
+    // 在庫登録
+    public int insert(Inventory inventory) throws Exception {
+
+        Connection con = getConnection();
+
+        String sql =
+                "INSERT INTO inventory " +
+                "(product_id, supplier_id, stock_quantity, unit, reorder_point, expiry_date) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ps.setLong(1, inventory.getProductId());
+        ps.setLong(2, inventory.getSupplierId());
+        ps.setDouble(3, inventory.getStockQuantity());
+        ps.setString(4, inventory.getUnit());
+        ps.setDouble(5, inventory.getReorderPoint());
+        ps.setDate(6, inventory.getExpiryDate());
+
+        int result = ps.executeUpdate();
+
+        ps.close();
+        con.close();
+
+        return result;
     }
 
 }
