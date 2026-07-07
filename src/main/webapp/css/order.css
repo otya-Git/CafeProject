@@ -1,0 +1,25 @@
+@charset "UTF-8";
+.box {
+    margin-top: 20px;
+    text-align: center; /* 中央寄せ */
+}
+
+.box a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #8b5e3c;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.box a:hover {
+    background-color: #6f4a2f;
+    transform: translateY(-2px);
+}
+
+.box a:active {
+    transform: scale(0.98);
+}

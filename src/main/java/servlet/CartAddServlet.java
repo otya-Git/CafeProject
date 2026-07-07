@@ -44,15 +44,32 @@ public class CartAddServlet extends HttpServlet {
                 cart = new ArrayList<>();
             }
 
-            // 注文商品作成
-            Order_Item item = new Order_Item();
-            item.setProduct_id(product.getProductId());
-            item.setProduct_name(product.getProductName());
-            item.setPrice(product.getPrice());
-            item.setQuantity(quantity);
+            // 同じ商品があるか確認
+            boolean exists = false;
 
-            // カートへ追加
-            cart.add(item);
+            for (Order_Item item : cart) {
+
+                if (item.getProduct_id() == product.getProductId()) {
+
+                    // 数量を加算
+                    item.setQuantity(item.getQuantity() + quantity);
+
+                    exists = true;
+                    break;
+                }
+            }
+
+            // 同じ商品がなければ新しく追加
+            if (!exists) {
+
+                Order_Item item = new Order_Item();
+                item.setProduct_id(product.getProductId());
+                item.setProduct_name(product.getProductName());
+                item.setPrice(product.getPrice());
+                item.setQuantity(quantity);
+
+                cart.add(item);
+            }
 
             // セッションへ保存
             session.setAttribute("cart", cart);
