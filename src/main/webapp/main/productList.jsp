@@ -73,6 +73,7 @@
 
         <c:forEach var="p" items="${list}">
 
+<<<<<<< HEAD
             <tr>
 
                 <td>${p.productId}</td>
@@ -101,8 +102,18 @@
 
         </c:forEach>
 
+=======
+        <a href="${pageContext.request.contextPath}/ProductDeleteServlet?id=${p.productId}"
+           class="delete-btn"
+           onclick="return confirm('この商品を削除しますか？');">
+            削除
+        </a>
+    </td>
+</tr>
+</c:forEach>
+>>>>>>> branch 'master' of https://github.com/otya-Git/CafeProject.git
     </table>
-
+	<a href="${pageContext.request.contextPath}/main/main.jsp">戻る</a>
 </div>
 
 </body>
