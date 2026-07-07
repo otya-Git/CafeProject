@@ -277,3 +277,83 @@ h2{
 .search-btn:hover{
     background:#6d4c41;
 }
+
+/* ==================================================
+   ハンバーガーメニュー用のCSS
+   ================================================== */
+/* ボタンの見た目 */
+.hamburger-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #6d4c41; /* カフェブラウン */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 100; /* 一番手前に表示 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+/* 三本線のデザイン */
+.hamburger-btn span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: #fffdf7;
+    transition: 0.3s;
+}
+
+/* メニュー画面の初期状態（画面の右側に隠しておく） */
+.slide-menu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* メニューの横幅分、右に隠す */
+    width: 300px;
+    height: 100vh;
+    background: #fffdf7;
+    border-left: 2px solid #e7d7c1;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 99;
+    transition: 0.3s ease; /* 滑らかに動かす */
+    padding-top: 100px;
+}
+.slide-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.slide-menu li a {
+    display: block;
+    padding: 20px 30px;
+    color: #6d4c41;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px solid #f4e7d3;
+}
+.slide-menu li a:hover {
+    background: #f4e7d3;
+}
+
+/* --------------------------------------------------
+   JavaScriptで「active」というクラスがついた時の動き
+   -------------------------------------------------- */
+/* 🔴 メニューを画面内にスライドインさせる */
+.slide-menu.active {
+    right: 0; 
+}
+/* 🔴 三本線を「×」に変形させる */
+.hamburger-btn.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0; /* 真ん中の線を消す */
+}
+.hamburger-btn.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
