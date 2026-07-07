@@ -136,4 +136,43 @@ public class ProductDAO extends DAO {
 
         return result;
     }
+    public List<Product> selectCategory(String category)
+            throws Exception {
+
+        List<Product> list = new ArrayList<>();
+
+        Connection con = getConnection();
+
+        String sql =
+            "SELECT * FROM product "
+          + "WHERE category_name=? "
+          + "ORDER BY product_id";
+
+        PreparedStatement ps =
+                con.prepareStatement(sql);
+
+        ps.setString(1, category);
+
+        ResultSet rs = ps.executeQuery();
+
+        while(rs.next()){
+
+            Product p = new Product();
+
+            p.setProductId(rs.getInt("product_id"));
+            p.setProductName(rs.getString("product_name"));
+            p.setCategoryName(rs.getString("category_name"));
+            p.setCostPrice(rs.getInt("cost_price"));
+            p.setPrice(rs.getInt("price"));
+            p.setDescription(rs.getString("description"));
+
+            list.add(p);
+        }
+
+        rs.close();
+        ps.close();
+        con.close();
+
+        return list;
+    }
 }

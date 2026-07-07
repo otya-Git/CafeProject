@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import bean.Product;
+import dao.CategoryDAO;
 import dao.ProductDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -21,11 +22,25 @@ public class ProductListServlet extends HttpServlet {
 
         try {
 
-            ProductDAO dao = new ProductDAO();
+            String category = request.getParameter("category");
 
-            List<Product> list = dao.selectAll();
+            ProductDAO productDao = new ProductDAO();
+            CategoryDAO categoryDao = new CategoryDAO();
+
+            List<Product> list;
+
+            if (category == null || category.isEmpty()) {
+
+                list = productDao.selectAll();
+
+            } else {
+
+                list = productDao.selectCategory(category);
+
+            }
 
             request.setAttribute("list", list);
+            request.setAttribute("categoryList", categoryDao.selectAll());
 
             request.getRequestDispatcher("/main/productList.jsp")
                    .forward(request, response);

@@ -248,3 +248,32 @@ h2{
 }
 
 
+.search-form{
+    margin:20px 0 25px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.search-form label{
+    font-weight:bold;
+}
+
+.search-form select{
+    padding:8px 12px;
+    border-radius:8px;
+    border:1px solid #d8c3a5;
+}
+
+.search-btn{
+    padding:8px 20px;
+    background:#8d6e63;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.search-btn:hover{
+    background:#6d4c41;
+}
