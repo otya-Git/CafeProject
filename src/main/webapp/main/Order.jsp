@@ -11,10 +11,12 @@ List<Order_Item> cart =
     (List<Order_Item>)request.getAttribute("cart");
 %>
 
-<!DOCTYPE html>
-<html>
+
+<link rel="stylesheet"
+      href="${pageContext.request.contextPath}/css/order.css">
 <head>
 <meta charset="UTF-8">
+
 <title>注文</title>
 
 <style>
@@ -68,7 +70,6 @@ textarea{
     <th>価格</th>
     <th>数量</th>
     <th>注文</th>
-    <th>管理</th>
 </tr>
 
 <%
@@ -130,13 +131,14 @@ if(list != null && !list.isEmpty()){
         商品がありません
     </td>
 </tr>
-
 <%
 }
 %>
 
 </table>
-
+<div class="box">
+	<a href="${pageContext.request.contextPath}/main/main.jsp">戻る</a>
+</div>
 </div>
 
 <!-- 右側 現在の注文 -->
@@ -187,4 +189,3 @@ if(cart != null && !cart.isEmpty()){
 </div>
 
 </body>
-</html>
