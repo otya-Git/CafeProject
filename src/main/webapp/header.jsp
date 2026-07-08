@@ -10,4 +10,25 @@
 <link rel="stylesheet"
       href="${pageContext.request.contextPath}/css/product.css">
 
+<script src="${pageContext.request.contextPath}/js/script.js"></script>
+
 </head>
+
+<header>
+	<button class="hamburger-btn" id="js-hamburger">
+	    <span></span>
+	    <span></span>
+	    <span></span>
+	</button>
+	
+	<!-- 📱 スライドして出てくるメニュー中身 -->
+	<nav class="slide-menu" id="js-nav">
+	    <ul>
+	    	<li><a href="/CafeProject/main/main.jsp">メニュー</a></li>
+	        <li><a href="${pageContext.request.contextPath}/InventoryListServlet">在庫管理</a></li>
+	        <li><a href="${pageContext.request.contextPath}/ProductListServlet">商品管理</a></li>
+	        <li><a href="${pageContext.request.contextPath}/OrderServlet">注文</a></li>
+	        <li><a href="/Sales.jsp">売り上げ一覧</a></li>
+	    </ul>
+	</nav>
+</header>
