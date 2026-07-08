@@ -5,6 +5,6 @@
 <title>売り上げ一覧</title>
 </head>
 <body>
-
+aaaa
 </body>
 </html>
