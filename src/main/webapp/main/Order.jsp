@@ -183,7 +183,10 @@ if(cart != null && !cart.isEmpty()){
 %>
 
 </table>
-
+    <form action="${pageContext.request.contextPath}/order/confirm"
+      method="post">
+    <input type="submit" value="注文確定">
+</form>
 </div>
 
 </div>
