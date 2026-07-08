@@ -17,13 +17,22 @@ public class InventoryDAO extends DAO {
 
         Connection con = getConnection();
 
+//        String sql =
+//                "SELECT i.inventory_id, i.product_id, i.supplier_id, " +
+//                "i.stock_quantity, i.unit, i.reorder_point, " +
+//                "i.expiry_date, i.updated_at, " +
+//                "p.product_name, s.supplier_name " +
+//                "FROM inventory i " +
+//                "JOIN product p ON i.product_id = p.product_id " +
+//                "JOIN supplier s ON i.supplier_id = s.supplier_id " +
+//                "ORDER BY i.inventory_id";
         String sql =
-                "SELECT i.inventory_id, i.product_id, i.supplier_id, " +
+                "SELECT i.inventory_id, i.ingredient_id, i.supplier_id, " +
                 "i.stock_quantity, i.unit, i.reorder_point, " +
                 "i.expiry_date, i.updated_at, " +
-                "p.product_name, s.supplier_name " +
+                "g.ingredient_name, s.supplier_name " +
                 "FROM inventory i " +
-                "JOIN product p ON i.product_id = p.product_id " +
+                "JOIN ingredient g ON i.ingredient_id = g.ingredient_id " +
                 "JOIN supplier s ON i.supplier_id = s.supplier_id " +
                 "ORDER BY i.inventory_id";
 
@@ -36,14 +45,16 @@ public class InventoryDAO extends DAO {
             Inventory inventory = new Inventory();
 
             inventory.setInventoryId(rs.getLong("inventory_id"));
-            inventory.setProductId(rs.getLong("product_id"));
+            //inventory.setProductId(rs.getLong("product_id"));
+            inventory.setIngredientId(rs.getLong("ingredient_id"));
             inventory.setSupplierId(rs.getLong("supplier_id"));
             inventory.setStockQuantity(rs.getDouble("stock_quantity"));
             inventory.setUnit(rs.getString("unit"));
             inventory.setReorderPoint(rs.getDouble("reorder_point"));
             inventory.setExpiryDate(rs.getDate("expiry_date"));
             inventory.setUpdatedAt(rs.getTimestamp("updated_at"));
-            inventory.setProductName(rs.getString("product_name"));
+            //inventory.setProductName(rs.getString("product_name"));
+            inventory.setIngredientName(rs.getString("ingredient_name"));
             inventory.setSupplierName(rs.getString("supplier_name"));
 
             list.add(inventory);
@@ -62,13 +73,16 @@ public class InventoryDAO extends DAO {
         Connection con = getConnection();
 
         String sql =
-                "INSERT INTO inventory " +
-                "(product_id, supplier_id, stock_quantity, unit, reorder_point, expiry_date) " +
+//                "INSERT INTO inventory " +
+//                "(product_id, supplier_id, stock_quantity, unit, reorder_point, expiry_date) "
+				"INSERT INTO inventory " +
+				"(ingredient_id, supplier_id, stock_quantity, unit, reorder_point, expiry_date) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
+        		  
 
         PreparedStatement ps = con.prepareStatement(sql);
 
-        ps.setLong(1, inventory.getProductId());
+        ps.setLong(1, inventory.getIngredientId());
         ps.setLong(2, inventory.getSupplierId());
         ps.setDouble(3, inventory.getStockQuantity());
         ps.setString(4, inventory.getUnit());

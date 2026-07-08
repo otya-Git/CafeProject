@@ -3,7 +3,9 @@ package servlet;
 import java.io.IOException;
 
 import bean.Product;
+import bean.Recipe;
 import dao.ProductDAO;
+import dao.RecipeDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -34,8 +36,38 @@ public class ProductInsertServlet extends HttpServlet {
             product.setPrice(price);
             product.setDescription(description);
 
-            ProductDAO dao = new ProductDAO();
-            dao.insert(product);
+            ProductDAO productDao = new ProductDAO();
+
+            int productId = productDao.insert(product);
+
+            RecipeDAO recipeDao = new RecipeDAO();
+
+            String[] ingredientIds =
+                    request.getParameterValues("ingredientId");
+
+            String[] quantities =
+                    request.getParameterValues("quantity");
+
+            if (ingredientIds != null && quantities != null) {
+
+                for (int i = 0; i < ingredientIds.length; i++) {
+
+                    if (ingredientIds[i].isEmpty() ||
+                        quantities[i].isEmpty()) {
+                        continue;
+                    }
+
+                    Recipe recipe = new Recipe();
+
+                    recipe.setProductId(productId);
+                    recipe.setIngredientId(
+                            Integer.parseInt(ingredientIds[i]));
+                    recipe.setQuantity(
+                            Double.parseDouble(quantities[i]));
+
+                    recipeDao.insert(recipe);
+                }
+            }
 
             response.sendRedirect(
                 request.getContextPath() + "/ProductListServlet");
