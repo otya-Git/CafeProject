@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@charset "UTF-8";
 
 body{
     margin: 0;
@@ -55,33 +54,34 @@ h2{
     font-weight: bold;
 }
 
-/* テーブル全体のスタイル（不自然な幅固定をすべて廃止） */
+/* テーブル全体のスタイル */
 .user-table {
-  width: auto;              /* 横幅は中身の文字に自動で合わせる */
-  margin: 30px auto;        /* 中央寄せ */
-  border-collapse: collapse; /* 枠線を綺麗に重ねる */
+  width: auto;
+  margin: 30px auto;
+  border-collapse: collapse;
   background-color: #ffffff;
-  border-radius: 12px;      /* 角丸を少しおしゃれに強める */
-  box-shadow: 0 4px 20px rgba(111, 78, 55, 0.08); /* 柔らかい影 */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(111, 78, 55, 0.08);
   overflow: hidden;
 }
 
 /* 見出し（th）とデータ（td）の余白を共通化 */
 .user-table th,
 .user-table td {
-  padding: 14px 35px;       /* 左右のすき間（35px）を均等にして、文字の周りに綺麗な余白を作る */
-  text-align: center;       /* すべて中央寄せにして、縦のラインをピシッと揃える */
-  white-space: nowrap;      /* データベースの文字が途中で変に改行されるのを防ぐ */
+  padding: 14px 35px;
+  text-align: center;
+  white-space: nowrap;
 }
 
 /* 見出し行（茶色のバー） */
 .user-table th {
-  background-color: #6f4e37; /* カフェブラウン */
+  background-color: #8d6e63; 
   color: #ffffff;
   font-size: 0.95rem;
   font-weight: 600;
-  letter-spacing: 0.05em;   /* 文字の間隔を少しあけて上品に */
+  letter-spacing: 0.05em;
 }
+
 
 /* データ行 */
 .user-table td {

@@ -21,7 +21,7 @@
 	    <span></span>
 	</button>
 	
-	<!-- 📱 スライドして出てくるメニュー中身 -->
+	<!-- スライドして出てくるメニュー中身 -->
 	<nav class="slide-menu" id="js-nav">
 	    <ul>
 	    	<li><a href="/CafeProject/main/main.jsp">メニュー</a></li>

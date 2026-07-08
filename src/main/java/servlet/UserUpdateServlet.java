@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.security.MessageDigest;
 
 import bean.Users;
 import dao.UsersDAO;
@@ -41,38 +40,24 @@ public class UserUpdateServlet extends HttpServlet {
 	}
 
 	/**
-	 * 🔴 POSTリクエスト：編集画面から送信されたデータを受け取り、ハッシュ化してデータベースを更新する
+	 * 🔴 POSTリクエスト：編集画面から送信されたデータを受け取り、PasswordUtilでハッシュ化して更新する
 	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		// リクエストの文字化け対策（念のため）
 		request.setCharacterEncoding("UTF-8");
 
 		try {
-			// 画面の入力フォーム（inputタグのname属性）から値を受け取る
 			long userId = Long.parseLong(request.getParameter("user_id"));
 			String userName = request.getParameter("user_name");
 			String loginId = request.getParameter("login_id");
-			String passwordRaw = request.getParameter("password"); // 平文のパスワード
+			String passwordRaw = request.getParameter("password");
 			String role = request.getParameter("role");
 
-			// 💡 【超重要】パスワードのハッシュ化（SHA-256）処理
-			String passwordHash = "";
-			if (passwordRaw != null && !passwordRaw.isEmpty()) {
-				MessageDigest digest = MessageDigest.getInstance("SHA-256");
-				byte[] hashBytes = digest.digest(passwordRaw.getBytes("UTF-8"));
-				
-				// バイト配列を16進数の文字列に変換する
-				StringBuilder hexString = new StringBuilder();
-				for (byte b : hashBytes) {
-					String hex = Integer.toHexString(0xff & b);
-					if (hex.length() == 1) hexString.append('0');
-					hexString.append(hex);
-				}
-				passwordHash = hexString.toString(); // 64文字の暗号化文字列が完成！
-			}
+			// 💡 プロジェクト内の共通ツール「PasswordUtil」を呼び出して1行でハッシュ化！
+			// ※もしメソッド名が「hash」などの場合は、お使いのメソッド名に合わせて書き換えてください。
+			String passwordHash = tool.PasswordUtil.hash(passwordRaw); 
 
 			// 更新用データをBeanに詰め込む
 			Users user = new Users();
@@ -87,7 +72,7 @@ public class UserUpdateServlet extends HttpServlet {
 			boolean success = dao.update(user);
 
 			if (success) {
-				// 💡 更新が成功したら、ユーザー一覧画面へ自動的に戻る（二重送信防止のためリダイレクト）
+				// 更新が成功したら、ユーザー一覧（サーブレット）へ自動的に戻る
 				response.sendRedirect(request.getContextPath() + "/UsersServlet");
 			} else {
 				throw new Exception("ユーザー情報の更新に失敗しました。");

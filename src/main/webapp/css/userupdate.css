@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+/* ==========================================
+   ユーザー編集画面専用：最強詳細度スタイル
+   ========================================== */
+
+/* フォーム全体のコンテナ */
+html body form {
+    max-width: 600px !important;
+    margin: 40px auto !important;
+    padding: 30px !important;
+    background-color: #ffffff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(111, 78, 55, 0.08) !important;
+    box-sizing: border-box !important;
+}
+
+/* 編集用テーブルのスタイルリセット */
+html body .edit-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    border: none !important;
+    margin-bottom: 30px !important;
+}
+
+/* 見出し列（th）を理想のモカブラウンで完全固定 */
+html body .edit-table th {
+    width: 30% !important;
+    background-color: #8d6e63 !important; 
+    color: #ffffff !important;
+    padding: 14px 20px !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+    border-bottom: 1px solid #ffffff !important;
+}
+
+/* 角丸の調整 */
+html body .edit-table tr:first-child th { border-top-left-radius: 8px !important; }
+html body .edit-table tr:last-child th { border-bottom-left-radius: 8px !important; }
+
+/* 入力列（td）のスタイル */
+html body .edit-table td {
+    padding: 14px 20px !important;
+    background-color: #fbf9f6 !important;
+    border-bottom: 1px solid #f2ede9 !important;
+    color: #3e2723 !important;
+    font-size: 0.95rem !important;
+    vertical-align: middle !important;
+}
+
+html body .edit-table tr:first-child td { border-top-right-radius: 8px !important; }
+html body .edit-table tr:last-child td { border-bottom-right-radius: 8px !important; }
+
+/* 入力フォームの共通デザイン */
+html body .edit-table input[type="text"],
+html body .edit-table input[type="password"],
+html body .edit-table select {
+    width: 100% !important;
+    padding: 10px 12px !important;
+    border: 1px solid #e7d7c1 !important;
+    border-radius: 6px !important;
+    background-color: #ffffff !important;
+    color: #5b4636 !important;
+    font-size: 0.9rem !important;
+    box-sizing: border-box !important;
+}
+
+/* 注記テキスト */
+html body .edit-table small {
+    display: inline-block !important;
+    margin-top: 6px !important;
+    color: #8c7666 !important;
+    font-size: 0.8rem !important;
+}
+
+/* 「変更を保存する」ボタン（お揃いのモカブラウン＆角丸8px） */
+html body form button[type="submit"] {
+    display: inline-block !important;
+    padding: 10px 24px !important;
+    background-color: #8d6e63 !important; 
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 0.95rem !important;
+    font-weight: bold !important;
+    letter-spacing: 0.05em !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 5px rgba(141, 110, 99, 0.2) !important;
+}
+
+/* ボタンホバー時 */
+html body form button[type="submit"]:hover {
+    background-color: #5d4037 !important;
+    box-shadow: 0 4px 8px rgba(93, 64, 55, 0.3) !important;
+}
+
+/* 「キャンセル」リンク */
+html body form a {
+    display: inline-block !important;
+    margin-left: 15px !important;
+    padding: 10px 20px !important;
+    color: #8d6e63 !important;
+    text-decoration: none !important;
+    font-size: 0.95rem !important;
+    font-weight: bold !important;
+    border-radius: 8px !important;
+}
+
+/* キャンセルリンクホバー時 */
+html body form a:hover {
+    background-color: #f4ebd9 !important;
+    color: #5d4037 !important;
+}

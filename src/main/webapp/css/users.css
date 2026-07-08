@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-body{
+body {
     margin: 0;
     font-family: "Yu Gothic", sans-serif;
     background-color: #f8f4ea;
@@ -8,7 +8,7 @@ body{
 }
 
 /* タイトル */
-h2{
+h2 {
     text-align: center;
     margin-top: 40px;
     font-size: 38px;
@@ -16,7 +16,7 @@ h2{
 }
 
 /* 全体 */
-.main{
+.main {
     width: 900px;
     margin: 40px auto;
     display: flex;
@@ -26,7 +26,7 @@ h2{
 }
 
 /* メニュー */
-.box{
+.box {
     width: 220px;
     height: 150px;
     background: #fffdf7;
@@ -40,62 +40,84 @@ h2{
 }
 
 /* ホバー */
-.box:hover{
+.box:hover {
     transform: translateY(-8px);
     background: #f4e7d3;
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
 /* リンク */
-.box a{
+.box a {
     text-decoration: none;
     color: #6d4c41;
     font-size: 24px;
     font-weight: bold;
 }
 
-/* テーブル全体のスタイル（不自然な幅固定をすべて廃止） */
 .user-table {
-  width: auto;              /* 横幅は中身の文字に自動で合わせる */
-  margin: 30px auto;        /* 中央寄せ */
-  border-collapse: collapse; /* 枠線を綺麗に重ねる */
-  background-color: #ffffff;
-  border-radius: 12px;      /* 角丸を少しおしゃれに強める */
-  box-shadow: 0 4px 20px rgba(111, 78, 55, 0.08); /* 柔らかい影 */
-  overflow: hidden;
+    width: auto;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(111, 78, 55, 0.08);
+    overflow: hidden;
 }
 
 /* 見出し（th）とデータ（td）の余白を共通化 */
 .user-table th,
 .user-table td {
-  padding: 14px 35px;       /* 左右のすき間（35px）を均等にして、文字の周りに綺麗な余白を作る */
-  text-align: center;       /* すべて中央寄せにして、縦のラインをピシッと揃える */
-  white-space: nowrap;      /* データベースの文字が途中で変に改行されるのを防ぐ */
+    padding: 14px 35px;
+    text-align: center;
+    white-space: nowrap;
 }
 
-/* 見出し行（茶色のバー） */
+/* 💡 見出し行*/
 .user-table th {
-  background-color: #6f4e37; /* カフェブラウン */
-  color: #ffffff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;   /* 文字の間隔を少しあけて上品に */
+    background-color: #8d6e63 !important; 
+    color: #ffffff !important;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;   
 }
 
 /* データ行 */
 .user-table td {
-  border-bottom: 1px solid #f2ede9;
-  color: #3e2723;
-  font-size: 0.9rem;
+    border-bottom: 1px solid #f2ede9;
+    color: #3e2723;
+    font-size: 0.9rem;
 }
 
-/* 縞模様（背景を交互に変えて見やすく） */
 .user-table tr:nth-child(even) td {
-  background-color: #fbf9f6; 
+    background-color: #fbf9f6; 
 }
 
 /* マウスホバー時の効果 */
 .user-table tr:hover td {
-  background-color: #f4ebd9;
-  transition: background-color 0.2s ease;
+    background-color: #f4ebd9;
+    transition: background-color 0.2s ease;
+}
+
+
+/* 💡 編集ボタン*/
+.user-table td .btn-edit {
+    display: inline-block;
+    padding: 6px 16px;          
+    background-color: #8d6e63 !important;   
+    color: #ffffff !important;             
+    text-decoration: none;      
+    border-radius: 8px;         
+    font-size: 0.85rem;         
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 5px rgba(141, 110, 99, 0.2); 
+    transition: all 0.2s ease;  
+}
+
+/* 編集ボタンにマウスを乗せたとき*/
+.user-table td .btn-edit:hover {
+    background-color: #6d544c !important;   
+    box-shadow: 0 4px 8px rgba(109, 84, 76, 0.3); 
+    color: #ffffff !important;
+    transform: translateY(-1px); 
 }
