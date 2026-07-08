@@ -44,7 +44,7 @@ Users user = (Users) session.getAttribute("user");
         </div>
 
         <div class="box">
-            <a href="/Sales.jsp">売り上げ一覧</a>
+            <a href="${pageContext.request.contextPath}/SalesServlet">売り上げ一覧</a>
         </div>
 
         <%-- 🟡 管理者だけ表示 --%>

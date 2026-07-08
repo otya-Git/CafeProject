@@ -184,9 +184,15 @@ if(cart != null && !cart.isEmpty()){
 
 </table>
     <form action="${pageContext.request.contextPath}/order/confirm"
-      method="post">
+      method="post" id = "myset">
     <input type="submit" value="注文確定">
 </form>
+<script>
+document.getElementById("myset").addEventListener("submit",function(){
+	alert("注文を確定しました。");
+});
+</script>
+
 </div>
 
 </div>
