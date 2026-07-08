@@ -28,7 +28,8 @@
 	        <li><a href="${pageContext.request.contextPath}/InventoryListServlet">在庫管理</a></li>
 	        <li><a href="${pageContext.request.contextPath}/ProductListServlet">商品管理</a></li>
 	        <li><a href="${pageContext.request.contextPath}/OrderServlet">注文</a></li>
-	        <li><a href="/Sales.jsp">売り上げ一覧</a></li>
+	        <li><a href="/CafeProject/main/Sales.jsp">売り上げ一覧</a></li>
+	        <li><a href="${pageContext.request.contextPath}/UsersServlet">ユーザー管理</a></li>
 	    </ul>
 	</nav>
 </header>
