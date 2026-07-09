@@ -41,8 +41,24 @@ List<Order_Item> cart =
 <div class="left">
 
 
-<h3>商品一覧</h3>
 
+<div class="title-area">
+
+    <h2>注文一覧</h2>
+
+    <form action="${pageContext.request.contextPath}/OrderServlet"
+          method="get">
+
+        <input type="text"
+               name="keyword"
+               placeholder="商品名検索">
+
+        <input type="submit"
+               value="検索">
+
+    </form>
+
+</div>
 
 <table>
 

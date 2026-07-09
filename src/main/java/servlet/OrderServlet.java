@@ -20,21 +20,37 @@ public class OrderServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-    	HttpSession session = request.getSession();
 
-    	List<Order_Item> cart =
-    	        (List<Order_Item>) session.getAttribute("cart");
+        HttpSession session = request.getSession();
 
-    	request.setAttribute("cart", cart);
+        // カートを取得
+        List<Order_Item> cart =
+                (List<Order_Item>) session.getAttribute("cart");
+
+        request.setAttribute("cart", cart);
+
         try {
 
             ProductDAO dao = new ProductDAO();
 
-            // 商品一覧を取得
-            List<Product> list = dao.selectAll();
+            // 検索キーワード取得
+            String keyword = request.getParameter("keyword");
+
+            List<Product> list;
+
+            if (keyword != null && !keyword.trim().isEmpty()) {
+                // キーワード検索
+                list = dao.search(keyword);
+            } else {
+                // 全商品表示
+                list = dao.selectAll();
+            }
 
             // JSPへ渡す
             request.setAttribute("list", list);
+
+            // 検索キーワードを入力欄に残したい場合
+            request.setAttribute("keyword", keyword);
 
             // Order.jspへ遷移
             request.getRequestDispatcher("/main/Order.jsp")
