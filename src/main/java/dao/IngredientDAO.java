@@ -27,7 +27,7 @@ public class IngredientDAO extends DAO {
             Ingredient ingredient = new Ingredient();
 
             ingredient.setIngredientId(
-                    rs.getInt("ingredient_id"));
+                    rs.getLong("ingredient_id"));
 
             ingredient.setIngredientName(
                     rs.getString("ingredient_name"));
@@ -134,7 +134,7 @@ public class IngredientDAO extends DAO {
 	        ps.setString(2,
 	                ingredient.getUnit());
 
-	        ps.setInt(3,
+	        ps.setLong(3,
 	                ingredient.getIngredientId());
 
 	        ps.executeUpdate();

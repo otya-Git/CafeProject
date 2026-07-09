@@ -2,19 +2,19 @@ package bean;
 
 public class Ingredient {
 
-    private int ingredientId;
+	private long ingredientId;
     private String ingredientName;
     private String unit;
 
     public Ingredient() {
     }
 
-    public int getIngredientId() {
-        return ingredientId;
+    public void setIngredientId(long ingredientId) {
+        this.ingredientId = ingredientId;
     }
 
-    public void setIngredientId(int ingredientId) {
-        this.ingredientId = ingredientId;
+    public long getIngredientId() {
+        return ingredientId;
     }
 
     public String getIngredientName() {

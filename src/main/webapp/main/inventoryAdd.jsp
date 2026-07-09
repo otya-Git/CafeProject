@@ -28,23 +28,20 @@
     <!-- 商品 -->
     <div class="form-group">
 
-        <label>商品</label>
+        <label>材料</label>
 
-        <select name="product_id" id="product">
+        <select name="ingredient_id" id="ingredient">
 
-            <c:forEach var="p" items="${productList}">
+		<c:forEach var="i" items="${ingredientList}">
 
-                <option
-                    value="${p.productId}"
-                    data-category="${p.categoryName}">
-
-                    ${p.productName}
-
-                </option>
-
-            </c:forEach>
-
-        </select>
+		<option value="${i.ingredientId}"
+		        data-unit="${i.unit}">
+		    ${i.ingredientName}
+		</option>
+		
+		</c:forEach>
+		
+		</select>
 
     </div>
 
@@ -85,9 +82,9 @@
         <label>単位</label>
 
         <input type="text"
-               name="unit"
-               placeholder="g・個・本など"
-               required>
+	       name="unit"
+	       id="unit"
+	       readonly>
 
     </div>
 
@@ -133,29 +130,15 @@
 <!-- カテゴリで商品を絞り込む -->
 <script>
 
-const category = document.getElementById("category");
-const product = document.getElementById("product");
+const ingredient = document.getElementById("ingredient");
+const unit = document.getElementById("unit");
 
-category.addEventListener("change", function(){
 
-    const selected = this.value;
+ingredient.addEventListener("change", function(){
 
-    for (const option of product.options) {
+    const selected = this.options[this.selectedIndex];
 
-        if (selected === "" ||
-            option.dataset.category === selected) {
-
-            option.hidden = false;
-
-        } else {
-
-            option.hidden = true;
-
-        }
-
-    }
-
-    product.selectedIndex = 0;
+    unit.value = selected.dataset.unit;
 
 });
 
