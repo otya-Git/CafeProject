@@ -96,5 +96,25 @@ public class InventoryDAO extends DAO {
 
         return result;
     }
+    
+    //在庫の消費
+    public void decrease(long ingredientId, double quantity) throws Exception{
+    	Connection con = getConnection();
+    	String sql = 
+    			"UPDATE inventory " + 
+    			 "SET stock_quantity = stock_quantity - ? " + 
+    			 "WHERE ingredient_id = ?";
+    	
+    	PreparedStatement ps = con.prepareStatement(sql);
+    	
+    	ps.setDouble(1, quantity);
+    	ps.setLong(2, ingredientId);
+    	
+    	ps.executeUpdate();
+    	
+    	ps.close();
+    	con.close();
+    			
+    }
 
 }
