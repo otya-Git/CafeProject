@@ -1,0 +1,71 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+
+<%@include file="../header.jsp"%>
+
+<link rel="stylesheet"
+      href="${pageContext.request.contextPath}/css/productlist.css">
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>仕入先一覧</title>
+
+<link rel="stylesheet"
+href="${pageContext.request.contextPath}/css/product.css">
+
+</head>
+
+
+<body>
+
+
+<h2>🚚 仕入先一覧</h2>
+
+
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>仕入先名</th>
+    <th>電話番号</th>
+    <th>住所</th>
+</tr>
+
+
+<c:forEach var="s" items="${supplierList}">
+
+<tr>
+
+<td>
+${s.supplierId}
+</td>
+
+
+<td>
+${s.supplierName}
+</td>
+
+
+<td>
+${s.phone}
+</td>
+
+
+<td>
+${s.address}
+</td>
+
+
+</tr>
+
+</c:forEach>
+
+
+</table>
+
+
+</body>
+</html>

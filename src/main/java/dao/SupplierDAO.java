@@ -41,4 +41,40 @@ public class SupplierDAO extends DAO {
 
         return list;
     }
+    
+    // 仕入先登録
+    public int insert(Supplier supplier) throws Exception {
+
+        Connection con = getConnection();
+
+        String sql =
+                "INSERT INTO supplier " +
+                "(supplier_name, phone, address) " +
+                "VALUES (?, ?, ?)";
+
+
+        PreparedStatement ps =
+                con.prepareStatement(sql);
+
+
+        ps.setString(1,
+                supplier.getSupplierName());
+
+        ps.setString(2,
+                supplier.getPhone());
+
+        ps.setString(3,
+                supplier.getAddress());
+
+
+        int result =
+                ps.executeUpdate();
+
+
+        ps.close();
+        con.close();
+
+
+        return result;
+    }
 }
