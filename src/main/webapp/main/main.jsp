@@ -34,7 +34,11 @@ Users user = (Users) session.getAttribute("user");
         <div class="box">
             <a href="${pageContext.request.contextPath}/InventoryListServlet">在庫管理</a>
         </div>
-
+        
+        <div class="box">
+            <a href="${pageContext.request.contextPath}/IngredientListServlet">材料一覧</a>
+        </div>
+        
         <div class="box">
             <a href="${pageContext.request.contextPath}/ProductListServlet">商品管理</a>
         </div>
@@ -46,6 +50,8 @@ Users user = (Users) session.getAttribute("user");
         <div class="box">
             <a href="${pageContext.request.contextPath}/SalesServlet">売り上げ一覧</a>
         </div>
+        
+
 
         <%-- 🟡 管理者だけ表示 --%>
         <%
