@@ -51,6 +51,14 @@ Users user = (Users) session.getAttribute("user");
             <a href="${pageContext.request.contextPath}/SalesServlet">売り上げ一覧</a>
         </div>
         
+        <div class="box">
+	        <a href="${pageContext.request.contextPath}/SupplierListServlet">仕入先管理</a>
+        </div>
+        
+        <div class="box">
+        	<a href="${pageContext.request.contextPath}/SupplierInsertServlet">仕入先登録</a>
+        </div>
+        
 
 
         <%-- 🟡 管理者だけ表示 --%>
