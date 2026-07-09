@@ -1,0 +1,39 @@
+/* 在庫数が少ない */
+.low-stock{
+    color:#e74c3c;
+    font-weight:bold;
+}
+
+/* 状態 */
+.status-order{
+    color:#e74c3c;
+    font-weight:bold;
+}
+
+.status-normal{
+    color:#27ae60;
+    font-weight:bold;
+}
+
+/* 戻るボタン */
+.back-area{
+    text-align:center;
+    margin-top:30px;
+}
+
+.back-btn{
+    display:inline-block;
+    padding:10px 24px;
+    background:#8d6e63;
+    color:#fff;
+    text-decoration:none;
+    border:1px solid #8d6e63;
+    border-radius:8px;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.back-btn:hover{
+    background:#fff;
+    color:#8d6e63;
+}
