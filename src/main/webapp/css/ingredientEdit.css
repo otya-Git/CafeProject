@@ -1,0 +1,90 @@
+/* 背景 */
+body {
+    background-color: #f7f3ee;
+    font-family: "Yu Gothic", "Meiryo", sans-serif;
+}
+
+/* タイトル */
+h2 {
+    text-align: center;
+    color: #5c4033;
+    margin: 35px 0;
+    font-size: 30px;
+}
+
+/* フォーム */
+.form-area {
+    width: 450px;
+    margin: 40px auto;
+    padding: 35px;
+    background: #fffaf5;
+    border: 2px solid #d9c2a3;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(92, 64, 51, 0.15);
+}
+
+/* ラベル */
+.form-area p {
+    margin-bottom: 20px;
+    color: #5c4033;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* 入力欄 */
+.form-area input[type="text"] {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    border: 1px solid #c8b6a6;
+    border-radius: 8px;
+    background: #fff;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.form-area input[type="text"]:focus {
+    outline: none;
+    border-color: #8b5e3c;
+    box-shadow: 0 0 6px rgba(139, 94, 60, 0.3);
+}
+
+/* 更新ボタン */
+.edit-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    background: #8b5e3c;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.edit-btn:hover {
+    background: #6f4a2f;
+}
+
+/* 戻るボタン */
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #b08968;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #8d6e63;
+}
+
+/* ボタンを中央揃え */
+.button-area {
+    text-align: center;
+}

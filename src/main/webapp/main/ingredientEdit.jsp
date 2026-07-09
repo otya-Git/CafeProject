@@ -3,7 +3,8 @@
 
 <%@include file="../header.jsp"%>
 
-
+<link rel="stylesheet"
+      href="${pageContext.request.contextPath}/css/ingredientEdit.css">
 <h2>🧂 材料編集</h2>
 
 

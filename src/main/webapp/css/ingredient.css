@@ -1,11 +1,19 @@
-@charset "UTF-8";
+/* 操作列 */
+.product-table td:last-child {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* 編集・削除ボタン共通 */
 .edit-btn,
 .delete-btn {
     display: inline-block;
-    padding: 6px 12px;
+    padding: 6px 14px;
     margin: 2px;
     border-radius: 6px;
     text-decoration: none;
+    color: white;
     font-size: 14px;
     font-weight: bold;
     transition: 0.2s;
@@ -14,24 +22,17 @@
 /* 編集ボタン */
 .edit-btn {
     background-color: #3498db;
-    color: white;
-    border: 1px solid #3498db;
 }
 
 .edit-btn:hover {
-    background-color: white;
-    color: #3498db;
+    background-color: #2980b9;
 }
 
 /* 削除ボタン */
 .delete-btn {
     background-color: #e74c3c;
-    color: white;
-    border: 1px solid #e74c3c;
 }
 
 .delete-btn:hover {
-    background-color: white;
-    color: #e74c3c;
+    background-color: #c0392b;
 }
-
