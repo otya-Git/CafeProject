@@ -26,6 +26,7 @@
 	    <ul>
 	    	<li><a href="/CafeProject/main/main.jsp">メニュー</a></li>
 	        <li><a href="${pageContext.request.contextPath}/InventoryListServlet">在庫管理</a></li>
+	        <li><a href="${pageContext.request.contextPath}/IngredientListServlet">材料一覧</a></li>
 	        <li><a href="${pageContext.request.contextPath}/ProductListServlet">商品管理</a></li>
 	        <li><a href="${pageContext.request.contextPath}/OrderServlet">注文</a></li>
 	        <li><a href="${pageContext.request.contextPath}/SalesServlet">売り上げ一覧</a></li>

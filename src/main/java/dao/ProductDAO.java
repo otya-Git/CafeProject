@@ -190,4 +190,39 @@ public class ProductDAO extends DAO {
 
         return list;
     }
+    
+    public List<Product> search(String keyword) throws Exception {
+
+        List<Product> list = new ArrayList<>();
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement(
+            "SELECT * FROM product WHERE product_name LIKE ?"
+        );
+
+        st.setString(1, "%" + keyword + "%");
+
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+
+            Product p = new Product();
+
+            p.setProductId(rs.getInt("product_id"));
+            p.setProductName(rs.getString("product_name"));
+            p.setCategoryName(rs.getString("category_name"));
+            p.setCostPrice(rs.getInt("cost_price"));
+            p.setPrice(rs.getInt("price"));
+            p.setDescription(rs.getString("description"));
+
+            list.add(p);
+        }
+
+        rs.close();
+        st.close();
+        con.close();
+
+        return list;
+    }
 }

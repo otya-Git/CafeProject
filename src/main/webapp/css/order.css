@@ -26,6 +26,58 @@ h3 {
 }
 
 
+
+/* タイトル＋検索 */
+.title-area {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.title-area h2 {
+
+    margin: 0;
+
+}
+
+
+/* 検索フォーム */
+.title-area form {
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+}
+
+
+.title-area input[type="text"] {
+
+    width: 200px;
+
+    padding: 10px;
+
+    border: 1px solid #c7b299;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+}
+
+
+
 /* レイアウト */
 .container {
 
@@ -36,6 +88,7 @@ h3 {
     align-items: flex-start;
 
 }
+
 
 
 /* 左右カード */
@@ -51,6 +104,7 @@ h3 {
     box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 
 }
+
 
 
 /* 幅 */
@@ -81,6 +135,7 @@ table {
 }
 
 
+
 th {
 
     background: #8b5e3c;
@@ -92,6 +147,7 @@ th {
     font-size: 16px;
 
 }
+
 
 
 td {
@@ -143,7 +199,7 @@ input[type="number"] {
 
 
 
-/* カート追加ボタン */
+/* ボタン共通 */
 input[type="submit"] {
 
     background: #8b5e3c;
@@ -202,8 +258,6 @@ input[type="submit"]:hover {
 }
 
 
-
-
 .confirm-btn:hover {
 
     background: #8b5e3c;
@@ -220,6 +274,7 @@ input[type="submit"]:hover {
     text-align: center;
 
 }
+
 
 
 .box a {
@@ -243,6 +298,7 @@ input[type="submit"]:hover {
 }
 
 
+
 .box a:hover {
 
     background: #4b3621;
@@ -250,24 +306,41 @@ input[type="submit"]:hover {
     transform: scale(1.05);
 
 }
+
+
+
 /* 注文確定ボタン強制中央 */
 .right .confirm-btn {
+
     display: block;
+
     width: 200px;
+
     margin: 25px auto 0;
+
     padding: 14px;
+
     font-size: 18px;
+
     background: #a67c52;
+
     color: white;
+
     border: none;
+
     border-radius: 8px;
+
     cursor: pointer;
+
 }
 
 
 .right .confirm-btn:hover {
+
     background: #8b5e3c;
+
 }
+
 
 
 /* スマホ対応 */
@@ -285,6 +358,15 @@ input[type="submit"]:hover {
     .right {
 
         width: 100%;
+
+    }
+
+
+    .title-area {
+
+        flex-direction: column;
+
+        gap: 15px;
 
     }
 
