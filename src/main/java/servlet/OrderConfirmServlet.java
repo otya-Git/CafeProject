@@ -74,7 +74,7 @@ public class OrderConfirmServlet extends HttpServlet {
             // 売上一覧へ
             response.sendRedirect(
                     request.getContextPath()
-                    + "/SalesListServlet"
+                    + "/OrderServlet"
             );
 
 

@@ -21,14 +21,15 @@
 	    <span></span>
 	</button>
 	
-	<!-- 📱 スライドして出てくるメニュー中身 -->
+	<!-- スライドして出てくるメニュー中身 -->
 	<nav class="slide-menu" id="js-nav">
 	    <ul>
 	    	<li><a href="/CafeProject/main/main.jsp">メニュー</a></li>
 	        <li><a href="${pageContext.request.contextPath}/InventoryListServlet">在庫管理</a></li>
 	        <li><a href="${pageContext.request.contextPath}/ProductListServlet">商品管理</a></li>
 	        <li><a href="${pageContext.request.contextPath}/OrderServlet">注文</a></li>
-	        <li><a href="/Sales.jsp">売り上げ一覧</a></li>
+	        <li><a href="${pageContext.request.contextPath}/SalesServlet">売り上げ一覧</a></li>
+	        <li><a href="${pageContext.request.contextPath}/UsersServlet">ユーザー管理</a></li>
 	    </ul>
 	</nav>
 </header>

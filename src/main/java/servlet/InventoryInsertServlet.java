@@ -43,7 +43,7 @@ public class InventoryInsertServlet extends HttpServlet {
 
             Inventory inventory = new Inventory();
 
-            inventory.setProductId(productId);
+            inventory.setIngredientId(productId);
             inventory.setSupplierId(supplierId);
             inventory.setStockQuantity(stockQuantity);
             inventory.setUnit(unit);

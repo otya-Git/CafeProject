@@ -2,6 +2,7 @@ package bean;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Users implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -70,6 +71,15 @@ public class Users implements Serializable {
 
 	public void setUpdate_at(LocalDateTime update_at) {
 		this.updated_at = update_at;
+	}
+	
+	public String getFormattedCreatedAt() {
+	    if (this.created_at == null) {
+	        return "";
+	    }
+	    
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+	    return this.created_at.format(formatter);
 	}
 	
 }

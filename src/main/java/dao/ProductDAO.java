@@ -119,9 +119,14 @@ public class ProductDAO extends DAO {
 
         Connection con = getConnection();
 
-        String sql = "INSERT INTO product (product_name, cost_price, price, description, category_name) VALUES (?, ?, ?, ?, ?)";
+        String sql =
+            "INSERT INTO product "
+          + "(product_name, cost_price, price, description, category_name) "
+          + "VALUES (?, ?, ?, ?, ?) "
+          + "RETURNING product_id";
 
-        PreparedStatement ps = con.prepareStatement(sql);
+        PreparedStatement ps =
+                con.prepareStatement(sql);
 
         ps.setString(1, product.getProductName());
         ps.setInt(2, product.getCostPrice());
@@ -129,12 +134,22 @@ public class ProductDAO extends DAO {
         ps.setString(4, product.getDescription());
         ps.setString(5, product.getCategoryName());
 
-        int result = ps.executeUpdate();
+        ResultSet rs = ps.executeQuery();
 
+        int productId = 0;
+
+        if(rs.next()){
+
+            productId = rs.getInt("product_id");
+
+        }
+
+        rs.close();
         ps.close();
         con.close();
 
-        return result;
+        return productId;
+
     }
     public List<Product> selectCategory(String category)
             throws Exception {

@@ -20,10 +20,10 @@
 
     <!-- 商品登録ボタン -->
     <div class="button-area">
-        <a href="${pageContext.request.contextPath}/main/productAdd.jsp"
-           class="add-btn">
-            ＋ 商品を登録
-        </a>
+		<a href="${pageContext.request.contextPath}/ProductAddServlet"
+		   class="add-btn">
+		    ＋ 商品を登録
+		</a>
     </div>
 
     <!-- カテゴリ検索 -->
@@ -84,20 +84,26 @@
 
                 <td>
 
-                    <a href="${pageContext.request.contextPath}/ProductEditServlet?id=${p.productId}"
-                       class="edit-btn">
-                        編集
-                    </a>
-
-                    <a href="${pageContext.request.contextPath}/ProductDeleteServlet?id=${p.productId}"
-                       class="delete-btn"
-                       onclick="return confirm('この商品を削除しますか？');">
-                        削除
-                    </a>
-
-                </td>
+				    <a href="${pageContext.request.contextPath}/ProductDetailServlet?id=${p.productId}"
+				       class="detail-btn">
+				        詳細
+				    </a>
+				
+				    <a href="${pageContext.request.contextPath}/ProductEditServlet?id=${p.productId}"
+				       class="edit-btn">
+				        編集
+				    </a>
+				
+				    <a href="${pageContext.request.contextPath}/ProductDeleteServlet?id=${p.productId}"
+				       class="delete-btn"
+				       onclick="return confirm('この商品を削除しますか？');">
+				        削除
+				    </a>
+				
+				</td>
 
             </tr>
+            
 
         </c:forEach>
     </table>

@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+/* 全体 */
+body{
+    margin:0;
+    padding:30px;
+    background:#f7f3ed;
+    font-family:"Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif;
+    color:#4b3621;
+}
+
+h2{
+    text-align:center;
+    font-size:34px;
+    margin-bottom:30px;
+    color:#6f4e37;
+}
+
+h3{
+    color:#6f4e37;
+    border-left:6px solid #a67c52;
+    padding-left:10px;
+    margin-bottom:15px;
+}
+
+/* レイアウト */
+.container{
+    display:flex;
+    gap:40px;
+    align-items:flex-start;
+}
+
+.left,
+.right{
+    background:#fffdf9;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+.left{
+    width:70%;
+}
+
+.right{
+    width:30%;
+}
+
+/* テーブル */
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th{
+    background:#8b5e3c;
+    color:white;
+    padding:12px;
+}
+
+td{
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+tr:nth-child(even){
+    background:#faf5ef;
+}
+
+tr:hover{
+    background:#f3e5d3;
+}
+
+/* 人気商品 */
+.rank{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.first{
+    color:#d4af37;
+}
+
+.second{
+    color:#808080;
+}
+
+.third{
+    color:#b87333;
+}
+
+/* 戻るボタン */
+.box{
+    margin-top:25px;
+    text-align:center;
+}
+
+.box a{
+    display:inline-block;
+    background:#6f4e37;
+    color:white;
+    text-decoration:none;
+    padding:12px 28px;
+    border-radius:30px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.box a:hover{
+    background:#4b3621;
+    transform:scale(1.05);
+}
+
+/* スマホ対応 */
+@media(max-width:900px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .left,
+    .right{
+        width:100%;
+    }
+
+}
