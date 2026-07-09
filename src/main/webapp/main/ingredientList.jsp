@@ -3,9 +3,12 @@
 
 <%@include file="../header.jsp"%>
 
+
 <h2>🧂 材料一覧</h2>
 
+
 <div class="list-area">
+
 
     <div class="button-area">
 
@@ -18,24 +21,35 @@
 
     </div>
 
+
+
     <table class="product-table">
 
+
         <tr>
+
             <th>ID</th>
             <th>材料名</th>
             <th>単位</th>
             <th>操作</th>
+
         </tr>
 
         <c:forEach var="i" items="${list}">
 
             <tr>
 
-                <td>${i.ingredientId}</td>
+                <td>
+                    ${i.ingredientId}
+                </td>
 
-                <td>${i.ingredientName}</td>
+                <td>
+                    ${i.ingredientName}
+                </td>
 
-                <td>${i.unit}</td>
+                <td>
+                    ${i.unit}
+                </td>
 
                 <td>
 
@@ -53,11 +67,8 @@
                 </td>
 
             </tr>
-
         </c:forEach>
-
     </table>
-
 </div>
 
 <%@include file="../footer.jsp"%>
