@@ -23,25 +23,7 @@
       method="post">
 
     <!-- カテゴリ -->
-    <div class="form-group">
-
-        <label>カテゴリ</label>
-
-        <select id="category">
-
-            <option value="">選択してください</option>
-
-            <c:forEach var="c" items="${categoryList}">
-
-                <option value="${c.categoryName}">
-                    ${c.categoryName}
-                </option>
-
-            </c:forEach>
-
-        </select>
-
-    </div>
+   
 
     <!-- 商品 -->
     <div class="form-group">
