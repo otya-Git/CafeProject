@@ -284,7 +284,8 @@ if(cart != null && !cart.isEmpty()){
 </table>
 
 
-<form id= "myset" action="${pageContext.request.contextPath}/order/confirm"
+<form id="myset"
+      action="${pageContext.request.contextPath}/order/confirm"
       method="post">
 
 
@@ -292,13 +293,26 @@ if(cart != null && !cart.isEmpty()){
        class="confirm-btn"
        value="注文確定">
 
+
 </form>
 
 
 <script>
-document.getElementById("myset").addEventListener("submit",function(){
-	alert("注文を確定しました。");
+document.getElementById("myset").addEventListener("submit", function(e){
+
+    <% if(cart == null || cart.isEmpty()){ %>
+
+        e.preventDefault(); // 注文処理を止める
+        alert("カートに商品がありません。");
+
+    <% } else { %>
+
+        alert("注文を確定しました。");
+
+    <% } %>
+
 });
+</script>
 </script>
 
 </div>
