@@ -5,6 +5,8 @@
 
 <h2>📦 在庫一覧</h2>
 
+<link rel="stylesheet"
+      href="${pageContext.request.contextPath}/css/inventorylist.css">
 <div class="list-area">
 
     <div class="button-area">
@@ -87,7 +89,12 @@
         </c:forEach>
 
     </table>
-
+    <div class="back-area">
+        <a href="${pageContext.request.contextPath}/main/main.jsp"
+           class="back-btn">
+            戻る
+        </a>
+    </div>
 </div>
 
 <%@include file="../footer.jsp"%>

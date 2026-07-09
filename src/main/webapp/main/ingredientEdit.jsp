@@ -59,6 +59,9 @@
 </form>
 
 
+<a href="${pageContext.request.contextPath}/main/main.jsp">
+戻る
+</a>
 
 </div>
 
