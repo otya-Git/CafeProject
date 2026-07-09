@@ -22,7 +22,8 @@ List<Order_Item> cart =
 
 <title>注文</title>
 
-
+<link rel="stylesheet"
+      href="${pageContext.request.contextPath}/css/order.css">
 </head>
 
 
