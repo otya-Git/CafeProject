@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.List;
 
 import bean.Category;
-import bean.Product;
+import bean.Ingredient; // IngredientListServletと同じインポート
 import bean.Supplier;
 import dao.CategoryDAO;
-import dao.ProductDAO;
+import dao.IngredientDAO; // IngredientListServletと同じインポート
 import dao.SupplierDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -25,15 +25,15 @@ public class InventoryAddServlet extends HttpServlet {
 
         try {
 
-            ProductDAO productDao = new ProductDAO();
+            IngredientDAO ingredientDao = new IngredientDAO(); // ProductDAOから変更
             SupplierDAO supplierDao = new SupplierDAO();
             CategoryDAO categoryDao = new CategoryDAO();
 
-            List<Product> productList = productDao.selectAll();
+            List<Ingredient> ingredientList = ingredientDao.selectAll(); // 正しくselectAll()で取得
             List<Supplier> supplierList = supplierDao.selectAll();
             List<Category> categoryList = categoryDao.selectAll();
 
-            request.setAttribute("productList", productList);
+            request.setAttribute("ingredientList", ingredientList); // JSPへデータをパス
             request.setAttribute("supplierList", supplierList);
             request.setAttribute("categoryList", categoryList);
 
