@@ -16,7 +16,7 @@
 <%
 Users user = (Users) session.getAttribute("user");
 %>
-//
+
 </head>
 
 <header>
