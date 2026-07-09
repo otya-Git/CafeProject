@@ -32,7 +32,7 @@
 
             <tr>
 
-                <td>${i.productName}</td>
+                <td>${i.ingredientName}</td>
 
                 <td>${i.supplierName}</td>
 
