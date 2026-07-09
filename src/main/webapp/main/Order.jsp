@@ -268,7 +268,7 @@ if(cart != null && !cart.isEmpty()){
 </table>
 
 
-<form action="${pageContext.request.contextPath}/order/confirm"
+<form id= "myset" action="${pageContext.request.contextPath}/order/confirm"
       method="post">
 
 
