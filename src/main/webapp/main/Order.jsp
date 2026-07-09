@@ -40,7 +40,7 @@ List<Order_Item> cart =
 <!-- 左側 商品一覧 -->
 <div class="left">
 
-
+//
 
 <div class="title-area">
 
