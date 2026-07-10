@@ -15,7 +15,6 @@ List<Order_Item> cart =
 
 <!DOCTYPE html>
 <html>
-
 <head>
 
 <meta charset="UTF-8">
@@ -24,6 +23,7 @@ List<Order_Item> cart =
 
 <link rel="stylesheet"
       href="${pageContext.request.contextPath}/css/order.css">
+      #aaa
 </head>
 
 
