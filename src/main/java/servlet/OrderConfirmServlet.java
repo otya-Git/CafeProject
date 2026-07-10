@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.util.List;
 
 import bean.Order_Item;
+import bean.Recipe;
+import dao.InventoryDAO;
 import dao.OrderDAO;
 import dao.OrderItemDAO;
+import dao.RecipeDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -55,11 +58,24 @@ public class OrderConfirmServlet extends HttpServlet {
 
                 // order_item登録
                 OrderItemDAO itemDAO = new OrderItemDAO();
+                RecipeDAO recipeDAO = new RecipeDAO();
+                InventoryDAO inventoryDAO = new InventoryDAO();
 
 
                 for (Order_Item item : cart) {
 
                     itemDAO.insert(orderId, item);
+                    
+                    List<Recipe> recipes = 
+                    		recipeDAO.selectByProductId(item.getProduct_id());
+                    
+                    for (Recipe recipe : recipes) {
+                    	double useQuantity =
+                    			recipe.getQuantity() * item.getQuantity();
+                        inventoryDAO.decrease(
+                                recipe.getIngredientId(),
+                                useQuantity);
+                    }
 
                 }
 
