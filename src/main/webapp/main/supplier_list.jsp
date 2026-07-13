@@ -6,66 +6,37 @@
 <link rel="stylesheet"
       href="${pageContext.request.contextPath}/css/productlist.css">
 
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>仕入先一覧</title>
-
-<link rel="stylesheet"
-href="${pageContext.request.contextPath}/css/product.css">
-
-</head>
-
-
-<body>
-
-
 <h2>🚚 仕入先一覧</h2>
 
+<div class="list-area">
 
-<table border="1">
+    <table class="product-table">
 
-<tr>
-    <th>ID</th>
-    <th>仕入先名</th>
-    <th>電話番号</th>
-    <th>住所</th>
-</tr>
+        <tr>
+            <th>ID</th>
+            <th>仕入先名</th>
+            <th>電話番号</th>
+            <th>住所</th>
+        </tr>
 
+        <c:forEach var="s" items="${supplierList}">
 
-<c:forEach var="s" items="${supplierList}">
+            <tr>
 
-<tr>
+                <td>${s.supplierId}</td>
 
-<td>
-${s.supplierId}
-</td>
+                <td>${s.supplierName}</td>
 
+                <td>${s.phone}</td>
 
-<td>
-${s.supplierName}
-</td>
+                <td>${s.address}</td>
 
+            </tr>
 
-<td>
-${s.phone}
-</td>
+        </c:forEach>
 
+    </table>
 
-<td>
-${s.address}
-</td>
+</div>
 
-
-</tr>
-
-</c:forEach>
-
-
-</table>
-
-
-</body>
-</html>
+<%@include file="../footer.jsp"%>

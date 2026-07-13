@@ -59,7 +59,7 @@
 </form>
 
 
-<a href="${pageContext.request.contextPath}/main/main.jsp">
+<a href="${pageContext.request.contextPath}/IngredientListServlet">
 戻る
 </a>
 
