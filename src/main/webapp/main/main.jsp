@@ -6,26 +6,11 @@
 <link rel="stylesheet" href="../css/main.css">
 
 <%
-Users user = (Users) session.getAttribute("user");
+Users loginUser = (Users) session.getAttribute("user");
 %>
 
 <div>
 
-    <!-- 🔵 ログイン中ユーザー表示 -->
-    <div style="margin-bottom:10px;">
-        <%
-        if (user != null) {
-        %>
-            ようこそ、<b><%= user.getUser_name() %></b> さん
-            ｜ <a href="${pageContext.request.contextPath}/logout">ログアウト</a>
-        <%
-        } else {
-        %>
-            未ログイン
-        <%
-        }
-        %>
-    </div>
 
     <h2>☕ メニュー</h2><br>
 
@@ -47,9 +32,6 @@ Users user = (Users) session.getAttribute("user");
             <a href="${pageContext.request.contextPath}/OrderServlet">注文一覧</a>
         </div>
 
-        <div class="box">
-            <a href="${pageContext.request.contextPath}/SalesServlet">売り上げ一覧</a>
-        </div>
         
         <div class="box">
 	        <a href="${pageContext.request.contextPath}/SupplierListServlet">仕入先管理</a>
@@ -63,15 +45,18 @@ Users user = (Users) session.getAttribute("user");
 
         <%-- 🟡 管理者だけ表示 --%>
         <%
-        if (user != null && "ADMIN".equals(user.getRole())) {
+        if (loginUser != null && "ADMIN".equals(loginUser.getRole())) {
         %>
-
+        <div class="box">
+            <a href="${pageContext.request.contextPath}/SalesServlet">売り上げ一覧</a>
+        </div>
+        
         <div class="box">
             <a href="${pageContext.request.contextPath}/UsersServlet">ユーザー管理</a>
         </div>
 
         <div class="box">
-            <a href="/">シフト一覧</a>
+            <a href="/">シフト</a>
         </div>
 
         <%
