@@ -357,3 +357,42 @@ h2{
 .hamburger-btn.active span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
+
+.menu-user{
+
+    padding:25px;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    color:#6d4c41;
+
+    border-bottom:1px solid #ddd;
+
+}
+
+.logout{
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.logout a{
+
+    color:#c0392b;
+
+    font-weight:bold;
+
+}
+
+.user-name{
+    font-size:24px;
+    font-weight:bold;
+    color:#6d4c41;
+}
+
+.user-role{
+    margin-top:8px;
+    font-size:14px;
+    color:#888;
+}
