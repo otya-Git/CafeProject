@@ -39,7 +39,7 @@
             %>
 
                 <div class="user-name">
-                    👤 <%= user.getUser_name() %> さん
+                    ☺ <%= user.getUser_name() %> さん
                 </div>
 
                 <div class="user-role">
