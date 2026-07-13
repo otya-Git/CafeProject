@@ -44,7 +44,7 @@ Users user = (Users) session.getAttribute("user");
         </div>
 
         <div class="box">
-            <a href="${pageContext.request.contextPath}/OrderServlet">注文</a>
+            <a href="${pageContext.request.contextPath}/OrderServlet">注文一覧</a>
         </div>
 
         <div class="box">
