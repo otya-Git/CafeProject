@@ -32,9 +32,6 @@ Users loginUser = (Users) session.getAttribute("user");
             <a href="${pageContext.request.contextPath}/OrderServlet">注文</a>
         </div>
 
-        <div class="box">
-            <a href="${pageContext.request.contextPath}/SalesServlet">売り上げ一覧</a>
-        </div>
         
         <div class="box">
 	        <a href="${pageContext.request.contextPath}/SupplierListServlet">仕入先管理</a>
@@ -50,7 +47,10 @@ Users loginUser = (Users) session.getAttribute("user");
         <%
         if (loginUser != null && "ADMIN".equals(loginUser.getRole())) {
         %>
-
+        <div class="box">
+            <a href="${pageContext.request.contextPath}/SalesServlet">売り上げ一覧</a>
+        </div>
+        
         <div class="box">
             <a href="${pageContext.request.contextPath}/UsersServlet">ユーザー管理</a>
         </div>
