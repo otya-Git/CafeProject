@@ -39,7 +39,7 @@
             %>
 
                 <div class="user-name">
-                    👤 <%= user.getUser_name() %> さん
+                    ☺ <%= user.getUser_name() %> さん
                 </div>
 
                 <div class="user-role">
@@ -70,7 +70,7 @@
 
         <li><a href="${pageContext.request.contextPath}/UsersServlet">ユーザー管理</a></li>
 
-        <li><a href="/">シフト</a></li>
+        <li><a href="${pageContext.request.contextPath}/ShiftServlet">シフト</a></li>
 
         <li class="logout">
             <a href="${pageContext.request.contextPath}/logout">
