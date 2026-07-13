@@ -41,6 +41,7 @@ public class OrderConfirmServlet extends HttpServlet {
                 // 合計金額計算
                 int total = 0;
 
+
                 for (Order_Item item : cart) {
 
                     total += item.getPrice()
@@ -49,32 +50,69 @@ public class OrderConfirmServlet extends HttpServlet {
                 }
 
 
+
+                // テーブル番号取得
+                Integer tableId =
+                        (Integer) session.getAttribute("tableId");
+
+
+
                 // order登録
                 OrderDAO orderDAO = new OrderDAO();
 
-                int orderId = orderDAO.insert(total);
+
+                int orderId = orderDAO.insert(
+                        tableId,
+                        "注文中",
+                        total,
+                        "未払い"
+                );
 
 
 
                 // order_item登録
                 OrderItemDAO itemDAO = new OrderItemDAO();
+
                 RecipeDAO recipeDAO = new RecipeDAO();
+
                 InventoryDAO inventoryDAO = new InventoryDAO();
+
 
 
                 for (Order_Item item : cart) {
 
-                    itemDAO.insert(orderId, item);
-                    
-                    List<Recipe> recipes = 
-                    		recipeDAO.selectByProductId(item.getProduct_id());
-                    
+
+                    // 注文明細登録
+                    itemDAO.insert(
+                            orderId,
+                            item
+                    );
+
+
+
+                    // レシピ取得
+                    List<Recipe> recipes =
+                            recipeDAO.selectByProductId(
+                                    item.getProduct_id()
+                            );
+
+
+
+                    // 材料在庫減少
                     for (Recipe recipe : recipes) {
-                    	double useQuantity =
-                    			recipe.getQuantity() * item.getQuantity();
+
+
+                        double useQuantity =
+                                recipe.getQuantity()
+                                * item.getQuantity();
+
+
+
                         inventoryDAO.decrease(
                                 recipe.getIngredientId(),
-                                useQuantity);
+                                useQuantity
+                        );
+
                     }
 
                 }
@@ -87,7 +125,8 @@ public class OrderConfirmServlet extends HttpServlet {
             }
 
 
-            // 売上一覧へ
+
+            // 注文画面へ戻る
             response.sendRedirect(
                     request.getContextPath()
                     + "/OrderServlet"
@@ -96,6 +135,7 @@ public class OrderConfirmServlet extends HttpServlet {
 
         } catch(Exception e) {
 
+            e.printStackTrace();
             throw new ServletException(e);
 
         }

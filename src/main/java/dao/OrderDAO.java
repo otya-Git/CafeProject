@@ -90,7 +90,12 @@ public class OrderDAO extends DAO {
 
 
     // 注文登録
-    public int insert(int totalAmount) throws Exception {
+    public int insert(
+            int tableId,
+            String status,
+            int totalAmount,
+            String paymentMethod
+    ) throws Exception {
 
 
         Connection con =
@@ -111,15 +116,20 @@ public class OrderDAO extends DAO {
 
 
 
-        // 固定値
+        // テーブル番号
+        st.setInt(1, tableId);
 
-        st.setInt(1, 1);  
 
-        st.setString(2, "完了");
+        // 注文状態
+        st.setString(2, status);
 
+
+        // 合計金額
         st.setInt(3, totalAmount);
 
-        st.setString(4, "現金");
+
+        // 支払方法
+        st.setString(4, paymentMethod);
 
 
 
@@ -148,6 +158,99 @@ public class OrderDAO extends DAO {
 
 
         return orderId;
+
+    }
+    
+    public ArrayList<Order> selectByTableId(int tableId)
+            throws Exception {
+
+
+        ArrayList<Order> list =
+                new ArrayList<>();
+
+
+        Connection con = getConnection();
+
+
+        String sql =
+            "SELECT * FROM \"order\" "
+          + "WHERE table_id=? "
+          + "ORDER BY order_id DESC";
+
+
+        PreparedStatement ps =
+                con.prepareStatement(sql);
+
+
+        ps.setInt(1, tableId);
+
+
+        ResultSet rs =
+                ps.executeQuery();
+
+
+        while(rs.next()) {
+
+
+            Order o = new Order();
+
+
+            o.setOrder_id(
+                String.valueOf(
+                    rs.getInt("order_id")
+                )
+            );
+
+
+            o.setStatus(
+                rs.getString("status")
+            );
+
+
+            list.add(o);
+
+        }
+
+
+        rs.close();
+        ps.close();
+        con.close();
+
+
+        return list;
+    }
+    
+    public void updateStatus(
+            int tableId,
+            String status)
+            throws Exception {
+
+
+        Connection con = getConnection();
+
+
+        String sql =
+            "UPDATE \"order\" "
+          + "SET status=? "
+          + "WHERE table_id=? "
+          + "AND status='注文中'";
+
+
+        PreparedStatement st =
+                con.prepareStatement(sql);
+
+
+        st.setString(1,status);
+
+        st.setInt(2,tableId);
+
+
+        st.executeUpdate();
+
+
+        st.close();
+
+        con.close();
 
     }
 

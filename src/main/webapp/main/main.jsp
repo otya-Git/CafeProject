@@ -41,6 +41,10 @@ Users loginUser = (Users) session.getAttribute("user");
         	<a href="${pageContext.request.contextPath}/SupplierInsertServlet">仕入先登録</a>
         </div>
         
+        <div class="box">
+            <a href="${pageContext.request.contextPath}/TableListServlet">テーブル</a>   
+        </div>
+        
 
 
         <%-- 🟡 管理者だけ表示 --%>

@@ -2,6 +2,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="bean.Product"%>
 <%@ page import="bean.Order_Item"%>
+<%@ page import="bean.Order"%>
 
 
 <%
@@ -10,6 +11,9 @@ List<Product> list =
 
 List<Order_Item> cart =
     (List<Order_Item>)request.getAttribute("cart");
+
+List<Order> orderList =
+    (List<Order>)request.getAttribute("orderList");
 %>
 
 
@@ -23,7 +27,7 @@ List<Order_Item> cart =
 
 <link rel="stylesheet"
       href="${pageContext.request.contextPath}/css/order.css">
-      #aaa
+
 </head>
 
 
@@ -36,28 +40,35 @@ List<Order_Item> cart =
 <div class="container">
 
 
+
 <!-- 左側 商品一覧 -->
 <div class="left">
 
 
-
 <div class="title-area">
 
-    <h2>商品一覧</h2>
+<h2>商品一覧</h2>
 
-    <form action="${pageContext.request.contextPath}/OrderServlet"
-          method="get">
 
-        <input type="text"
-               name="keyword"
-               placeholder="商品名検索">
+<form action="${pageContext.request.contextPath}/OrderServlet"
+      method="get">
 
-        <input type="submit"
-               value="検索">
 
-    </form>
+<input type="text"
+       name="keyword"
+       placeholder="商品名検索">
+
+
+<input type="submit"
+       value="検索">
+
+
+</form>
+
 
 </div>
+
+
 
 <table>
 
@@ -79,7 +90,7 @@ List<Order_Item> cart =
 if(list != null && !list.isEmpty()){
 
 
-    for(Product p : list){
+for(Product p : list){
 
 %>
 
@@ -89,18 +100,27 @@ if(list != null && !list.isEmpty()){
 
 
 <td>
+
 <%= p.getProductName() %>
+
 </td>
 
 
+
 <td>
+
 <%= p.getDescription() %>
+
 </td>
+
 
 
 <td>
+
 <%= p.getPrice() %>円
+
 </td>
+
 
 
 <td>
@@ -117,7 +137,9 @@ if(list != null && !list.isEmpty()){
 
 
 
+
 <td>
+
 
 
 <form id="cartForm<%=p.getProductId()%>"
@@ -127,7 +149,7 @@ if(list != null && !list.isEmpty()){
 
 <input type="hidden"
        name="product_id"
-       value="<%= p.getProductId() %>">
+       value="<%=p.getProductId()%>">
 
 
 <input type="submit"
@@ -135,6 +157,7 @@ if(list != null && !list.isEmpty()){
 
 
 </form>
+
 
 
 </td>
@@ -146,7 +169,7 @@ if(list != null && !list.isEmpty()){
 
 <%
 
-    }
+}
 
 }else{
 
@@ -175,25 +198,31 @@ if(list != null && !list.isEmpty()){
 
 
 
+
 <div class="box">
 
+
 <a href="${pageContext.request.contextPath}/main/main.jsp">
+
 戻る
+
 </a>
 
-</div>
-
-
 
 </div>
 
 
+</div>
 
 
 
-<!-- 右側 現在の注文 -->
 
+
+
+
+<!-- 右側 -->
 <div class="right">
+
 
 
 <h3>現在の注文</h3>
@@ -213,14 +242,16 @@ if(list != null && !list.isEmpty()){
 
 
 
+
 <%
 
 if(cart != null && !cart.isEmpty()){
 
 
-    for(Order_Item item : cart){
+for(Order_Item item : cart){
 
 %>
+
 
 
 
@@ -229,21 +260,21 @@ if(cart != null && !cart.isEmpty()){
 
 <td>
 
-<%= item.getProduct_name() %>
+<%=item.getProduct_name()%>
 
 </td>
 
 
 <td>
 
-<%= item.getQuantity() %>
+<%=item.getQuantity()%>
 
 </td>
 
 
 <td>
 
-<%= item.getPrice() * item.getQuantity() %>円
+<%=item.getPrice()*item.getQuantity()%>円
 
 </td>
 
@@ -254,11 +285,12 @@ if(cart != null && !cart.isEmpty()){
 
 <%
 
-    }
+}
 
 }else{
 
 %>
+
 
 
 <tr>
@@ -283,7 +315,12 @@ if(cart != null && !cart.isEmpty()){
 </table>
 
 
-<form id= "myset" action="${pageContext.request.contextPath}/order/confirm"
+
+
+
+
+<form id="myset"
+      action="${pageContext.request.contextPath}/order/confirm"
       method="post">
 
 
@@ -291,23 +328,106 @@ if(cart != null && !cart.isEmpty()){
        class="confirm-btn"
        value="注文確定">
 
+
 </form>
 
 
+
+
+
 <script>
-document.getElementById("myset").addEventListener("submit",function(){
-	alert("注文を確定しました。");
+
+document.getElementById("myset")
+.addEventListener("submit",function(){
+
+alert("注文を確定しました。");
+
 });
+
 </script>
 
+
+
+
+
+
+<!-- 注文履歴追加 -->
+
+<h3>注文履歴</h3>
+
+<table class="history-table">
+
+<tr>
+<th>注文番号</th>
+<th>商品名</th>
+<th>個数</th>
+<th>状態</th>
+</tr>
+
+
+<%
+List<Order_Item> historyList =
+(List<Order_Item>)request.getAttribute("historyList");
+
+
+if(historyList != null){
+
+for(Order_Item item : historyList){
+
+%>
+
+
+<tr>
+
+<td>
+<%=item.getOrder_id()%>
+</td>
+
+
+<td>
+<%=item.getProduct_name()%>
+</td>
+
+
+<td>
+<%=item.getQuantity()%>
+</td>
+
+
+<td>
+<%=item.getStatus()%>
+</td>
+
+
+</tr>
+
+
+<%
+
+}
+
+}
+
+%>
+
+<form action="${pageContext.request.contextPath}/PaymentServlet"
+      method="post">
+
+<input type="submit"
+       value="会計">
+
+</form>
+
+</table>
+
+
+
 </div>
 
 
-</div>
-
-
 
 </div>
+
 
 
 
