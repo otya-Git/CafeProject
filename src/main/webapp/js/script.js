@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // 後ろのページを固定
             document.body.style.overflow = 'hidden';
         } else {
-            // ▼【元の状態に戻す】
+            // 【元の状態に戻す】
             document.body.style.paddingRight = '';
             document.body.style.overflow = '';
         }
