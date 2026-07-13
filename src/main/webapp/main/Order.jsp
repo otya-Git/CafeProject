@@ -43,7 +43,7 @@ List<Order_Item> cart =
 
 <div class="title-area">
 
-    <h2>注文一覧</h2>
+    <h2>商品一覧</h2>
 
     <form action="${pageContext.request.contextPath}/OrderServlet"
           method="get">
