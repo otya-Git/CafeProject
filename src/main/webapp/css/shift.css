@@ -1,0 +1,73 @@
+.shift-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+.month-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* マスの幅を均等にする */
+}
+
+.calendar-table th, .calendar-table td {
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+    padding: 6px;
+}
+
+.calendar-table th {
+    background-color: #f5f5f5;
+    text-align: center;
+    font-weight: bold;
+    height: 30px;
+}
+
+/* 土日の色分け */
+.calendar-table th.sun { color: #e74c3c; }
+.calendar-table th.sat { color: #3498db; }
+
+/* 今月以外の日付の背景をグレーにする */
+.calendar-table td.other-month {
+    background-color: #fafafa;
+    color: #bbb;
+}
+
+.calendar-table td {
+    height: 100px; /* マスの高さをしっかり確保 */
+}
+
+.day-number {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* シフトが入ったときの小さなラベル（バッジ） */
+.shift-badge {
+    background-color: #e8f4fd;
+    border-left: 4px solid #3498db;
+    padding: 3px 5px;
+    margin-bottom: 4px;
+    border-radius: 3px;
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.staff-name {
+    display: block;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.shift-time {
+    display: block;
+    color: #7f8c8d;
+}
