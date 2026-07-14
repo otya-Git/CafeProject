@@ -143,30 +143,6 @@ public class OrderConfirmServlet extends HttpServlet {
                         );
 
 
-
-
-
-                    // 在庫減少
-
-                    for(Recipe recipe : recipes){
-
-
-
-                        double useQuantity =
-                            recipe.getQuantity()
-                            * item.getQuantity();
-
-
-
-                        inventoryDAO.decrease(
-                            recipe.getIngredientId(),
-                            useQuantity
-                        );
-
-
-                    }
-
-
                 }
 
 

@@ -395,9 +395,66 @@ for(Order_Item item : historyList){
 
 
 <td>
-<%=item.getStatus()%>
-</td>
 
+<form action="${pageContext.request.contextPath}/OrderStatusServlet"
+      method="post">
+
+
+<input type="hidden"
+       name="order_id"
+       value="<%=item.getOrder_id()%>">
+
+
+<select name="status">
+
+
+<option value="注文中"
+<%= "注文中".equals(item.getStatus()) ? "selected" : "" %>>
+注文中
+</option>
+
+
+<option value="提供完了"
+<%= "提供完了".equals(item.getStatus()) ? "selected" : "" %>>
+提供完了
+</option>
+
+
+<option value="キャンセル"
+<%= "キャンセル".equals(item.getStatus()) ? "selected" : "" %>>
+キャンセル
+</option>
+
+
+</select>
+
+
+<input type="submit"
+       value="変更">
+
+
+</form>
+
+</td>
+<td>
+
+<form action="${pageContext.request.contextPath}/OrderCancelServlet"
+      method="post">
+
+
+<input type="hidden"
+       name="order_id"
+       value="<%=item.getOrder_id()%>">
+
+
+<input type="submit"
+       value="キャンセル"
+       onclick="return confirm('この注文をキャンセルしますか？');">
+
+
+</form>
+
+</td>
 
 </tr>
 
@@ -410,12 +467,9 @@ for(Order_Item item : historyList){
 
 %>
 
-<form action="${pageContext.request.contextPath}/PaymentServlet"
-      method="post">
-
-<input type="submit"
-       value="会計">
-//
+<a href="${pageContext.request.contextPath}/PaymentServlet">
+会計
+</a>
 </form>
 
 </table>

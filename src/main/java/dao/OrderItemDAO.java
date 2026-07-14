@@ -55,20 +55,21 @@ public class OrderItemDAO extends DAO {
 
 
         String sql =
-              "SELECT "
-            + "oi.order_id, "
-            + "p.product_name, "
-            + "oi.quantity, "
-            + "oi.price, "
-            + "o.status "
-            + "FROM order_item oi "
-            + "JOIN product p "
-            + "ON oi.product_id = p.product_id "
-            + "JOIN \"order\" o "
-            + "ON oi.order_id = o.order_id "
-            + "WHERE o.table_id = ? "
-            + "AND o.status != '会計済み' "
-            + "ORDER BY oi.order_id DESC";
+        	      "SELECT "
+        	    + "oi.order_id, "
+        	    + "p.product_name, "
+        	    + "oi.quantity, "
+        	    + "oi.price, "
+        	    + "o.status "
+        	    + "FROM order_item oi "
+        	    + "JOIN product p "
+        	    + "ON oi.product_id = p.product_id "
+        	    + "JOIN \"order\" o "
+        	    + "ON oi.order_id = o.order_id "
+        	    + "WHERE o.table_id = ? "
+        	    + "AND o.status != '会計済み' "
+        	    + "AND o.status != 'キャンセル' "
+        	    + "ORDER BY oi.order_id DESC";
 
 
 
@@ -133,6 +134,83 @@ public class OrderItemDAO extends DAO {
 
         con.close();
 
+
+
+        return list;
+
+    }
+ // 注文IDから明細取得
+    public List<Order_Item> selectByOrderId(int orderId)
+            throws Exception {
+
+
+        List<Order_Item> list =
+                new ArrayList<>();
+
+
+        Connection con =
+                getConnection();
+
+
+        String sql =
+            "SELECT "
+          + "oi.product_id,"
+          + "p.product_name,"
+          + "oi.quantity,"
+          + "oi.price "
+          + "FROM order_item oi "
+          + "JOIN product p "
+          + "ON oi.product_id=p.product_id "
+          + "WHERE oi.order_id=?";
+
+
+        PreparedStatement st =
+                con.prepareStatement(sql);
+
+
+        st.setInt(1, orderId);
+
+
+        ResultSet rs =
+                st.executeQuery();
+
+
+
+        while(rs.next()){
+
+
+            Order_Item item =
+                    new Order_Item();
+
+
+            item.setProduct_id(
+                rs.getInt("product_id")
+            );
+
+
+            item.setProduct_name(
+                rs.getString("product_name")
+            );
+
+
+            item.setQuantity(
+                rs.getInt("quantity")
+            );
+
+
+            item.setPrice(
+                rs.getInt("price")
+            );
+
+
+            list.add(item);
+
+        }
+
+
+        rs.close();
+        st.close();
+        con.close();
 
 
         return list;

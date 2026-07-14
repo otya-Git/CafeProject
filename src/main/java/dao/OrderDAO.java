@@ -60,6 +60,10 @@ public class OrderDAO extends DAO {
             );
 
 
+            o.setTotal_amount(
+                rs.getInt("total_amount")
+            );
+
 
             if (rs.getTimestamp("ordered_at") != null) {
 
@@ -116,19 +120,12 @@ public class OrderDAO extends DAO {
 
 
 
-        // テーブル番号
         st.setInt(1, tableId);
 
-
-        // 注文状態
         st.setString(2, status);
 
-
-        // 合計金額
         st.setInt(3, totalAmount);
 
-
-        // 支払方法
         st.setString(4, paymentMethod);
 
 
@@ -152,7 +149,9 @@ public class OrderDAO extends DAO {
 
 
         rs.close();
+
         st.close();
+
         con.close();
 
 
@@ -160,7 +159,13 @@ public class OrderDAO extends DAO {
         return orderId;
 
     }
-    
+
+
+
+
+
+
+    // テーブル別注文取得
     public ArrayList<Order> selectByTableId(int tableId)
             throws Exception {
 
@@ -178,6 +183,7 @@ public class OrderDAO extends DAO {
           + "ORDER BY order_id DESC";
 
 
+
         PreparedStatement ps =
                 con.prepareStatement(sql);
 
@@ -187,6 +193,7 @@ public class OrderDAO extends DAO {
 
         ResultSet rs =
                 ps.executeQuery();
+
 
 
         while(rs.next()) {
@@ -212,14 +219,25 @@ public class OrderDAO extends DAO {
         }
 
 
+
         rs.close();
+
         ps.close();
+
         con.close();
 
 
+
         return list;
+
     }
-    
+
+
+
+
+
+
+    // テーブル全注文状態変更
     public void updateStatus(
             int tableId,
             String status)
@@ -229,6 +247,7 @@ public class OrderDAO extends DAO {
         Connection con = getConnection();
 
 
+
         String sql =
             "UPDATE \"order\" "
           + "SET status=? "
@@ -236,8 +255,10 @@ public class OrderDAO extends DAO {
           + "AND status='注文中'";
 
 
+
         PreparedStatement st =
                 con.prepareStatement(sql);
+
 
 
         st.setString(1,status);
@@ -245,7 +266,9 @@ public class OrderDAO extends DAO {
         st.setInt(2,tableId);
 
 
+
         st.executeUpdate();
+
 
 
         st.close();
@@ -253,5 +276,267 @@ public class OrderDAO extends DAO {
         con.close();
 
     }
+
+
+
+
+
+
+
+    // 会計処理
+    // 注文中・提供完了を会計済みに変更
+    public void updatePayment(
+            int tableId,
+            String status,
+            String paymentMethod)
+            throws Exception {
+
+
+        Connection con = getConnection();
+
+
+
+        String sql =
+            "UPDATE \"order\" "
+          + "SET status=?, payment_method=? "
+          + "WHERE table_id=? "
+          + "AND status!='会計済み' "
+          + "AND status!='キャンセル'";
+
+
+
+        PreparedStatement st =
+                con.prepareStatement(sql);
+
+
+
+        st.setString(1,status);
+
+        st.setString(2,paymentMethod);
+
+        st.setInt(3,tableId);
+
+
+
+        st.executeUpdate();
+
+
+
+        st.close();
+
+        con.close();
+
+    }
+
+
+
+
+
+
+
+
+    // 1件状態変更
+    public void updateOrderStatus(
+            int orderId,
+            String status)
+            throws Exception {
+
+
+        Connection con = getConnection();
+
+
+
+        String sql =
+            "UPDATE \"order\" "
+          + "SET status=? "
+          + "WHERE order_id=?";
+
+
+
+        PreparedStatement st =
+                con.prepareStatement(sql);
+
+
+
+        st.setString(1,status);
+
+        st.setInt(2,orderId);
+
+
+
+        st.executeUpdate();
+
+
+
+        st.close();
+
+        con.close();
+
+    }
+
+
+
+
+
+
+
+
+    // 現在注文中の注文取得（1件）
+    public Order selectActiveOrder(int tableId)
+            throws Exception {
+
+
+        Connection con = getConnection();
+
+
+
+        String sql =
+            "SELECT * FROM \"order\" "
+          + "WHERE table_id=? "
+          + "AND status!='会計済み' "
+          + "AND status!='キャンセル' "
+          + "ORDER BY order_id DESC "
+          + "LIMIT 1";
+
+
+
+        PreparedStatement st =
+                con.prepareStatement(sql);
+
+
+
+        st.setInt(1,tableId);
+
+
+
+        ResultSet rs =
+                st.executeQuery();
+
+
+
+        Order order = null;
+
+
+
+        if(rs.next()){
+
+
+            order = new Order();
+
+
+            order.setOrder_id(
+                String.valueOf(
+                    rs.getInt("order_id")
+                )
+            );
+
+
+            order.setTotal_amount(
+                rs.getInt("total_amount")
+            );
+
+
+        }
+
+
+
+        rs.close();
+
+        st.close();
+
+        con.close();
+
+
+
+        return order;
+
+    }
+
+
+
+
+
+
+
+    // 現在会計対象の注文取得（複数）
+    public ArrayList<Order> selectActiveOrders(int tableId)
+            throws Exception {
+
+
+        ArrayList<Order> list =
+                new ArrayList<>();
+
+
+        Connection con = getConnection();
+
+
+
+        String sql =
+            "SELECT * FROM \"order\" "
+          + "WHERE table_id=? "
+          + "AND status!='会計済み' "
+          + "AND status!='キャンセル' "
+          + "ORDER BY order_id";
+
+
+
+        PreparedStatement ps =
+                con.prepareStatement(sql);
+
+
+
+        ps.setInt(1,tableId);
+
+
+
+        ResultSet rs =
+                ps.executeQuery();
+
+
+
+        while(rs.next()) {
+
+
+            Order o = new Order();
+
+
+
+            o.setOrder_id(
+                String.valueOf(
+                    rs.getInt("order_id")
+                )
+            );
+
+
+
+            o.setTotal_amount(
+                rs.getInt("total_amount")
+            );
+
+
+            o.setStatus(
+                rs.getString("status")
+            );
+
+
+
+            list.add(o);
+
+        }
+
+
+
+        rs.close();
+
+        ps.close();
+
+        con.close();
+
+
+
+        return list;
+
+    }
+
 
 }
