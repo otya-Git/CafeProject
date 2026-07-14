@@ -27,11 +27,6 @@ Users loginUser = (Users) session.getAttribute("user");
         <div class="box">
             <a href="${pageContext.request.contextPath}/ProductListServlet">商品管理</a>
         </div>
-
-        <div class="box">
-            <a href="${pageContext.request.contextPath}/OrderServlet">注文一覧</a>
-        </div>
-
         
         <div class="box">
 	        <a href="${pageContext.request.contextPath}/SupplierListServlet">仕入先管理</a>

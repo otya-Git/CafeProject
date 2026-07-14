@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 
-
 <!DOCTYPE html>
 <html>
 
@@ -10,40 +9,34 @@
 
 <title>テーブル追加</title>
 
-</head>
+<link rel="stylesheet"
+      href="${pageContext.request.contextPath}/css/tableadd.css">
 
+</head>
 
 <body>
 
+<div class="container">
 
-<h2>
-テーブル追加
-</h2>
+    <h2>テーブル追加</h2>
 
+    <form action="${pageContext.request.contextPath}/TableAddServlet"
+          method="post">
 
+        <input type="submit"
+               value="テーブルを追加">
 
-<form action="${pageContext.request.contextPath}/TableAddServlet"
-      method="post">
+    </form>
 
+    <div class="button-area">
 
-<input type="submit"
-       value="テーブルを追加">
+        <a href="${pageContext.request.contextPath}/main/main.jsp">
+            戻る
+        </a>
 
+    </div>
 
-</form>
-
-
-
-<br>
-
-
-<a href="${pageContext.request.contextPath}/main/main.jsp">
-
-戻る
-
-</a>
-
+</div>
 
 </body>
-
 </html>

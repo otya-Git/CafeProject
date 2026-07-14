@@ -2,9 +2,8 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <%@ include file="../header.jsp" %>
-
-<link rel="stylesheet" href="../css/main.css">
-
+<link rel="stylesheet"
+      href="${pageContext.request.contextPath}/css/tablelist.css">
 
 <h2>テーブル一覧</h2>
 
@@ -107,23 +106,17 @@
 
 <!-- テーブル追加 -->
 
-<a href="${pageContext.request.contextPath}/main/tableAdd.jsp">
+<div class="button-area">
 
-テーブル追加
+    <a href="${pageContext.request.contextPath}/main/tableAdd.jsp">
+        テーブル追加
+    </a>
 
-</a>
+    <a href="${pageContext.request.contextPath}/main/main.jsp">
+        戻る
+    </a>
 
-
-
-<br>
-
-
-
-<a href="${pageContext.request.contextPath}/main/main.jsp">
-
-戻る
-
-</a>
+</div>
 
 
 

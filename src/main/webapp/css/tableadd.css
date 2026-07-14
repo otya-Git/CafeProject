@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+/* 全体 */
+body {
+    margin: 0;
+    padding: 30px;
+    background: #f7f3ed;
+    font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+    color: #4b3621;
+}
+
+/* カード */
+.container {
+    width: 420px;
+    margin: 80px auto;
+    background: #fffdf9;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.15);
+    text-align: center;
+}
+
+/* タイトル */
+h2 {
+    margin-top: 0;
+    margin-bottom: 35px;
+    color: #6f4e37;
+    font-size: 32px;
+}
+
+/* 追加ボタン */
+input[type="submit"] {
+    background: #8b5e3c;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+input[type="submit"]:hover {
+    background: #6f4a2f;
+    transform: translateY(-2px);
+}
+
+/* 戻るボタン */
+.button-area {
+    margin-top: 25px;
+}
+
+.button-area a {
+    display: inline-block;
+    background: #8b5e3c;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.button-area a:hover {
+    background: #6f4a2f;
+    transform: translateY(-2px);
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+
+    .container {
+        width: 90%;
+        padding: 25px;
+    }
+
+    input[type="submit"],
+    .button-area a {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .button-area {
+        margin-top: 15px;
+    }
+}
