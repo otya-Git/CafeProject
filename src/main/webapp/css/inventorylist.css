@@ -1,1 +1,21 @@
-@charset "UTF-8";
+/* 戻るボタン */
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 18px;
+
+    background: #8b5e3c;
+    color: white;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    border-radius: 8px;
+
+    transition: .3s;
+}
+
+.back-btn:hover {
+    background: #6f4a2f;
+    transform: translateY(-2px);
+}
