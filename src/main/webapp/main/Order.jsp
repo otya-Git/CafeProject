@@ -467,8 +467,9 @@ for(Order_Item item : historyList){
 
 %>
 
-<a href="${pageContext.request.contextPath}/PaymentServlet">
-会計
+<a href="${pageContext.request.contextPath}/PaymentServlet"
+   class="payment-btn">
+    会計
 </a>
 </form>
 

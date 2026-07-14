@@ -18,7 +18,42 @@ body {
 
 }
 
+/* 会計ボタン */
+.payment-btn {
+    display: block;
 
+    width: 180px;
+    padding: 11px 12px;
+
+    margin: 16px auto 10px;
+
+    background-color: #8b5e3c;
+    color: white;
+
+    text-align: center;
+    text-decoration: none;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    border-radius: 8px;
+
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+
+    transition: 0.3s;
+}
+
+
+/* マウスを乗せた時 */
+.payment-btn:hover {
+
+    background-color: #8b5e3c;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+
+}
 
 /* 見出し */
 h2 {
