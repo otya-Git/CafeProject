@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 body{
+    background-image: url("../image/カフェ.jpg");
     margin: 0;
     font-family: "Yu Gothic", sans-serif;
     background-color: #f8f4ea;
@@ -8,11 +9,14 @@ body{
 }
 
 /* タイトル */
-h2{
+h2 {
+    color: black;
+    background-color: white;
+    padding: 15px 40px;
+    border-radius: 10px;
     text-align: center;
-    margin-top: 40px;
-    font-size: 38px;
-    color: #6d4c41;
+    width: fit-content;
+    margin: 50px auto;
 }
 
 /* 全体（レスポンシブ化） */
