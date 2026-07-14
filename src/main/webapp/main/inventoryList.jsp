@@ -89,7 +89,7 @@
         </c:forEach>
 
     </table>
-    <div class="back-area">
+    <div class="button-area">
         <a href="${pageContext.request.contextPath}/main/main.jsp"
            class="back-btn">
             戻る
