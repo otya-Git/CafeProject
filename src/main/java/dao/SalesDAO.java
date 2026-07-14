@@ -20,20 +20,20 @@ public class SalesDAO extends DAO {
 
 
         String sql =
-            """
-            SELECT
-                p.product_name,
-                oi.price,
-                SUM(oi.quantity) AS quantity,
-                SUM(oi.price * oi.quantity) AS sales_amount
-            FROM order_item oi
-            JOIN product p
-            ON oi.product_id = p.product_id
-            GROUP BY
-                p.product_name,
-                oi.price
-            ORDER BY quantity DESC
-            """;
+        	    """
+        	    SELECT
+        	        p.product_name,
+        	        oi.price,
+        	        SUM(oi.quantity) AS quantity,
+        	        SUM(oi.price * oi.quantity) AS sales_amount
+        	    FROM order_item oi
+        	    JOIN product p
+        	    ON oi.product_id = p.product_id
+        	    GROUP BY
+        	        p.product_name,
+        	        oi.price
+        	    ORDER BY quantity DESC
+        	    """;
 
 
         PreparedStatement st = con.prepareStatement(sql);
@@ -54,12 +54,12 @@ public class SalesDAO extends DAO {
             );
 
             sales.setQuantity(
-                rs.getInt("quantity")
-            );
+            	    rs.getInt("quantity")
+            	);
 
             sales.setSalesAmount(
-                rs.getInt("sales_amount")
-            );
+           	    rs.getInt("sales_amount")
+           	);
 
 
             list.add(sales);
