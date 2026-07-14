@@ -2,7 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
-import dao.OrderDAO;
+import dao.OrderItemDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,32 +21,25 @@ public class OrderCancelServlet extends HttpServlet {
             throws ServletException, IOException {
 
 
-
         try {
 
 
-            // 注文ID取得
-
-            int orderId =
+            int orderItemId =
                 Integer.parseInt(
-                    request.getParameter("order_id")
+                    request.getParameter("order_item_id")
                 );
 
 
 
-
-            OrderDAO dao =
-                    new OrderDAO();
-
+            OrderItemDAO dao =
+                    new OrderItemDAO();
 
 
-            // キャンセル状態へ変更
 
-            dao.updateOrderStatus(
-                    orderId,
+            dao.updateStatus(
+                    orderItemId,
                     "キャンセル"
             );
-
 
 
 
@@ -60,8 +53,9 @@ public class OrderCancelServlet extends HttpServlet {
         }catch(Exception e){
 
 
-            throw new ServletException(e);
+            e.printStackTrace();
 
+            throw new ServletException(e);
 
         }
 

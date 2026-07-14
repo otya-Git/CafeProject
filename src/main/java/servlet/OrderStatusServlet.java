@@ -2,7 +2,7 @@ package servlet;
 
 import java.io.IOException;
 
-import dao.OrderDAO;
+import dao.OrderItemDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -24,36 +24,31 @@ public class OrderStatusServlet extends HttpServlet {
         try {
 
 
-            // 注文ID取得
-
-            int orderId =
+            int orderItemId =
                 Integer.parseInt(
-                    request.getParameter("order_id")
+                    request.getParameter("order_item_id")
                 );
 
 
-
-            // 状態取得
 
             String status =
                 request.getParameter("status");
 
 
 
-            // 更新
 
-            OrderDAO dao =
-                    new OrderDAO();
+            OrderItemDAO dao =
+                    new OrderItemDAO();
 
 
-            dao.updateOrderStatus(
-                    orderId,
+
+            dao.updateStatus(
+                    orderItemId,
                     status
             );
 
 
 
-            // 注文画面へ戻る
 
             response.sendRedirect(
                 request.getContextPath()
@@ -65,10 +60,12 @@ public class OrderStatusServlet extends HttpServlet {
         }catch(Exception e){
 
 
+            e.printStackTrace();
+
             throw new ServletException(e);
 
-
         }
+
 
     }
 

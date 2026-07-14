@@ -2,31 +2,36 @@
 <%@ page import="java.util.List"%>
 <%@ page import="bean.Product"%>
 <%@ page import="bean.Order_Item"%>
-<%@ page import="bean.Order"%>
 
 
 <%
 List<Product> list =
     (List<Product>)request.getAttribute("list");
 
+
 List<Order_Item> cart =
     (List<Order_Item>)request.getAttribute("cart");
 
-List<Order> orderList =
-    (List<Order>)request.getAttribute("orderList");
+
+List<Order_Item> historyList =
+    (List<Order_Item>)request.getAttribute("historyList");
+
 %>
 
 
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <meta charset="UTF-8">
 
 <title>注文</title>
 
+
 <link rel="stylesheet"
-      href="${pageContext.request.contextPath}/css/order.css">
+href="${pageContext.request.contextPath}/css/order.css">
+
 
 </head>
 
@@ -41,11 +46,12 @@ List<Order> orderList =
 
 
 
-<!-- 左側 商品一覧 -->
+<!-- =====================
+ 商品一覧
+===================== -->
+
 <div class="left">
 
-
-<div class="title-area">
 
 <h2>商品一覧</h2>
 
@@ -66,85 +72,58 @@ List<Order> orderList =
 </form>
 
 
-</div>
-
 
 
 <table>
 
 
 <tr>
-
 <th>商品名</th>
-<th>商品説明</th>
+<th>説明</th>
 <th>価格</th>
 <th>数量</th>
-<th>注文</th>
-
+<th>操作</th>
 </tr>
 
 
 
 <%
-
-if(list != null && !list.isEmpty()){
-
+if(list != null){
 
 for(Product p : list){
 
 %>
 
 
-
 <tr>
 
 
 <td>
-
-<%= p.getProductName() %>
-
+<%=p.getProductName()%>
 </td>
-
 
 
 <td>
-
-<%= p.getDescription() %>
-
+<%=p.getDescription()%>
 </td>
-
 
 
 <td>
-
-<%= p.getPrice() %>円
-
+<%=p.getPrice()%>円
 </td>
-
 
 
 <td>
 
 
-<input form="cartForm<%=p.getProductId()%>"
-       type="number"
+<form action="${pageContext.request.contextPath}/cart/add"
+      method="post">
+
+
+<input type="number"
        name="quantity"
        value="1"
        min="1">
-
-
-</td>
-
-
-
-
-<td>
-
-
-
-<form id="cartForm<%=p.getProductId()%>"
-      action="${pageContext.request.contextPath}/cart/add"
-      method="post">
 
 
 <input type="hidden"
@@ -152,12 +131,16 @@ for(Product p : list){
        value="<%=p.getProductId()%>">
 
 
+</td>
+
+
+<td>
+
 <input type="submit"
-       value="カートに追加">
+       value="追加">
 
 
 </form>
-
 
 
 </td>
@@ -170,24 +153,6 @@ for(Product p : list){
 <%
 
 }
-
-}else{
-
-%>
-
-
-<tr>
-
-<td colspan="5">
-
-商品がありません
-
-</td>
-
-</tr>
-
-
-<%
 
 }
 
@@ -198,19 +163,14 @@ for(Product p : list){
 
 
 
-
-<div class="box">
+<br>
 
 
 <a href="${pageContext.request.contextPath}/main/main.jsp">
-
 戻る
-
 </a>
 
 
-</div>
-
 
 </div>
 
@@ -218,9 +178,11 @@ for(Product p : list){
 
 
 
+<!-- =====================
+ 右側
+===================== -->
 
 
-<!-- 右側 -->
 <div class="right">
 
 
@@ -228,13 +190,12 @@ for(Product p : list){
 <h3>現在の注文</h3>
 
 
-
 <table>
 
 
 <tr>
 
-<th>商品名</th>
+<th>商品</th>
 <th>数量</th>
 <th>金額</th>
 
@@ -242,45 +203,36 @@ for(Product p : list){
 
 
 
-
 <%
 
-if(cart != null && !cart.isEmpty()){
-
+if(cart != null){
 
 for(Order_Item item : cart){
 
 %>
 
 
-
-
 <tr>
 
 
 <td>
-
 <%=item.getProduct_name()%>
-
 </td>
 
 
 <td>
-
 <%=item.getQuantity()%>
-
 </td>
 
 
 <td>
-
-<%=item.getPrice()*item.getQuantity()%>円
-
+<%=item.getPrice()
+*
+item.getQuantity()%>円
 </td>
 
 
 </tr>
-
 
 
 <%
@@ -292,15 +244,10 @@ for(Order_Item item : cart){
 %>
 
 
-
 <tr>
-
 <td colspan="3">
-
 商品がありません
-
 </td>
-
 </tr>
 
 
@@ -311,16 +258,13 @@ for(Order_Item item : cart){
 %>
 
 
-
 </table>
 
 
 
 
 
-
-<form id="myset"
-      action="${pageContext.request.contextPath}/order/confirm"
+<form action="${pageContext.request.contextPath}/order/confirm"
       method="post">
 
 
@@ -335,98 +279,102 @@ for(Order_Item item : cart){
 
 
 
-<script>
-
-document.getElementById("myset")
-.addEventListener("submit",function(){
-
-alert("注文を確定しました。");
-
-});
-
-</script>
 
 
+<!-- =====================
+ 注文履歴
+===================== -->
 
-
-
-
-<!-- 注文履歴追加 -->
 
 <h3>注文履歴</h3>
 
+
+
 <table class="history-table">
 
+
 <tr>
+
 <th>注文番号</th>
 <th>商品名</th>
-<th>個数</th>
+<th>数量</th>
 <th>状態</th>
+<th>操作</th>
+
 </tr>
 
 
-<%
-List<Order_Item> historyList =
-(List<Order_Item>)request.getAttribute("historyList");
 
+<%
 
 if(historyList != null){
 
+
 for(Order_Item item : historyList){
+
 
 %>
 
 
+
 <tr>
 
+
 <td>
+
 <%=item.getOrder_id()%>
+
 </td>
 
 
+
 <td>
+
 <%=item.getProduct_name()%>
+
 </td>
 
 
+
 <td>
+
 <%=item.getQuantity()%>
+
 </td>
 
 
+
+
 <td>
+
 
 <form action="${pageContext.request.contextPath}/OrderStatusServlet"
       method="post">
 
 
 <input type="hidden"
-       name="order_id"
-       value="<%=item.getOrder_id()%>">
+       name="order_item_id"
+       value="<%=item.getOrder_item_id()%>">
+
 
 
 <select name="status">
 
 
 <option value="注文中"
-<%= "注文中".equals(item.getStatus()) ? "selected" : "" %>>
+<%= "注文中".equals(item.getStatus())?"selected":"" %>>
 注文中
 </option>
 
 
 <option value="提供完了"
-<%= "提供完了".equals(item.getStatus()) ? "selected" : "" %>>
+<%= "提供完了".equals(item.getStatus())?"selected":"" %>>
 提供完了
 </option>
 
 
-<option value="キャンセル"
-<%= "キャンセル".equals(item.getStatus()) ? "selected" : "" %>>
-キャンセル
-</option>
-
-
 </select>
+
 
 
 <input type="submit"
@@ -435,28 +383,43 @@ for(Order_Item item : historyList){
 
 </form>
 
+
+
 </td>
+
+
+
+
+
+
 <td>
+
 
 <form action="${pageContext.request.contextPath}/OrderCancelServlet"
       method="post">
 
 
 <input type="hidden"
-       name="order_id"
-       value="<%=item.getOrder_id()%>">
+       name="order_item_id"
+       value="<%=item.getOrder_item_id()%>">
+
 
 
 <input type="submit"
        value="キャンセル"
-       onclick="return confirm('この注文をキャンセルしますか？');">
+       onclick="return confirm('この商品をキャンセルしますか？');">
 
 
 </form>
 
+
 </td>
 
+
+
 </tr>
+
+
 
 
 <%
@@ -467,22 +430,30 @@ for(Order_Item item : historyList){
 
 %>
 
-<a href="${pageContext.request.contextPath}/PaymentServlet"
-   class="payment-btn">
-    会計
-</a>
-</form>
 
 </table>
 
 
 
-</div>
+
+<br>
+
+
+<!-- 会計 -->
+
+<a href="${pageContext.request.contextPath}/PaymentServlet"
+class="payment-btn">
+
+会計
+
+</a>
 
 
 
 </div>
 
+
+</div>
 
 
 

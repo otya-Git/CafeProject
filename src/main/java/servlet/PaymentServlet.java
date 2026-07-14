@@ -43,9 +43,7 @@ public class PaymentServlet extends HttpServlet {
 
 
             Integer tableId =
-                (Integer)session.getAttribute(
-                        "tableId"
-                );
+                (Integer)session.getAttribute("tableId");
 
 
 
@@ -53,8 +51,7 @@ public class PaymentServlet extends HttpServlet {
                     new ArrayList<>();
 
 
-
-            Order order = null;
+            int total = 0;
 
 
 
@@ -70,62 +67,55 @@ public class PaymentServlet extends HttpServlet {
 
 
 
-                // テーブルの未会計注文を全部取得
+                // 未会計注文取得
 
                 ArrayList<Order> orders =
-                        orderDAO.selectActiveOrders(
-                                tableId
-                        );
+                        orderDAO.selectActiveOrders(tableId);
 
 
 
-                int total = 0;
-
-
-
-                for(Order o : orders){
-
+                for(Order order : orders){
 
 
                     int orderId =
                         Integer.parseInt(
-                            o.getOrder_id()
+                            order.getOrder_id()
                         );
-
 
 
                     List<Order_Item> items =
-                        itemDAO.selectByOrderId(
-                                orderId
-                        );
+                        itemDAO.selectByOrderId(orderId);
 
 
 
                     cart.addAll(items);
 
 
-
-                    total +=
-                        o.getTotal_amount();
-
                 }
 
 
 
-                // 表示用
+                // キャンセル除外して合計取得
 
-                request.setAttribute(
-                        "cart",
-                        cart
-                );
+                total =
+                    itemDAO.getPaymentTotal(tableId);
 
 
-                request.setAttribute(
-                        "total",
-                        total
-                );
 
             }
+
+
+
+            request.setAttribute(
+                    "cart",
+                    cart
+            );
+
+
+            request.setAttribute(
+                    "total",
+                    total
+            );
 
 
 
@@ -145,7 +135,10 @@ public class PaymentServlet extends HttpServlet {
 
         }
 
+
     }
+
+
 
 
 
@@ -171,22 +164,18 @@ public class PaymentServlet extends HttpServlet {
 
 
             Integer tableId =
-                (Integer)session.getAttribute(
-                        "tableId"
-                );
+                (Integer)session.getAttribute("tableId");
 
 
 
             String paymentMethod =
-                request.getParameter(
-                        "payment_method"
-                );
+                request.getParameter("payment_method");
+
 
 
 
 
             if(tableId != null){
-
 
 
                 OrderDAO orderDAO =
@@ -195,16 +184,6 @@ public class PaymentServlet extends HttpServlet {
 
                 OrderItemDAO itemDAO =
                         new OrderItemDAO();
-
-
-
-                // 未会計注文を全部取得
-
-                ArrayList<Order> orders =
-                        orderDAO.selectActiveOrders(
-                                tableId
-                        );
-
 
 
                 RecipeDAO recipeDAO =
@@ -217,12 +196,19 @@ public class PaymentServlet extends HttpServlet {
 
 
 
+
+                ArrayList<Order> orders =
+                        orderDAO.selectActiveOrders(tableId);
+
+
+
+
+
                 // ======================
                 // 在庫減少
                 // ======================
 
                 for(Order order : orders){
-
 
 
                     int orderId =
@@ -233,13 +219,22 @@ public class PaymentServlet extends HttpServlet {
 
 
                     List<Order_Item> items =
-                        itemDAO.selectByOrderId(
-                                orderId
-                        );
+                        itemDAO.selectByOrderId(orderId);
 
 
 
                     for(Order_Item item : items){
+
+
+
+                        // キャンセル商品除外
+
+                        if("キャンセル".equals(item.getStatus())){
+
+                            continue;
+
+                        }
+
 
 
 
@@ -254,7 +249,7 @@ public class PaymentServlet extends HttpServlet {
 
 
 
-                            double quantity =
+                            double amount =
                                 recipe.getQuantity()
                                 *
                                 item.getQuantity();
@@ -263,13 +258,14 @@ public class PaymentServlet extends HttpServlet {
 
                             inventoryDAO.decrease(
                                     recipe.getIngredientId(),
-                                    quantity
+                                    amount
                             );
+
 
                         }
 
-                    }
 
+                    }
 
 
                 }
@@ -278,8 +274,9 @@ public class PaymentServlet extends HttpServlet {
 
 
                 // ======================
-                // 全注文を会計済みに変更
+                // 会計済みに変更
                 // ======================
+
 
                 orderDAO.updatePayment(
                         tableId,
@@ -290,7 +287,8 @@ public class PaymentServlet extends HttpServlet {
 
 
 
-                // 席を空席へ
+
+                // 席を空席
 
                 CafeTableDAO tableDAO =
                         new CafeTableDAO();
@@ -329,5 +327,6 @@ public class PaymentServlet extends HttpServlet {
 
 
     }
+
 
 }
