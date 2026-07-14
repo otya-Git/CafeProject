@@ -65,7 +65,7 @@ public class PaymentServlet extends HttpServlet {
 
                 // カート削除
 
-                session.removeAttribute("cart");
+                session.removeAttribute("cart_" + tableId);
 
             }
 

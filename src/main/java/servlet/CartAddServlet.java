@@ -14,71 +14,161 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+
 @WebServlet("/cart/add")
 public class CartAddServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
 
-    @Override
-    protected void doPost(HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
 
-        try {
+@Override
+protected void doPost(
+        HttpServletRequest request,
+        HttpServletResponse response)
+        throws ServletException, IOException {
 
-            // 商品IDと数量を取得
-            int productId = Integer.parseInt(request.getParameter("product_id"));
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
 
-            // 商品情報を取得
-            ProductDAO dao = new ProductDAO();
-            Product product = dao.selectById(productId);
+try{
 
-            // セッション取得
-            HttpSession session = request.getSession();
 
-            // カート取得
-            List<Order_Item> cart =
-                    (List<Order_Item>) session.getAttribute("cart");
+int productId =
+Integer.parseInt(request.getParameter("product_id"));
 
-            if (cart == null) {
-                cart = new ArrayList<>();
-            }
 
-            // 同じ商品があるか確認
-            boolean exists = false;
+int quantity =
+Integer.parseInt(request.getParameter("quantity"));
 
-            for (Order_Item item : cart) {
 
-                if (item.getProduct_id() == product.getProductId()) {
 
-                    // 数量を加算
-                    item.setQuantity(item.getQuantity() + quantity);
+HttpSession session =
+request.getSession();
 
-                    exists = true;
-                    break;
-                }
-            }
 
-            // 同じ商品がなければ新しく追加
-            if (!exists) {
 
-                Order_Item item = new Order_Item();
-                item.setProduct_id(product.getProductId());
-                item.setProduct_name(product.getProductName());
-                item.setPrice(product.getPrice());
-                item.setQuantity(quantity);
+Integer tableId =
+(Integer)session.getAttribute("tableId");
 
-                cart.add(item);
-            }
 
-            // セッションへ保存
-            session.setAttribute("cart", cart);
 
-            // 注文画面へ戻る
-            response.sendRedirect(request.getContextPath() + "/OrderServlet");
+if(tableId == null){
 
-        } catch (Exception e) {
-            throw new ServletException(e);
-        }
-    }
+response.sendRedirect(
+request.getContextPath()
++"/main/tableList.jsp");
+
+return;
+
+}
+
+
+
+ProductDAO dao =
+new ProductDAO();
+
+
+Product product =
+dao.selectById(productId);
+
+
+
+
+
+List<Order_Item> cart =
+(List<Order_Item>)
+session.getAttribute(
+"cart_"+tableId);
+
+
+
+if(cart == null){
+
+cart =
+new ArrayList<>();
+
+}
+
+
+
+
+
+boolean exists=false;
+
+
+for(Order_Item item:cart){
+
+
+if(item.getProduct_id()
+        == product.getProductId()){
+
+
+item.setQuantity(
+item.getQuantity()+quantity
+);
+
+
+exists=true;
+
+break;
+
+}
+
+}
+
+
+
+
+
+if(!exists){
+
+
+Order_Item item =
+new Order_Item();
+
+
+item.setProduct_id(
+product.getProductId());
+
+
+item.setProduct_name(
+product.getProductName());
+
+
+item.setPrice(
+product.getPrice());
+
+
+item.setQuantity(
+quantity);
+
+
+cart.add(item);
+
+}
+
+
+
+
+
+session.setAttribute(
+"cart_"+tableId,
+cart
+);
+
+
+
+
+
+response.sendRedirect(
+request.getContextPath()
++"/OrderServlet");
+
+
+
+}catch(Exception e){
+
+throw new ServletException(e);
+
+}
+
+
+}
+
 }

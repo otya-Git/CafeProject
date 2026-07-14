@@ -41,32 +41,44 @@ public class OrderItemDAO extends DAO {
 
 
     // 注文履歴取得
-    public List<Order_Item> selectHistory() throws Exception {
+ // 注文履歴取得（テーブル別）
+    public List<Order_Item> selectHistory(int tableId) throws Exception {
 
 
-        List<Order_Item> list = new ArrayList<>();
+        List<Order_Item> list =
+                new ArrayList<>();
 
 
-        Connection con = getConnection();
+        Connection con =
+                getConnection();
+
 
 
         String sql =
-        	    "SELECT "
-        	  + "oi.order_id, "
-        	  + "p.product_name, "
-        	  + "oi.quantity, "
-        	  + "oi.price, "
-        	  + "o.status "
-        	  + "FROM order_item oi "
-        	  + "JOIN product p "
-        	  + "ON oi.product_id = p.product_id "
-        	  + "JOIN \"order\" o "
-        	  + "ON oi.order_id = o.order_id "
-        	  + "WHERE o.status != '会計済み' "
-        	  + "ORDER BY oi.order_id DESC";
+              "SELECT "
+            + "oi.order_id, "
+            + "p.product_name, "
+            + "oi.quantity, "
+            + "oi.price, "
+            + "o.status "
+            + "FROM order_item oi "
+            + "JOIN product p "
+            + "ON oi.product_id = p.product_id "
+            + "JOIN \"order\" o "
+            + "ON oi.order_id = o.order_id "
+            + "WHERE o.table_id = ? "
+            + "AND o.status != '会計済み' "
+            + "ORDER BY oi.order_id DESC";
+
+
 
         PreparedStatement st =
                 con.prepareStatement(sql);
+
+
+
+        st.setInt(1, tableId);
+
 
 
         ResultSet rs =
@@ -77,11 +89,14 @@ public class OrderItemDAO extends DAO {
         while(rs.next()) {
 
 
-            Order_Item item = new Order_Item();
+            Order_Item item =
+                    new Order_Item();
 
 
             item.setOrder_id(
-                String.valueOf(rs.getInt("order_id"))
+                String.valueOf(
+                    rs.getInt("order_id")
+                )
             );
 
 
@@ -103,6 +118,7 @@ public class OrderItemDAO extends DAO {
             item.setStatus(
                 rs.getString("status")
             );
+
 
 
             list.add(item);

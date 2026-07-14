@@ -16,8 +16,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+
 @WebServlet("/order/confirm")
 public class OrderConfirmServlet extends HttpServlet {
+
 
     @Override
     protected void doPost(HttpServletRequest request,
@@ -27,62 +29,103 @@ public class OrderConfirmServlet extends HttpServlet {
 
         try {
 
-            HttpSession session = request.getSession();
+
+            HttpSession session =
+                    request.getSession();
 
 
-            // カート取得
+
+            // テーブル番号取得
+
+            Integer tableId =
+                    (Integer) session.getAttribute("tableId");
+
+
+
+            if(tableId == null){
+
+                response.sendRedirect(
+                    request.getContextPath()
+                    + "/main/tableList.jsp"
+                );
+
+                return;
+            }
+
+
+
+
+
+            // テーブルごとのカート取得
+
             List<Order_Item> cart =
-                    (List<Order_Item>) session.getAttribute("cart");
+                (List<Order_Item>)
+                session.getAttribute(
+                    "cart_" + tableId
+                );
 
 
-            if (cart != null && !cart.isEmpty()) {
 
 
-                // 合計金額計算
+            if(cart != null && !cart.isEmpty()) {
+
+
+
+                // 合計金額
+
                 int total = 0;
 
 
-                for (Order_Item item : cart) {
+                for(Order_Item item : cart){
 
-                    total += item.getPrice()
-                           * item.getQuantity();
+
+                    total +=
+                    item.getPrice()
+                    * item.getQuantity();
 
                 }
 
 
 
-                // テーブル番号取得
-                Integer tableId =
-                        (Integer) session.getAttribute("tableId");
+
+                // 注文登録
+
+                OrderDAO orderDAO =
+                        new OrderDAO();
 
 
-
-                // order登録
-                OrderDAO orderDAO = new OrderDAO();
-
-
-                int orderId = orderDAO.insert(
+                int orderId =
+                    orderDAO.insert(
                         tableId,
                         "注文中",
                         total,
                         "未払い"
-                );
+                    );
 
 
 
-                // order_item登録
-                OrderItemDAO itemDAO = new OrderItemDAO();
-
-                RecipeDAO recipeDAO = new RecipeDAO();
-
-                InventoryDAO inventoryDAO = new InventoryDAO();
 
 
+                // 注文明細登録
 
-                for (Order_Item item : cart) {
+                OrderItemDAO itemDAO =
+                        new OrderItemDAO();
 
 
-                    // 注文明細登録
+                RecipeDAO recipeDAO =
+                        new RecipeDAO();
+
+
+                InventoryDAO inventoryDAO =
+                        new InventoryDAO();
+
+
+
+
+                for(Order_Item item : cart){
+
+
+
                     itemDAO.insert(
                             orderId,
                             item
@@ -90,55 +133,75 @@ public class OrderConfirmServlet extends HttpServlet {
 
 
 
+
+
                     // レシピ取得
+
                     List<Recipe> recipes =
-                            recipeDAO.selectByProductId(
-                                    item.getProduct_id()
-                            );
+                        recipeDAO.selectByProductId(
+                            item.getProduct_id()
+                        );
 
 
 
-                    // 材料在庫減少
-                    for (Recipe recipe : recipes) {
+
+
+                    // 在庫減少
+
+                    for(Recipe recipe : recipes){
+
 
 
                         double useQuantity =
-                                recipe.getQuantity()
-                                * item.getQuantity();
+                            recipe.getQuantity()
+                            * item.getQuantity();
 
 
 
                         inventoryDAO.decrease(
-                                recipe.getIngredientId(),
-                                useQuantity
+                            recipe.getIngredientId(),
+                            useQuantity
                         );
 
+
                     }
+
 
                 }
 
 
 
-                // カート削除
-                session.removeAttribute("cart");
+
+                // テーブル専用カート削除
+
+                session.removeAttribute(
+                    "cart_" + tableId
+                );
+
 
             }
 
 
 
-            // 注文画面へ戻る
+
             response.sendRedirect(
-                    request.getContextPath()
-                    + "/OrderServlet"
+                request.getContextPath()
+                + "/OrderServlet"
             );
 
 
-        } catch(Exception e) {
+
+        }catch(Exception e){
+
 
             e.printStackTrace();
+
             throw new ServletException(e);
+
 
         }
 
+
     }
+
 }

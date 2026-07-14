@@ -32,13 +32,10 @@ public class OrderServlet extends HttpServlet {
         try {
 
 
-            // ==========================
             // テーブル番号取得
-            // ==========================
 
             String tableParam =
                     request.getParameter("table_id");
-
 
 
             if(tableParam != null &&
@@ -48,9 +45,6 @@ public class OrderServlet extends HttpServlet {
                 int tableId =
                         Integer.parseInt(tableParam);
 
-
-
-                // 席状態変更
 
                 CafeTableDAO tableDAO =
                         new CafeTableDAO();
@@ -62,34 +56,36 @@ public class OrderServlet extends HttpServlet {
                 );
 
 
-
-                // セッション保存
-
                 session.setAttribute(
                         "tableId",
                         tableId
-                );
-
-
-                System.out.println(
-                    "保存したテーブル番号：" + tableId
                 );
 
             }
 
 
 
+            Integer tableId =
+                    (Integer)session.getAttribute("tableId");
 
 
-            // ==========================
-            // カート取得
-            // ==========================
 
 
-            List<Order_Item> cart =
-                    (List<Order_Item>)
-                    session.getAttribute("cart");
 
+            // カート取得（テーブル別）
+
+            List<Order_Item> cart = null;
+
+
+            if(tableId != null){
+
+                cart =
+                (List<Order_Item>)
+                session.getAttribute(
+                        "cart_" + tableId
+                );
+
+            }
 
 
             request.setAttribute(
@@ -101,46 +97,31 @@ public class OrderServlet extends HttpServlet {
 
 
 
-
-            // ==========================
             // 商品取得
-            // ==========================
-
 
             ProductDAO productDAO =
                     new ProductDAO();
-
 
 
             String keyword =
                     request.getParameter("keyword");
 
 
-
             List<Product> list;
 
 
-
             if(keyword != null &&
-               !keyword.trim().isEmpty()) {
-
-
+               !keyword.isEmpty()){
 
                 list =
-                    productDAO.search(keyword);
+                productDAO.search(keyword);
 
-
-
-            } else {
-
-
+            }else{
 
                 list =
-                    productDAO.selectAll();
+                productDAO.selectAll();
 
             }
-
-
 
 
             request.setAttribute(
@@ -150,31 +131,25 @@ public class OrderServlet extends HttpServlet {
 
 
 
-            request.setAttribute(
-                    "keyword",
-                    keyword
-            );
 
 
 
-
-
-
-
-            // ==========================
-            // 注文履歴取得
-            // ==========================
-
+            // 注文履歴（テーブル別）
 
             OrderItemDAO orderItemDAO =
                     new OrderItemDAO();
 
 
-
             List<Order_Item> historyList =
-                    orderItemDAO.selectHistory();
+                    null;
 
 
+            if(tableId != null){
+
+                historyList =
+                orderItemDAO.selectHistory(tableId);
+
+            }
 
 
             request.setAttribute(
@@ -186,25 +161,15 @@ public class OrderServlet extends HttpServlet {
 
 
 
-
-
-            // ==========================
-            // 注文画面へ
-            // ==========================
-
-
             request.getRequestDispatcher(
                     "/main/Order.jsp"
-            ).forward(request, response);
+            ).forward(request,response);
 
 
 
-
-        } catch(Exception e) {
-
+        }catch(Exception e){
 
             throw new ServletException(e);
-
 
         }
 
