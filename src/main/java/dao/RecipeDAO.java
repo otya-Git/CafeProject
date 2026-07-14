@@ -81,5 +81,25 @@ public class RecipeDAO extends DAO {
         return list;
 
     }
+    
+	 // 商品のレシピ削除
+	    public void deleteByProductId(long productId) throws Exception {
+	
+	        Connection con = getConnection();
+	
+	        String sql =
+	            "DELETE FROM recipe WHERE product_id=?";
+	
+	        PreparedStatement ps =
+	                con.prepareStatement(sql);
+	
+	        ps.setLong(1, productId);
+	
+	        ps.executeUpdate();
+	
+	        ps.close();
+	        con.close();
+	
+	    }
 
 }

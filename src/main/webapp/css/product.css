@@ -396,4 +396,52 @@ h2{
     font-size:14px;
     color:#888;
 }
-/*
+
+.ingredient-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.ingredient-row{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:15px;
+}
+
+.ingredient-row select{
+    width:260px;
+    height:48px;
+    border:1px solid #d7b892;
+    border-radius:12px;
+    padding:0 12px;
+    font-size:18px;
+    background:#fff;
+}
+
+.ingredient-row input{
+    width:220px;
+    height:48px;
+    border:1px solid #d7b892;
+    border-radius:12px;
+    padding:0 15px;
+    font-size:18px;
+}
+
+.removeIngredient{
+    width:80px;
+    height:48px;
+    border:none;
+    border-radius:12px;
+    background:#ff6b6b;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.removeIngredient:hover{
+    background:#e74c3c;
+}

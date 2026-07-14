@@ -71,6 +71,12 @@
                 step="0.01"
                 name="quantity"
                 placeholder="使用量">
+                
+             <div class="ingredient-row">
+
+		    
+
+</div>
 
         </div>
 
@@ -125,6 +131,23 @@ addButton.onclick = function(){
     area.appendChild(copy);
 
 };
+area.addEventListener("click", function(e){
+
+    if(e.target.classList.contains("removeIngredient")){
+
+        const rows =
+            document.querySelectorAll(".ingredient-row");
+
+        if(rows.length > 1){
+
+            e.target.parentElement.remove();
+
+        }
+
+    }
+
+});
+
 
 </script>
 <%@include file="../footer.jsp"%>

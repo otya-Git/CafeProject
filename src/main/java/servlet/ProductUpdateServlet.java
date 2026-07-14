@@ -3,7 +3,9 @@ package servlet;
 import java.io.IOException;
 
 import bean.Product;
+import bean.Recipe;
 import dao.ProductDAO;
+import dao.RecipeDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -33,8 +35,43 @@ public class ProductUpdateServlet extends HttpServlet {
             p.setDescription(desc);
             p.setCategoryName(category);
 
-            ProductDAO dao = new ProductDAO();
-            dao.update(p);
+            ProductDAO productDao = new ProductDAO();
+            productDao.update(p);
+
+            RecipeDAO recipeDao = new RecipeDAO();
+
+         // 一旦全部削除
+         recipeDao.deleteByProductId(id);
+
+         // 再登録
+         String[] ingredientIds =
+                 request.getParameterValues("ingredientId");
+
+         String[] quantities =
+                 request.getParameterValues("quantity");
+
+         if (ingredientIds != null && quantities != null) {
+
+             for (int i = 0; i < ingredientIds.length; i++) {
+
+                 if (ingredientIds[i].isEmpty() ||
+                     quantities[i].isEmpty()) {
+                     continue;
+                 }
+
+                 Recipe recipe = new Recipe();
+
+                 recipe.setProductId(id);
+                 recipe.setIngredientId(
+                         Integer.parseInt(ingredientIds[i]));
+                 recipe.setQuantity(
+                         Double.parseDouble(quantities[i]));
+
+                 recipeDao.insert(recipe);
+
+             }
+
+         }
 
             response.sendRedirect(
                 request.getContextPath() + "/ProductListServlet");
