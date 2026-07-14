@@ -12,7 +12,7 @@ Users loginUser = (Users) session.getAttribute("user");
 <div>
 
 
-    <h2>☕ メニュー</h2><br>
+    <h2>☕&nbsp;&nbsp;メニュー</h2><br>
 
     <div class="main">
 
