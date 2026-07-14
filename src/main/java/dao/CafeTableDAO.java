@@ -71,4 +71,25 @@ public class CafeTableDAO extends DAO {
         con.close();
 
     }
+ // テーブル追加
+    public void insert() throws Exception {
+
+        Connection con = getConnection();
+
+        String sql =
+            "INSERT INTO cafe_table(status) "
+          + "VALUES('空席')";
+
+
+        PreparedStatement st =
+                con.prepareStatement(sql);
+
+
+        st.executeUpdate();
+
+
+        st.close();
+        con.close();
+
+    }
 }
