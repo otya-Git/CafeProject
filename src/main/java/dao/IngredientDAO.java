@@ -18,7 +18,7 @@ public class IngredientDAO extends DAO {
 
         PreparedStatement ps =
                 con.prepareStatement(
-                "SELECT * FROM ingredient ORDER BY ingredient_name");
+                		"SELECT * FROM ingredient ORDER BY ingredient_id ASC");
 
         ResultSet rs = ps.executeQuery();
 
