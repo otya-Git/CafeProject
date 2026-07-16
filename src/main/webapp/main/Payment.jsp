@@ -43,7 +43,6 @@ href="${pageContext.request.contextPath}/css/payment.css">
 
 </head>
 
-
 <body>
 
 
@@ -61,10 +60,10 @@ href="${pageContext.request.contextPath}/css/payment.css">
 
 
 
-<h2>
-合計金額：
-<%=total%>円
-</h2>
+<div class="total-price">
+    合計金額：
+    <%=total%>円
+</div>
 
 
 
@@ -201,6 +200,7 @@ QR決済
 
 
 <input type="submit"
+       class="payment-btn"
        value="会計確定">
 
 

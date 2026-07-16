@@ -1,0 +1,203 @@
+/* 全体 */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f7f3ed;
+    font-family: "Segoe UI", "メイリオ", sans-serif;
+    color: #4b3832;
+}
+
+
+/* タイトル */
+h2 {
+    text-align: center;
+    margin-top: 40px;
+    color: #5d4037;
+}
+
+
+/* メインボックス */
+.payment-box {
+
+    width: 500px;
+
+    margin: 30px auto;
+
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+
+}
+
+
+/* テーブル番号・見出し */
+.payment-box h3 {
+
+    text-align: center;
+
+    color: #6d4c41;
+
+}
+
+
+/* 合計金額 */
+.total-price {
+
+    text-align: center;
+
+    background-color: #fff3e0;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    color: #e65100;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    margin: 20px 0;
+
+}
+
+
+/* 注文テーブル */
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+
+}
+
+
+/* 表の見出し */
+th {
+
+    background-color: #795548;
+
+    color: white;
+
+    padding: 12px;
+
+}
+
+
+/* 表の内容 */
+td {
+
+    padding: 12px;
+
+    text-align: center;
+
+    border-bottom: 1px solid #ddd;
+
+}
+
+
+/* 偶数行 */
+tr:nth-child(even) {
+
+    background-color: #fafafa;
+
+}
+
+
+/* 支払方法 */
+select {
+
+    width: 100%;
+
+    padding: 12px;
+
+    font-size: 16px;
+
+    border-radius: 8px;
+
+    border: 1px solid #ccc;
+
+}
+
+
+/* 会計確定ボタン */
+.payment-btn {
+
+    width: 100%;
+
+    padding: 15px;
+
+    background-color: #8d6e63;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.payment-btn:hover {
+
+    background-color: #5d4037;
+
+}
+
+
+/* 戻るリンク */
+a {
+
+    display: block;
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    color: #6d4c41;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+}
+
+
+a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* スマホ対応 */
+@media screen and (max-width:600px){
+
+    .payment-box {
+
+        width:90%;
+
+        padding:20px;
+
+    }
+
+
+    table {
+
+        font-size:14px;
+
+    }
+
+}
