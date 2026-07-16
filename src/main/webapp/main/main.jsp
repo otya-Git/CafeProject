@@ -51,7 +51,7 @@ Users loginUser = (Users) session.getAttribute("user");
         </div>
 
         <div class="box">
-            <a href="/">シフト</a>
+            <a href="${pageContext.request.contextPath}/ShiftServlet">シフト</a>
         </div>
 
         <%
