@@ -64,7 +64,7 @@
 
         <li><a href="${pageContext.request.contextPath}/ProductListServlet">商品管理</a></li>
 
-        <li><a href="${pageContext.request.contextPath}/OrderServlet">注文</a></li>
+        <li><a href="${pageContext.request.contextPath}/TableListServlet">座席</a></li>
 
         <li><a href="${pageContext.request.contextPath}/SalesServlet">売り上げ一覧</a></li>
 

@@ -70,6 +70,16 @@
             </tr>
         </c:forEach>
     </table>
+        <div class="button-area">
+
+        <a href="${pageContext.request.contextPath}/main/main.jsp"
+           class="add-btn">
+
+            メニューに戻る
+
+        </a>
+
+    </div>
 </div>
 
 <%@include file="../footer.jsp"%>
