@@ -25,6 +25,8 @@ public class LoginFilter extends HttpFilter {
         if (uri.endsWith("/login")
                 || uri.endsWith("/login_admin")
                 || uri.endsWith("/login/login.jsp")
+                || uri.endsWith("/login/insert.jsp")
+                || uri.endsWith("/login/admin_inssert.jsp")
                 || uri.endsWith("/login/admin_check.jsp")
                 || uri.endsWith("/login/login-error.jsp")
                 || uri.contains("/css/")
