@@ -17,7 +17,10 @@ public class ProductDAO extends DAO {
 
         Connection con = getConnection();
 
-        String sql = "SELECT * FROM product ORDER BY product_id";
+        String sql =
+            "SELECT * FROM product "
+          + "WHERE is_deleted = false "
+          + "ORDER BY product_id";
 
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -44,12 +47,16 @@ public class ProductDAO extends DAO {
         return list;
     }
 
-    // 商品削除
+
+    // 商品削除（論理削除）
     public void delete(int productId) throws Exception {
 
         Connection con = getConnection();
 
-        String sql = "DELETE FROM product WHERE product_id = ?";
+        String sql =
+            "UPDATE product "
+          + "SET is_deleted = true "
+          + "WHERE product_id = ?";
 
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -61,6 +68,7 @@ public class ProductDAO extends DAO {
         con.close();
     }
 
+
     // 商品1件取得（編集用）
     public Product selectById(int productId) throws Exception {
 
@@ -68,9 +76,13 @@ public class ProductDAO extends DAO {
 
         Connection con = getConnection();
 
-        String sql = "SELECT * FROM product WHERE product_id = ?";
+        String sql =
+            "SELECT * FROM product "
+          + "WHERE product_id = ? "
+          + "AND is_deleted = false";
 
         PreparedStatement ps = con.prepareStatement(sql);
+
         ps.setInt(1, productId);
 
         ResultSet rs = ps.executeQuery();
@@ -94,12 +106,20 @@ public class ProductDAO extends DAO {
         return product;
     }
 
-    // 商品更新（編集確定）
+
+    // 商品更新
     public void update(Product p) throws Exception {
 
         Connection con = getConnection();
 
-        String sql = "UPDATE product SET product_name=?, cost_price=?, price=?, description=?, category_name=? WHERE product_id=?";
+        String sql =
+            "UPDATE product SET "
+          + "product_name=?, "
+          + "cost_price=?, "
+          + "price=?, "
+          + "description=?, "
+          + "category_name=? "
+          + "WHERE product_id=?";
 
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -115,6 +135,9 @@ public class ProductDAO extends DAO {
         ps.close();
         con.close();
     }
+
+
+    // 商品登録
     public int insert(Product product) throws Exception {
 
         Connection con = getConnection();
@@ -138,7 +161,7 @@ public class ProductDAO extends DAO {
 
         int productId = 0;
 
-        if(rs.next()){
+        if (rs.next()) {
 
             productId = rs.getInt("product_id");
 
@@ -149,8 +172,10 @@ public class ProductDAO extends DAO {
         con.close();
 
         return productId;
-
     }
+
+
+    // カテゴリ検索
     public List<Product> selectCategory(String category)
             throws Exception {
 
@@ -161,6 +186,7 @@ public class ProductDAO extends DAO {
         String sql =
             "SELECT * FROM product "
           + "WHERE category_name=? "
+          + "AND is_deleted = false "
           + "ORDER BY product_id";
 
         PreparedStatement ps =
@@ -170,7 +196,8 @@ public class ProductDAO extends DAO {
 
         ResultSet rs = ps.executeQuery();
 
-        while(rs.next()){
+
+        while (rs.next()) {
 
             Product p = new Product();
 
@@ -190,7 +217,9 @@ public class ProductDAO extends DAO {
 
         return list;
     }
-    
+
+
+    // 商品名検索
     public List<Product> search(String keyword) throws Exception {
 
         List<Product> list = new ArrayList<>();
@@ -198,12 +227,16 @@ public class ProductDAO extends DAO {
         Connection con = getConnection();
 
         PreparedStatement st = con.prepareStatement(
-            "SELECT * FROM product WHERE product_name LIKE ?"
+            "SELECT * FROM product "
+          + "WHERE product_name LIKE ? "
+          + "AND is_deleted = false"
         );
 
         st.setString(1, "%" + keyword + "%");
 
+
         ResultSet rs = st.executeQuery();
+
 
         while (rs.next()) {
 

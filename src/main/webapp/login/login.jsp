@@ -3,7 +3,6 @@
 
 <link rel="stylesheet"
 href="${pageContext.request.contextPath}/css/login.css">
-<%@ include file="../loginheader.jsp" %>
 <h1>カフェDX始めました</h1>
 
 <div class="login-box">
