@@ -1,7 +1,6 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <!-- 変更点: admin_check.css を読み込むタグを追加 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin_check.css">
-<%@include file="../loginheader.jsp" %>
 
 <h1>管理者認証</h1>
 
