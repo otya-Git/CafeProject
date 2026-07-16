@@ -33,7 +33,7 @@ Users loginUser = (Users) session.getAttribute("user");
         </div>
         
         <div class="box">
-            <a href="${pageContext.request.contextPath}/TableListServlet">テーブル</a>   
+            <a href="${pageContext.request.contextPath}/TableListServlet">座席一覧</a>   
         </div>
         
 
