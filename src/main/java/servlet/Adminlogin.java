@@ -29,7 +29,7 @@ public class Adminlogin extends HttpServlet {
             // パスワードが違う場合
             request.setAttribute("error", "管理者パスワードが違います");
 
-            request.getRequestDispatcher("/login/insert.jsp")
+            request.getRequestDispatcher("/login/admin_check.jsp")
                    .forward(request, response);
         }
     }
