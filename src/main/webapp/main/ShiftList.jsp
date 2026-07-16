@@ -9,7 +9,7 @@
     <h2>シフト一覧</h2>
     
     <c:if test="${sessionScope.user.role == 'ADMIN'}">
-        <!-- 💡 ボタンの幅に綺麗にフィットする、横幅コンパクトなデザインに変更しました -->
+        <!-- 💡 ボタンの幅に綺麗にフィットする、横幅コンパクトなデザインに変更しました a-->
         <div class="admin-action-box" style="padding: 15px 20px; margin-bottom: 25px; background-color: #f5efe6; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); width: max-content;">
             <div style="display: flex; align-items: center; gap: 15px;">
                 <div>
