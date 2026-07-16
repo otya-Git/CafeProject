@@ -8,8 +8,8 @@ import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.List;
 
-import bean.CalendarDay;   // 💡 新しく作ったクラスをインポート
-import bean.CalendarShift; // 💡 新しく作ったクラスをインポート
+import bean.CalendarDay;
+import bean.CalendarShift;
 import bean.Shift;
 import bean.Users;
 import dao.ShiftDAO;
@@ -65,12 +65,17 @@ public class ShiftServlet extends HttpServlet {
             while (!currentDay.isAfter(calendarEnd)) {
                 CalendarDay dayDto = new CalendarDay();
                 dayDto.setDayOfMonth(currentDay.getDayOfMonth());
-                dayDto.setCurrentMonth(currentDay.getMonthValue() == month);
+                
+                // 💡 【エラー修正完了】currentMonth から currentDay に戻しました
+                dayDto.setCurrentMonth(currentDay.getMonthValue() == month); 
 
                 for (Shift shift : allShifts) {
                     if (shift.getWork_date() != null && shift.getWork_date().equals(currentDay)) {
                         
                         CalendarShift displayShift = new CalendarShift();
+                        
+                        // 💡 【重要】JSPへ本物のIDを引き継ぐための処理
+                        displayShift.setShiftId(shift.getshift_id());
                         
                         if (shift.getstart_time() != null) {
                             displayShift.setStartTime(shift.getstart_time().format(timeFormatter));
