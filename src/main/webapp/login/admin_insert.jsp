@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" %>
 <!-- 変更点: admin_insert.css を読み込むように指定 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin_insert.css">
-<%@include file="../loginheader.jsp" %>
+
 
 <h1>カフェDX始めました</h1>
 
