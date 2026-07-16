@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
 
             } else {
                 response.sendRedirect(
-                    request.getContextPath() + "/login/login-error.jsp"
+                    request.getContextPath() + "/login/login.jsp"
                 );
             }
 
