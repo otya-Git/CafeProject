@@ -63,6 +63,8 @@
         <li><a href="${pageContext.request.contextPath}/IngredientListServlet">材料一覧</a></li>
 
         <li><a href="${pageContext.request.contextPath}/ProductListServlet">商品管理</a></li>
+        
+        <li><a href="${pageContext.request.contextPath}/SupplierListServlet">仕入先管理</a></li>
 
         <li><a href="${pageContext.request.contextPath}/TableListServlet">座席</a></li>
 
