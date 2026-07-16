@@ -2,9 +2,7 @@ package tool;
 
 import java.io.IOException;
 
-import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
-import jakarta.servlet.FilterConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpFilter;
@@ -12,28 +10,38 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebFilter(urlPatterns={"/menu.jsp", "/mypage.jsp", "/list.jsp"})
-public class LoginFilter extends HttpFilter implements Filter {
+@WebFilter("/*")
+public class LoginFilter extends HttpFilter {
 
-    public void init(FilterConfig fConfig) throws ServletException {
-    }
+    @Override
+    protected void doFilter(HttpServletRequest request,
+                            HttpServletResponse response,
+                            FilterChain chain)
+            throws IOException, ServletException {
 
-    public void doFilter(
-        HttpServletRequest request,
-        HttpServletResponse response,
-        FilterChain chain
-    ) throws IOException, ServletException {
+        String uri = request.getRequestURI();
+
+        // ログイン不要のURL
+        if (uri.endsWith("/login")
+                || uri.endsWith("/login_admin")
+                || uri.endsWith("/login/login.jsp")
+                || uri.endsWith("/login/admin_check.jsp")
+                || uri.endsWith("/login/login-error.jsp")
+                || uri.contains("/css/")
+                || uri.contains("/js/")
+                || uri.contains("/images/")) {
+
+            chain.doFilter(request, response);
+            return;
+        }
 
         HttpSession session = request.getSession(false);
 
         if (session == null || session.getAttribute("user") == null) {
-            response.sendRedirect("login.jsp");
+            response.sendRedirect(request.getContextPath() + "/login/login.jsp");
             return;
         }
 
         chain.doFilter(request, response);
-    }
-
-    public void destroy() {
     }
 }
