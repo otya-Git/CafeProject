@@ -10,7 +10,17 @@ body {
     margin: 0;
     padding: 0;
 }
+.error-message {
 
+    color: red;
+
+    text-align: center;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+
+}
 h1 {
     text-align: center;
     margin-top: 40px;
