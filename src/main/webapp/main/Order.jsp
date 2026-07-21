@@ -165,10 +165,14 @@ for(Product p : list){
 
 <br>
 
+<div class="button-area">
 
-<a href="${pageContext.request.contextPath}/main/main.jsp">
-戻る
-</a>
+    <a href="${pageContext.request.contextPath}/main/main.jsp"
+       class="btn-back">
+        戻る
+    </a>
+
+</div>
 
 
 
