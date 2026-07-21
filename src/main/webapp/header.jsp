@@ -14,6 +14,9 @@
 
 <script src="${pageContext.request.contextPath}/js/script.js"></script>
 
+<%
+Users menuUser = (Users) session.getAttribute("user");
+%>
 
 
 </head>
@@ -67,10 +70,17 @@
         <li><a href="${pageContext.request.contextPath}/SupplierListServlet">仕入先管理</a></li>
 
         <li><a href="${pageContext.request.contextPath}/TableListServlet">座席</a></li>
-
+        
+		<%
+        if (menuUser != null && "ADMIN".equals(menuUser.getRole())) {
+        %>
         <li><a href="${pageContext.request.contextPath}/SalesServlet">売り上げ一覧</a></li>
 
         <li><a href="${pageContext.request.contextPath}/UsersServlet">ユーザー管理</a></li>
+        <%
+        }
+        %>
+        
 
         <li><a href="${pageContext.request.contextPath}/ShiftServlet">シフト</a></li>
 
