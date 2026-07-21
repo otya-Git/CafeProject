@@ -49,7 +49,7 @@
         </div>
         
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <a href="${pageContext.request.contextPath}/ShiftListServlet" style="color: #666; text-decoration: none;">
+            <a href="${pageContext.request.contextPath}/ShiftServlet" style="color: #666; text-decoration: none;">
                 ⬅️ キャンセルして戻る
             </a>
             <button type="submit" style="background-color: #ffc107; color: #333; border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; cursor: pointer;">
