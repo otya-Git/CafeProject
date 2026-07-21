@@ -24,44 +24,36 @@
 
 
 <p>
-
-材料名：
-
-<input type="text"
-       name="ingredientName"
-       value="${ingredient.ingredientName}"
-       required>
-
+    <label>材料名：</label>
+    <input type="text"
+           name="ingredientName"
+           value="${ingredient.ingredientName}"
+           required>
 </p>
-
-
 
 <p>
-
-単位：
-
-<input type="text"
-       name="unit"
-       value="${ingredient.unit}"
-       required>
-
+    <label>単位：</label>
+    <input type="text"
+           name="unit"
+           value="${ingredient.unit}"
+           required>
 </p>
-
-
-
-
-<input type="submit"
-       value="更新"
-       class="edit-btn">
 
 
 
 </form>
 
 
-<a href="${pageContext.request.contextPath}/IngredientListServlet">
-戻る
-</a>
+<div class="button-area">
+    <input type="submit"
+           value="更新"
+           class="edit-btn">
+
+    <a href="${pageContext.request.contextPath}/IngredientListServlet"
+       class="back-btn">
+        戻る
+    </a>
+</div>
 
 </div>
 
