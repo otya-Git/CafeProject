@@ -53,25 +53,24 @@ href="${pageContext.request.contextPath}/css/order.css">
 <div class="left">
 
 
-<h2>商品一覧</h2>
+<div class="title-area">
 
+    <h2>商品一覧</h2>
 
-<form action="${pageContext.request.contextPath}/OrderServlet"
-      method="get">
+    <form action="${pageContext.request.contextPath}/OrderServlet"
+          method="get">
 
+        <input type="text"
+               name="keyword"
+               placeholder="商品名検索">
 
-<input type="text"
-       name="keyword"
-       placeholder="商品名検索">
+        <input type="submit"
+               value="検索"
+               class="search-btn">
 
+    </form>
 
-<input type="submit"
-       value="検索">
-
-
-</form>
-
-
+</div>
 
 
 <table>
