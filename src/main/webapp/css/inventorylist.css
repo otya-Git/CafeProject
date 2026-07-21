@@ -3,19 +3,19 @@
     display: inline-block;
     margin-top: 20px;
     padding: 10px 18px;
-
-    background: #8b5e3c;
+    
+    background:  #8d6e63;
     color: white;
-
+    
     text-decoration: none;
     font-weight: bold;
-
+    
     border-radius: 8px;
-
+    
     transition: .3s;
 }
 
 .back-btn:hover {
-    background: #6f4a2f;
+    background: #735b51; /* ★ホバー時も、モカに合う深めの焦げ茶に */
     transform: translateY(-2px);
 }

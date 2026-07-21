@@ -36,7 +36,7 @@ table {
 }
 
 th {
-    background: #8c7064;
+    background:  #8d6e63;
     color: white;
     padding: 15px;
     font-size: 17px;
@@ -57,7 +57,7 @@ tr:hover {
 }
 
 input[type="submit"] {
-    background: #8c7064;
+    background:  #8d6e63;
     color: white;
     border: none;
     padding: 10px 18px;
@@ -81,7 +81,7 @@ input[type="submit"]:hover {
     display: inline-block;
     margin: 0 10px;
     padding: 10px 18px;
-    background: #8c7064;
+    background:  #8d6e63;
     color: white;
     text-decoration: none;
     font-weight: bold;
