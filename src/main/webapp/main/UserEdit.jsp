@@ -3,7 +3,8 @@
 
 <%@ include file="../header.jsp" %>
 
-<link rel="stylesheet" href="../css/userupdate.css">
+<link rel="stylesheet"
+      href="${pageContext.request.contextPath}/css/UserEdit.css">
 
 <h2>ユーザー情報の編集</h2>
 
