@@ -20,12 +20,20 @@ public class HistoryServlet extends HttpServlet {
             throws ServletException, IOException {
 
         try {
+            String dateParam = request.getParameter("date");
 
             HistoryDAO dao = new HistoryDAO();
+            List<History> list;
 
-            List<History> list = dao.selectAll();
+            if (dateParam != null && !dateParam.isEmpty()) {
+                list = dao.selectByDate(dateParam);
+            } else {
+                list = dao.selectAll();
+            }
 
             request.setAttribute("historyList", list);
+            
+            request.setAttribute("selectedDate", dateParam);
 
             request.getRequestDispatcher("/main/history.jsp")
                    .forward(request, response);
