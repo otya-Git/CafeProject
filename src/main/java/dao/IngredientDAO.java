@@ -18,7 +18,9 @@ public class IngredientDAO extends DAO {
 
         PreparedStatement ps =
                 con.prepareStatement(
-                		"SELECT * FROM ingredient ORDER BY ingredient_id ASC");
+                    "SELECT * FROM ingredient " +
+                    "WHERE delete_flag = 0 " +
+                    "ORDER BY ingredient_id ASC");
 
         ResultSet rs = ps.executeQuery();
 
@@ -144,15 +146,16 @@ public class IngredientDAO extends DAO {
 
 	    }
 	    
-	 // 材料削除
+	 // 材料削除（論理削除）
 	    public void delete(int ingredientId)
 	            throws Exception {
 
 	        Connection con = getConnection();
 
 	        String sql =
-	            "DELETE FROM ingredient " +
-	            "WHERE ingredient_id=?";
+	            "UPDATE ingredient " +
+	            "SET delete_flag = 1 " +
+	            "WHERE ingredient_id = ?";
 
 	        PreparedStatement ps =
 	                con.prepareStatement(sql);
@@ -163,7 +166,6 @@ public class IngredientDAO extends DAO {
 
 	        ps.close();
 	        con.close();
-
 	    }
 
 }
