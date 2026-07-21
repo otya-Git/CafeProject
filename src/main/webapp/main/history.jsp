@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%> 
 
 <%@include file="../header.jsp"%>
 
@@ -39,7 +40,7 @@
             <td>${h.quantity}</td>
             <td class="price">¥${h.totalAmount}</td>
             <td class="payment">${h.paymentMethod}</td>
-            <td>${h.orderedAt}</td>
+            <td><fmt:formatDate value="${h.orderedAt}" pattern="yyyy-MM-dd HH:mm" /></td>
         </tr>
         </c:forEach>
     </tbody>
