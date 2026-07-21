@@ -77,6 +77,8 @@ Users menuUser = (Users) session.getAttribute("user");
         <li><a href="${pageContext.request.contextPath}/SalesServlet">売り上げ一覧</a></li>
 
         <li><a href="${pageContext.request.contextPath}/UsersServlet">ユーザー管理</a></li>
+        
+        <li><a href="${pageContext.request.contextPath}/HistoryServlet">会計履歴</a></li>
         <%
         }
         %>

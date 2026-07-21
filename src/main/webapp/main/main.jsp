@@ -53,6 +53,10 @@ Users loginUser = (Users) session.getAttribute("user");
         <div class="box">
             <a href="${pageContext.request.contextPath}/ShiftServlet">シフト</a>
         </div>
+        
+        <div class="box">
+        	<a href="${pageContext.request.contextPath}/HistoryServlet">会計履歴</a>
+        </div>
 
         <%
         }

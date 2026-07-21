@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+body{
+    background-image: url("../image/カフェ.jpg");
+    margin: 0;
+    font-family: "Yu Gothic", sans-serif;
+    background-color: #f8f4ea;
+    color: #5b4636;
+}
+
+/* タイトル */
+h2{
+    color:#6d4c41;
+    background:#fffdf7;
+    padding:15px 150px;
+    border-radius:15px;
+    text-align:center;
+    width:fit-content;
+    margin:50px auto;
+    border:2px solid #e7d7c1;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+/* 全体 */
+.list-area{
+    width:90%;
+    max-width:1200px;
+    margin:0 auto 50px;
+}
+
+/* テーブル */
+.history-table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fffdf7;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+/* 見出し */
+.history-table th{
+    background:#8d6e63;
+    color:white;
+    padding:15px;
+    font-size:18px;
+}
+
+/* データ */
+.history-table td{
+    padding:14px;
+    text-align:center;
+    border-bottom:1px solid #eee;
+    font-size:16px;
+}
+
+/* 偶数行 */
+.history-table tr:nth-child(even){
+    background:#faf6ef;
+}
+
+/* ホバー */
+.history-table tr:hover{
+    background:#f3e6d5;
+}
+
+/* 金額 */
+.price{
+    color:#c0392b;
+    font-weight:bold;
+}
+
+/* 決済方法 */
+.payment{
+    font-weight:bold;
+    color:#6d4c41;
+}
+
+/* レスポンシブ */
+@media(max-width:900px){
+
+    .history-table{
+        font-size:14px;
+    }
+
+    .history-table th,
+    .history-table td{
+        padding:10px;
+    }
+
+    h2{
+        padding:15px 80px;
+        font-size:30px;
+    }
+
+}
