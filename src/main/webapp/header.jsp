@@ -69,7 +69,7 @@ Users menuUser = (Users) session.getAttribute("user");
         
         <li><a href="${pageContext.request.contextPath}/SupplierListServlet">仕入先管理</a></li>
 
-        <li><a href="${pageContext.request.contextPath}/TableListServlet">座席</a></li>
+        <li><a href="${pageContext.request.contextPath}/TableListServlet">座席一覧</a></li>
         
 		<%
         if (menuUser != null && "ADMIN".equals(menuUser.getRole())) {

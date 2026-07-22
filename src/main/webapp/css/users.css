@@ -7,7 +7,6 @@ body {
     color: #5b4636;
 }
 
-/* タイトル */
 h2 {
     text-align: center;
     margin-top: 40px;
@@ -15,7 +14,6 @@ h2 {
     color: #6d4c41;
 }
 
-/* 全体 */
 .main {
     width: 900px;
     margin: 40px auto;
@@ -25,7 +23,6 @@ h2 {
     gap: 30px;
 }
 
-/* メニュー */
 .box {
     width: 220px;
     height: 150px;
@@ -39,14 +36,12 @@ h2 {
     transition: 0.3s;
 }
 
-/* ホバー */
 .box:hover {
     transform: translateY(-8px);
     background: #f4e7d3;
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
-/* リンク */
 .box a {
     text-decoration: none;
     color: #6d4c41;
@@ -54,9 +49,20 @@ h2 {
     font-weight: bold;
 }
 
+.list-area {
+    display: block;
+    width: max-content !important;
+    justify-self: center;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #fffdf7;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
 .user-table {
-    width: auto;
-    margin: 30px auto;
+    width: 750px !important;
     border-collapse: collapse;
     background-color: #ffffff;
     border-radius: 12px;
@@ -64,15 +70,13 @@ h2 {
     overflow: hidden;
 }
 
-/* 見出し（th）とデータ（td）の余白を共通化 */
 .user-table th,
 .user-table td {
-    padding: 14px 35px;
+    padding: 14px 20px;
     text-align: center;
     white-space: nowrap;
 }
 
-/* 💡 見出し行*/
 .user-table th {
     background-color: #8d6e63 !important; 
     color: #ffffff !important;
@@ -81,7 +85,6 @@ h2 {
     letter-spacing: 0.05em;   
 }
 
-/* データ行 */
 .user-table td {
     border-bottom: 1px solid #f2ede9;
     color: #3e2723;
@@ -92,14 +95,11 @@ h2 {
     background-color: #fbf9f6; 
 }
 
-/* マウスホバー時の効果 */
 .user-table tr:hover td {
     background-color: #f4ebd9;
     transition: background-color 0.2s ease;
 }
 
-
-/* 💡 編集ボタン*/
 .user-table td .btn-edit {
     display: inline-block;
     padding: 6px 16px;          
@@ -114,32 +114,26 @@ h2 {
     transition: all 0.2s ease;  
 }
 
-/* 編集ボタンにマウスを乗せたとき*/
 .user-table td .btn-edit:hover {
     background-color: #6d544c !important;   
     box-shadow: 0 4px 8px rgba(109, 84, 76, 0.3); 
     color: #ffffff !important;
     transform: translateY(-1px); 
 }
-/* 💡 戻るボタンを中央に配置するエリア */
+
 .button-area {
-    text-align: center;   /* 戻るボタンを中央寄せにする */
-    margin-top: 20px;     /* テーブルとの間に適度なスキマを作る */
-    margin-bottom: 40px;  /* フッターとの間に適度なスキマを作る */
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
-/* 戻るボタン（既存のコードを少し調整） */
 .back-btn {
     display: inline-block;
-    /* margin-top: 20px; 👈 上の .button-area で余白を取るため、ここは削除するかコメントアウト */
-    padding: 10px 30px;   /* 横幅を少し広げると「編集」ボタンとバランスが良くなります */
-    
-    background:  #8d6e63;
+    padding: 10px 30px;
+    background: #8d6e63;
     color: white;
-    
     text-decoration: none;
     font-weight: bold;
-    
     border-radius: 8px;
     transition: .3s;
 }
@@ -147,4 +141,24 @@ h2 {
 .back-btn:hover {
     background: #735b51; 
     transform: translateY(-2px);
+}
+
+.user-table th:nth-child(1),
+.user-table td:nth-child(1) {
+    width: 15%;
+}
+
+.user-table th:nth-child(2),
+.user-table td:nth-child(2) {
+    width: 25%;
+}
+
+.user-table th:nth-child(3),
+.user-table td:nth-child(3) {
+    width: 40%;
+}
+
+.user-table th:nth-child(4),
+.user-table td:nth-child(4) {
+    width: 20%;
 }

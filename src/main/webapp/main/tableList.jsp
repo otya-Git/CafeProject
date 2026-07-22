@@ -7,15 +7,18 @@
 
 <h2>テーブル一覧</h2>
 
-<div class="main-container">
+<div class="list-area">
 
-<table border="1" cellpadding="10">
+<table class="product-table">
 
     <tr>
         <th>テーブル</th>
         <th>状態</th>
         <th>操作</th>
     </tr>
+
+    <!-- 💡 カウント調整用の見えない空行。これによって次の行から奇数・偶数がひっくり返ります -->
+    <tr style="display: none;"><td></td><td></td><td></td></tr>
 
     <c:forEach var="table" items="${tableList}">
         <tr>

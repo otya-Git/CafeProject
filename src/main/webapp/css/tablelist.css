@@ -1,74 +1,48 @@
 @charset "UTF-8";
 
-/* 全体 */
 body {
     margin: 0;
-    padding: 30px;
-    background: #f8f4ea;
-    font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
-    color: #4f423c;
+    font-family: "Yu Gothic", sans-serif;
+    background-color: #f8f4ea;
+    color: #5b4636;
 }
 
-/* タイトル */
 h2 {
     text-align: center;
-    font-size: 34px;
-    margin-bottom: 30px;
+    margin-top: 40px;
+    font-size: 38px;
     color: #6d4c41;
 }
 
-.main-container {
-    width: 85%;
-    margin: 0 auto 30px auto;
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(140, 112, 100, 0.06);
+.list-area .product-table tbody tr:nth-child(odd) td {
+    background-color: #fbf7f1 !important;
 }
 
-table {
-    width: 100%;
-    margin: 0 auto;
-    border-collapse: collapse;
-    background: transparent;
-    border-radius: 12px;
-    overflow: hidden;
+.list-area .product-table tbody tr:nth-child(even) td {
+    background-color: #ffffff !important;
 }
 
-th {
-    background:  #8d6e63;
-    color: white;
-    padding: 15px;
-    font-size: 17px;
+.list-area .product-table tr:hover td {
+    background-color: #f4e7d3 !important;
 }
 
-td {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #ede6e2;
-}
-
-tr:nth-child(even) {
-    background: #fdfbfb;
-}
-
-tr:hover {
-    background: #f4eee9;
-}
-
-input[type="submit"] {
-    background:  #8d6e63;
-    color: white;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
+.product-table input[type="submit"] {
+    background: #8d6e63 !important;
+    color: white !important;
+    border: none !important;
+    padding: 10px 18px !important;
+    border-radius: 8px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    font-size: 15px !important;
+    font-family: "Yu Gothic", sans-serif;
     transition: .3s;
+    box-shadow: none !important;
+    outline: none !important;
 }
 
-input[type="submit"]:hover {
-    background: #735b51;
+.product-table input[type="submit"]:hover {
+    background: #735b51 !important;
     transform: translateY(-2px);
 }
 
@@ -81,7 +55,7 @@ input[type="submit"]:hover {
     display: inline-block;
     margin: 0 10px;
     padding: 10px 18px;
-    background:  #8d6e63;
+    background: #8d6e63;
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -94,25 +68,30 @@ input[type="submit"]:hover {
     transform: translateY(-2px);
 }
 
-/* スマホ対応 */
 @media (max-width: 768px) {
     body {
         padding: 15px;
     }
-
-    table {
-        width: 100%;
-    }
-
-    th,
-    td {
-        padding: 10px;
-        font-size: 14px;
-    }
-
     .button-area a {
         display: block;
         width: 180px;
         margin: 10px auto;
     }
+}
+.list-area {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-table th, 
+.product-table td {
+    padding: 12px 15px;
+    font-size: 16px;
+    vertical-align: middle;
 }

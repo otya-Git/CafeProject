@@ -30,7 +30,7 @@
 
     <div class="button-area">
 
-        <a href="${pageContext.request.contextPath}/main/main.jsp">
+        <a href="${pageContext.request.contextPath}/TableListServlet">
             戻る
         </a>
 

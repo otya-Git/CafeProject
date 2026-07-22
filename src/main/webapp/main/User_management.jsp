@@ -6,8 +6,9 @@
 
 <%@ include file="../header.jsp" %>
 
-<h2>ユーザー</h2>
+<h2>ユーザー一覧</h2>
 
+<div class="list-area">
 <table class="user-table">
 	<tr>
 		<th>利用者ID</th>
@@ -33,6 +34,7 @@
 </table>
 <div class="button-area">
 <a href="${pageContext.request.contextPath}/main/main.jsp" class="back-btn">戻る</a>
+</div>
 </div>
 
 <%@ include file="../footer.jsp" %>
