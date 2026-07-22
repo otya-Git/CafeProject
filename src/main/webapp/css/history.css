@@ -7,12 +7,10 @@
     box-shadow: 0 5px 15px rgba(0,0,0,.05);
     margin-bottom: 25px;
     border: 2px solid #e7d7c1;
-    
     display: block;
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
-    
     text-align: center; 
 }
 
@@ -80,13 +78,16 @@
     text-decoration: underline;
 }
 
-.history-page .history-table {
+.history-page .history-table,
+.history-page .history-table[border="1"] {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
     background: #fffdf7;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,.1);
+    border: 1px solid #e7d7c1 !important;
 }
 
 .history-page .history-table th {
@@ -95,15 +96,34 @@
     padding: 15px;
     font-size: 18px;
     font-family: "Yu Gothic", sans-serif;
+    border-right: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-bottom: none !important;
+    border-top: none !important;
+    border-left: none !important;
+}
+
+.history-page .history-table th:last-child {
+    border-right: none !important;
 }
 
 .history-page .history-table td {
     padding: 14px;
     text-align: center;
-    border-bottom: 1px solid #eee;
+    border-right: 1px solid #eee !important;
+    border-bottom: 1px solid #eee !important;
+    border-top: none !important;
+    border-left: none !important;
     font-size: 16px;
     color: #5b4636;
     font-family: "Yu Gothic", sans-serif;
+}
+
+.history-page .history-table td:last-child {
+    border-right: none !important;
+}
+
+.history-page .history-table tr:last-child td {
+    border-bottom: none !important;
 }
 
 .history-page .history-table tr:nth-child(even) {
@@ -122,6 +142,40 @@
 .history-page .payment {
     font-weight: bold;
     color: #6d4c41;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.page-link {
+    display: inline-block;
+    padding: 8px 14px;
+    color: #8d6e63;
+    text-decoration: none;
+    background-color: #ffffff;
+    border: 1px solid #e7d7c1;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: "Yu Gothic", sans-serif;
+    transition: 0.2s;
+}
+
+.page-link:hover {
+    background-color: #f3e6d5;
+    border-color: #8d6e63;
+}
+
+.page-link.active {
+    background-color: #8d6e63;
+    color: #ffffff;
+    border-color: #8d6e63;
+    cursor: default;
 }
 
 @media(max-width:900px){
@@ -143,13 +197,10 @@
 .back-btn {
     display: inline-block;
     padding: 10px 30px;   
-    
     background:  #8d6e63;
     color: white;
-    
     text-decoration: none;
     font-weight: bold;
-    
     border-radius: 8px;
     transition: .3s;
 }

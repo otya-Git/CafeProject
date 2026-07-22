@@ -54,6 +54,30 @@
         </c:forEach>
     </tbody>
     </table>
+
+    <c:if test="${totalPages > 1}">
+        <div class="pagination">
+            <c:if test="${currentPage > 1}">
+                <a href="HistoryServlet?page=${currentPage - 1}&date=${selectedDate}&tableId=${selectedTableId}" class="page-link">&laquo; 前へ</a>
+            </c:if>
+
+            <c:forEach begin="1" end="${totalPages}" var="i">
+                <c:choose>
+                    <c:when test="${currentPage == i}">
+                        <span class="page-link active">${i}</span>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="HistoryServlet?page=${i}&date=${selectedDate}&tableId=${selectedTableId}" class="page-link">${i}</a>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+
+            <c:if test="${currentPage < totalPages}">
+                <a href="HistoryServlet?page=${currentPage + 1}&date=${selectedDate}&tableId=${selectedTableId}" class="page-link">次へ &raquo;</a>
+            </c:if>
+        </div>
+    </c:if>
+
     <br>
 	<div class="button-area">
 	<a href="${pageContext.request.contextPath}/main/main.jsp" class="back-btn">戻る</a>

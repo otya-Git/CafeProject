@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-/*sunsun*/
-
 body {
     background-color: #f8f4ea;
     color: #4a3c31;
@@ -13,45 +11,38 @@ body {
 h1 {
     text-align: center;
     margin-top: 40px;
-    color: #5c4033;            /* 濃いめのブラウン */
+    color: #5c4033;
     font-size: 24px;
     letter-spacing: 0.05em;
 }
 
-/* ==========================================
-   ログインボックス（中央のカード枠）
-   ========================================== */
 .login-box {
     background-color: #ffffff;
     max-width: 400px;
     margin: 40px auto;
     padding: 30px 40px;
-    border-radius: 12px;       /* 角を少し丸く */
-    box-shadow: 0 4px 15px rgba(92, 64, 51, 0.08); /* 柔らかい影 */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(92, 64, 51, 0.08);
     text-align: center;
 }
 
 .login-box h2 {
     font-size: 20px;
     margin-bottom: 25px;
-    color: #6f4e37;            /* コーヒー色 */
+    color: #6f4e37;
     position: relative;
     display: inline-block;
 }
 
-/* タイトルの下にさりげないアクセント線 */
 .login-box h2::after {
     content: '';
     display: block;
     width: 40px;
     height: 2px;
-    background-color: #d2b48c; /* カフェオレ色 */
+    background-color: #d2b48c;
     margin: 8px auto 0;
 }
 
-/* ==========================================
-   入力フォーム・チェックボックス
-   ========================================== */
 .login {
     margin-bottom: 15px;
 }
@@ -63,21 +54,19 @@ h1 {
     margin-bottom: 15px;
     border: 1px solid #dcd6cd;
     border-radius: 6px;
-    box-sizing: border-box; /* paddingを含めたサイズ計算 */
+    box-sizing: border-box;
     font-size: 15px;
     background-color: #faf8f5;
     transition: all 0.3s ease;
 }
 
-/* 入力枠にフォーカスしたときの色変化 */
 .login input:focus {
     outline: none;
-    border-color: #8b5a2b;     /* 濃いブラウン */
+    border-color: #8b5a2b;
     background-color: #ffffff;
     box-shadow: 0 0 5px rgba(139, 90, 43, 0.2);
 }
 
-/* パスワード表示のラベル */
 label {
     display: inline-flex;
     align-items: center;
@@ -91,14 +80,10 @@ label input[type="checkbox"] {
     margin-right: 6px;
 }
 
-/* ==========================================
-   ボタン・リンク
-   ========================================== */
-/* ログインボタン */
 .logbut button {
     width: 100%;
     padding: 12px;
-    background-color: #8b5a2b; /* 深みのあるローストブラウン */
+    background-color:#8d6e63;
     color: #ffffff;
     border: none;
     border-radius: 6px;
@@ -109,21 +94,19 @@ label input[type="checkbox"] {
 }
 
 .logbut button:hover {
-    background-color: #6f4e37; /* ホバー時に少し暗く */
+    background-color: #6f4e37;
 }
 
-/* 新規登録エリア */
 h4 {
     margin-top: 35px;
     margin-bottom: 15px;
     font-size: 14px;
     color: #7a695a;
     font-weight: normal;
-    border-top: 1px dashed #e6dfd5; /* 区切り破線 */
+    border-top: 1px dashed #e6dfd5;
     padding-top: 20px;
 }
 
-/* 新規登録ボタン（リンク） */
 .btn-link {
     display: inline-block;
     padding: 10px 20px;
@@ -136,25 +119,23 @@ h4 {
 }
 
 .btn-link:hover {
-    background-color: #8b5a2b;
+    background-color: #8d6e63;
     color: #ffffff;
+    border-color: #8d6e63;
 }
 
-/* ==========================================
-   追加：管理者ページリンクのスタイル
-   ========================================== */
 .admin-area {
-    margin-top: 20px; /* 新規登録ボタンとの間隔 */
+    margin-top: 20px;
 }
 
-.admin-link {
+.admin-area a {
     font-size: 13px;
-    color: #a08875; /* 少し控えめな薄いブラウン */
-    text-decoration: none; /* デフォルトの下線を消す */
+    color: #a08875;
+    text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.admin-link:hover {
-    color: #6f4e37; /* ホバーした時に濃いコーヒー色にする */
-    text-decoration: underline; /* ホバー時のみ下線を表示 */
+.admin-area a:hover {
+    color: #6f4e37;
+    text-decoration: underline;
 }
