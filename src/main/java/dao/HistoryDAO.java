@@ -10,30 +10,44 @@ import bean.History;
 
 public class HistoryDAO extends DAO {
 
-    public List<History> selectAll() throws Exception {
+    public List<History> search(String date, String tableIdParam) throws Exception {
 
         List<History> list = new ArrayList<>();
-
         Connection con = getConnection();
 
-        String sql =
+        StringBuilder sql = new StringBuilder(
             "SELECT o.order_id, o.table_id, " +
             "p.product_name, oi.quantity, " +
             "o.total_amount, o.payment_method, o.ordered_at " +
             "FROM \"order\" o " +
             "JOIN order_item oi ON o.order_id = oi.order_id " +
             "JOIN product p ON oi.product_id = p.product_id " +
-            "WHERE o.status='会計済み' " +
-            "ORDER BY o.ordered_at DESC";
+            "WHERE o.status='会計済み' "
+        );
 
-        PreparedStatement ps = con.prepareStatement(sql);
+        if (date != null && !date.isEmpty()) {
+            sql.append("AND DATE(o.ordered_at) = ? ");
+        }
+        if (tableIdParam != null && !tableIdParam.isEmpty()) {
+            sql.append("AND o.table_id = ? ");
+        }
+
+        sql.append("ORDER BY o.ordered_at DESC");
+
+        PreparedStatement ps = con.prepareStatement(sql.toString());
+
+        int paramIndex = 1;
+        if (date != null && !date.isEmpty()) {
+            ps.setDate(paramIndex++, java.sql.Date.valueOf(date));
+        }
+        if (tableIdParam != null && !tableIdParam.isEmpty()) {
+            ps.setInt(paramIndex++, Integer.parseInt(tableIdParam));
+        }
 
         ResultSet rs = ps.executeQuery();
 
         while(rs.next()){
-
             History h = new History();
-
             h.setOrderId(rs.getInt("order_id"));
             h.setTableId(rs.getInt("table_id"));
             h.setProductName(rs.getString("product_name"));
@@ -41,7 +55,6 @@ public class HistoryDAO extends DAO {
             h.setTotalAmount(rs.getInt("total_amount"));
             h.setPaymentMethod(rs.getString("payment_method"));
             h.setOrderedAt(rs.getTimestamp("ordered_at"));
-
             list.add(h);
         }
 
@@ -52,47 +65,23 @@ public class HistoryDAO extends DAO {
         return list;
     }
 
-    public List<History> selectByDate(String date) throws Exception {
+    public List<Integer> selectTableIds() throws Exception {
 
-        List<History> list = new ArrayList<>();
-
+        List<Integer> tableIds = new ArrayList<>();
         Connection con = getConnection();
 
-        String sql =
-            "SELECT o.order_id, o.table_id, " +
-            "p.product_name, oi.quantity, " +
-            "o.total_amount, o.payment_method, o.ordered_at " +
-            "FROM \"order\" o " +
-            "JOIN order_item oi ON o.order_id = oi.order_id " +
-            "JOIN product p ON oi.product_id = p.product_id " +
-            "WHERE o.status='会計済み' AND DATE(o.ordered_at) = ? " +
-            "ORDER BY o.ordered_at DESC";
-
+        String sql = "SELECT table_id FROM \"cafe_table\" ORDER BY table_id ASC";
         PreparedStatement ps = con.prepareStatement(sql);
-        
-        ps.setDate(1, java.sql.Date.valueOf(date));
-
         ResultSet rs = ps.executeQuery();
 
         while(rs.next()){
-
-            History h = new History();
-
-            h.setOrderId(rs.getInt("order_id"));
-            h.setTableId(rs.getInt("table_id"));
-            h.setProductName(rs.getString("product_name"));
-            h.setQuantity(rs.getInt("quantity"));
-            h.setTotalAmount(rs.getInt("total_amount"));
-            h.setPaymentMethod(rs.getString("payment_method"));
-            h.setOrderedAt(rs.getTimestamp("ordered_at"));
-
-            list.add(h);
+            tableIds.add(rs.getInt("table_id"));
         }
 
         rs.close();
         ps.close();
         con.close();
 
-        return list;
+        return tableIds;
     }
 }

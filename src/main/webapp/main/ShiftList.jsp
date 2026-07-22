@@ -8,6 +8,8 @@
 <div class="shift-container">
     <h2>シフト一覧</h2>
     
+    <div class="calendar-box">
+    
     <c:if test="${sessionScope.user.role == 'ADMIN'}">
         <div class="admin-action-box" style="padding: 15px 20px; margin-bottom: 25px; background-color: #f5efe6; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); width: max-content;">
             <div style="display: flex; align-items: center; gap: 15px;">
@@ -116,6 +118,11 @@
             </c:forEach>
         </tbody>
     </table>
+    <br>
+    <div class="button-area">
+	<a href="${pageContext.request.contextPath}/main/main.jsp" class="back-btn">戻る</a>
+	</div>
+    </div>
 </div>
 
 <%@include file="../footer.jsp"%>

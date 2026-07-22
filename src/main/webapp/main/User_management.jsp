@@ -2,7 +2,7 @@
 
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
-<link rel="stylesheet" href="../css/users.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/users.css">
 
 <%@ include file="../header.jsp" %>
 
@@ -31,5 +31,8 @@
 	</tr>
 	</c:forEach>
 </table>
+<div class="button-area">
+<a href="${pageContext.request.contextPath}/main/main.jsp" class="back-btn">戻る</a>
+</div>
 
 <%@ include file="../footer.jsp" %>

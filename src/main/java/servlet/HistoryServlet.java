@@ -21,27 +21,22 @@ public class HistoryServlet extends HttpServlet {
 
         try {
             String dateParam = request.getParameter("date");
+            String tableIdParam = request.getParameter("tableId");
 
             HistoryDAO dao = new HistoryDAO();
-            List<History> list;
-
-            if (dateParam != null && !dateParam.isEmpty()) {
-                list = dao.selectByDate(dateParam);
-            } else {
-                list = dao.selectAll();
-            }
+            List<History> list = dao.search(dateParam, tableIdParam);
+            List<Integer> tableIds = dao.selectTableIds();
 
             request.setAttribute("historyList", list);
-            
+            request.setAttribute("tableIds", tableIds);
             request.setAttribute("selectedDate", dateParam);
+            request.setAttribute("selectedTableId", tableIdParam);
 
             request.getRequestDispatcher("/main/history.jsp")
                    .forward(request, response);
 
         } catch (Exception e) {
-
             throw new ServletException(e);
-
         }
     }
 }

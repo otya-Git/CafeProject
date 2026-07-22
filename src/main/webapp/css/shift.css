@@ -10,6 +10,16 @@
     margin-bottom: 20px;
 }
 
+.calendar-box {
+    max-width: 850px;          /* ★カレンダーの幅より、左右のpadding分（計60px程度）だけ少し広めに設定する */
+    margin: 0 auto;            /* 中央寄せ */
+    background-color: #fffbf7;
+    padding: 30px;             /* 内側の余白 */
+    border-radius: 20px;       /* 角の丸み */
+    box-shadow: 0 4px 20px rgba(140, 112, 100, 0.06); /* 影 */
+}
+
+
 .calendar-table {
     width: 100%;
     border-collapse: collapse;
@@ -70,4 +80,31 @@
 .shift-time {
     display: block;
     color: #7f8c8d;
+}
+/* 💡 戻るボタンを中央に配置するエリア */
+.button-area {
+    text-align: center;   /* 戻るボタンを中央寄せにする */
+    margin-top: 20px;     /* テーブルとの間に適度なスキマを作る */
+    margin-bottom: 40px;  /* フッターとの間に適度なスキマを作る */
+}
+
+/* 戻るボタン（既存のコードを少し調整） */
+.back-btn {
+    display: inline-block;
+    /* margin-top: 20px; 👈 上の .button-area で余白を取るため、ここは削除するかコメントアウト */
+    padding: 10px 30px;   /* 横幅を少し広げると「編集」ボタンとバランスが良くなります */
+    
+    background:  #8d6e63;
+    color: white;
+    
+    text-decoration: none;
+    font-weight: bold;
+    
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.back-btn:hover {
+    background: #735b51; 
+    transform: translateY(-2px);
 }

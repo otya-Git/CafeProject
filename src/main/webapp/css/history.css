@@ -16,6 +16,11 @@
     text-align: center; 
 }
 
+.history-page .search-container form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
 
 .history-page .search-container label {
     font-weight: bold;
@@ -24,7 +29,12 @@
     font-family: "Yu Gothic", sans-serif;
 }
 
-.history-page input[type="date"] {
+.history-page .search-container label[for="searchTable"] {
+    margin-left: 15px;
+}
+
+.history-page input[type="date"],
+.history-page select {
     padding: 6px 12px;
     border: 2px solid #e7d7c1;
     border-radius: 8px;
@@ -32,6 +42,12 @@
     color: #5b4636;
     background-color: #fff;
     font-family: "Yu Gothic", sans-serif;
+    box-sizing: border-box;
+}
+
+.history-page select {
+    min-width: 140px;
+    cursor: pointer;
 }
 
 .history-page .search-btn {
@@ -42,7 +58,7 @@
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
-    margin-left: 8px;
+    margin-left: 15px;
     font-size: 15px;
     font-family: "Yu Gothic", sans-serif;
     transition: background 0.2s;
@@ -116,4 +132,29 @@
     .history-page .history-table td {
         padding: 10px;
     }
+}
+
+.button-area {
+    text-align: center;   
+    margin-top: 20px;     
+    margin-bottom: 40px;  
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 10px 30px;   
+    
+    background:  #8d6e63;
+    color: white;
+    
+    text-decoration: none;
+    font-weight: bold;
+    
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.back-btn:hover {
+    background: #735b51; 
+    transform: translateY(-2px);
 }

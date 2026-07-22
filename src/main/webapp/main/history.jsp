@@ -12,9 +12,18 @@
 
     <div class="search-container">
         <form action="HistoryServlet" method="GET">
-            <label for="searchDate">日付で絞り込み：</label>
+            <label for="searchDate">日付：</label>
             <input type="date" id="searchDate" name="date" value="${selectedDate}">
-            <button type="submit" class="search-btn">表示</button>
+            
+            <label for="searchTable" style="margin-left: 15px;">テーブル：</label>
+            <select id="searchTable" name="tableId">
+                <option value="">すべてのテーブル</option>
+                <c:forEach var="tId" items="${tableIds}">
+                    <option value="${tId}" ${selectedTableId == tId ? 'selected' : ''}>テーブル ${tId}</option>
+                </c:forEach>
+            </select>
+
+            <button type="submit" class="search-btn" style="margin-left: 15px;">表示</button>
             <a href="HistoryServlet" class="clear-link">全件表示に戻す</a>
         </form>
     </div>
@@ -45,7 +54,10 @@
         </c:forEach>
     </tbody>
     </table>
-
+    <br>
+	<div class="button-area">
+	<a href="${pageContext.request.contextPath}/main/main.jsp" class="back-btn">戻る</a>
+	</div>
 </div>
 
 <%@include file="../footer.jsp"%>

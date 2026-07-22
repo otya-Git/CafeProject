@@ -75,7 +75,7 @@
         <a href="${pageContext.request.contextPath}/main/main.jsp"
            class="add-btn">
 
-            メニューに戻る
+            戻る
 
         </a>
 
